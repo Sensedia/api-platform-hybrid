@@ -1,0 +1,18 @@
+version: '2.4'
+services:
+
+  agent-gateway:
+    env_file: agent-gateway.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/agent-gateway:1909.1.1.1
+    container_name: agent-gateway
+    mem_limit: 512m
+    restart: always
+    ports:
+      - '8091:8091'
+
+networks:
+  api-platform:
+    name: api-platform
+

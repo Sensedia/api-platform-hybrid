@@ -1,0 +1,18 @@
+version: '2.4'
+services:
+
+  agent-authorization:
+    env_file: agent-authorization.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/agent-authorization:1909.1.1.2
+    container_name: agent-authorization
+    mem_limit: 512m
+    restart: always
+    ports:
+      - '8092:8092'
+
+networks:
+  api-platform:
+    name: api-platform
+

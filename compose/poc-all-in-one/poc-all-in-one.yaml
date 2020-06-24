@@ -1,0 +1,84 @@
+#All in one
+version: '2.4'
+services:
+
+  redis:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: redis:4.0.11-alpine
+    container_name: redis
+    command: redis-server --notify-keyspace-events KEA
+    mem_limit: 512m
+    volumes:
+       - /data/redis-standalone:/data
+    ports:
+      - "6379:6379"
+
+  agent-gateway:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/agent-gateway:1909.1.1.1
+    container_name: agent-gateway
+    depends_on:
+      - redis
+    mem_limit: 512m
+    restart: always
+    ports:
+      - '8091:8091'
+
+  agent-authorization:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/agent-authorization:1909.1.1.2
+    container_name: agent-authorization
+    depends_on:
+      - redis
+    mem_limit: 512m
+    restart: always
+    ports:
+      - '8092:8092'
+
+  logstash:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/logstash-federated:4.1.0.0
+    container_name: logstash-federated
+    mem_limit: 512m
+    restart: always
+    ports:
+      - '9600:9600'
+      - '8090:8080'
+
+  api-authorization:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/api-authorization:4.1.1.0
+    container_name: api-authorization
+    depends_on:
+      - redis
+    mem_limit: 1024m
+    restart: always
+    ports:
+      - '8084:8084'
+
+  api-gateway:
+    env_file: hybrid.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/api-gateway:4.2.0.0
+    container_name: api-gateway
+    depends_on:
+      - redis
+    mem_limit: 1024m
+    restart: always
+    ports:
+      - '8080:8080'
+
+networks:
+  api-platform:
+    name: api-platform

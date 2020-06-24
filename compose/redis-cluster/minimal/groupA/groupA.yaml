@@ -1,0 +1,39 @@
+version: '2.4'
+
+services:
+  redis-cluster-master:
+    network_mode: host
+    image: redis:5.0.3
+    container_name: redis-cluster-master 
+    cpu_count: 1
+    mem_limit: 1024M
+    mem_reservation: 512m
+    restart: always
+    command:
+      - "redis-server"
+      - "--cluster-enabled yes"
+      - "--cluster-config-file nodes.conf"
+      - "--cluster-node-timeout 5000"
+      - "--appendonly yes"
+    volumes:
+       - /data/redis-master:/data
+
+  redis-cluster-replica:
+    network_mode: host
+    image: redis:5.0.3
+    container_name: redis-cluster-replica
+    cpu_count: 1
+    mem_limit: 1024M
+    mem_reservation: 512m
+    restart: always
+    command:
+      - "redis-server"
+      - "--port 6380"
+      - "--cluster-enabled yes"
+      - "--cluster-config-file nodes.conf"
+      - "--cluster-node-timeout 5000"
+      - "--cluster-slave-validity-factor 0"
+      - "--cluster-replica-validity-factor 0"
+      - "--appendonly yes"
+    volumes:
+       - /data/redis-replica:/data

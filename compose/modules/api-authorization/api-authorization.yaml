@@ -1,0 +1,18 @@
+version: '2.4'
+services:
+
+  api-authorization:
+    env_file: api-authorization.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/api-authorization:4.1.1.0
+    container_name: api-authorization
+    mem_limit: 1024m
+    restart: always
+    ports:
+      - '8084:8084'
+
+networks:
+  api-platform:
+    name: api-platform
+

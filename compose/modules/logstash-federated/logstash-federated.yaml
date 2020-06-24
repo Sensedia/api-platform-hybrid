@@ -1,0 +1,20 @@
+version: '2.4'
+services:
+
+  logstash-federated:
+    env_file: logstash-federated.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/logstash-federated:4.1.0.0
+    container_name: logstash-federated
+    cpu_count: 1
+    mem_limit: 1024M
+    mem_reservation: 512m
+    restart: always
+    ports:
+      - '9600:9600'
+      - '8070:8080'
+
+networks:
+  api-platform:
+    name: api-platform

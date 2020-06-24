@@ -1,0 +1,19 @@
+version: '2.4'
+services:
+
+  api-gateway:
+    env_file: api-gateway.env
+    networks:
+      - api-platform
+    image: gcr.io/production-main-231423/api-gateway:4.2.0.0
+    container_name: api-gateway
+    cpu_count: 1
+    mem_limit: 1024m
+    restart: always
+    ports:
+      - '8080:8080'
+
+networks:
+  api-platform:
+    name: api-platform
+
