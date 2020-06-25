@@ -9,7 +9,7 @@
   - [Hybrid Environments](#hybrid-environments)
   - [Need](#need)
   - [Composition](#composition)
-  - [Instalation](#instalation)
+  - [Installation](#installation)
 - [Español](#español)
   - [Entornos Híbridos de API-Platform](#entornos-híbridos-de-api-platform)
   - [Necesitar](#necesitar)
@@ -18,13 +18,13 @@
 
 <!-- TOC -->
 
- <p align="center"> 
+ <p align="center">
     <img src="images/api-management-platform-sensedia-features-apis.png" alt="API-Platform">
  </p>
 
 # Português
 
-**API-Platform**: plataforma de gerenciamento de APIs. Acelere suas estratégias digitais com integrações e gerenciamento de APIs. Saiba em: https://sensedia.com
+**API-Platform**: plataforma de gerenciamento de APIs. Acelere suas estratégias digitais com integrações e gerenciamento de APIs. Saiba em: https://sensedia.com.
 
 ## Ambientes Híbridos do API-Platform
 
@@ -34,7 +34,7 @@ Ambientes híbridos do API-Platform são ambientes onde apenas uma parte dos com
 
 O ambiente híbrido é necessário quando o cliente deseja realizar operações de APIs, internamente em sua própria infraestrutura.
 
-Nesse caso, existe a possibilidade de que alguns componentes da topologia do API-Plataform operem remotamente, mas ainda assim mantenham comunicação com os módulos core na cloud
+Nesse caso, existe a possibilidade de que alguns componentes da topologia do API-Plataform operem remotamente, mas ainda assim mantenham comunicação com os módulos core na cloud.
 
 ## Composição
 
@@ -47,7 +47,7 @@ Atualmente, o ambiente híbrido é composto pelos seguintes componentes:
 | **Agent Gateway** | Esse módulo se conecta com o ambiente cloud e é responsável por receber todas as atualizações de cenários de APIs. |
 | **Logstash Federated** | Faz o envio massivo do trace gerado no ambiente do cliente. |
 | **API Authorization** | Responsável pela geração de tokens de autorização nas APIs. |
-| **API Gateway** | Recebe as requisições de APIs e realização as operações necessárias. |
+| **API Gateway** | Recebe as requisições de APIs e realiza as operações necessárias. |
 
 ## Instalação
 
@@ -81,9 +81,9 @@ Currently, the hybrid environment consists of the following components:
 | **Agent Gateway** | This module connects with the environment cloud and is responsible for receiving all updates to API scenarios |
 | **Logstash Federated** | Massively sends the trace generated in the client environment |
 | **API Authorization** | Responsible for generating authorization tokens in the APIs |
-| **API Gateway** | Receive API requests and perform necessary operations |
+| **API Gateway** | Receives API requests and performs necessary operations |
 
-## Instalation
+## Installation
 
 The installation can be performed using the following technologies:
 
@@ -92,17 +92,17 @@ The installation can be performed using the following technologies:
 
 # Español
 
-**API-Platform**: plataforma de administración de API. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más información en: https://sensedia.com
+**API-Platform**: plataforma de administración de API. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más informaciónes en: https://sensedia.com.
 
 ## Entornos Híbridos de API-Platform
 
 Los entornos híbridos de API-Platform son entornos en los que solo una parte de los componentes de la solución funcionan de forma remota (en el cliente), a diferencia de lo que sucede en entornos de nube (administrados por Sensedia).
 
-## Necesitar
+## Necesidad
 
 El entorno híbrido es necesario cuando el cliente desea realizar operaciones API, internamente en su propia infraestructura.
 
-En este caso, existe la posibilidad de que algunos componentes de la topología de lo API-Platform operen de forma remota, pero aún mantengan comunicación con los módulos principales en la nube.
+En este caso, existe la posibilidad de que algunos componentes de la topología de la API-Platform operen de forma remota, pero aún mantengan comunicación con los módulos principales en la nube.
 
 ## Composición
 
@@ -114,8 +114,8 @@ Actualmente, el entorno híbrido consta de los siguientes componentes:
 | **Agent Authorization** | Este módulo se conecta con el entorno de la nube y es responsable de la telemetría de los tokens generados en el entorno del cliente. |
 | **Agent Gateway** | Este módulo se conecta con el entorno de la nube y es responsable de recibir todas las actualizaciones de los escenarios API.
 | **Logstash Federated** | Envía masivamente la traza generada en el entorno del cliente. |
-| **API Authorization** | Responsable de generar tokens de autorización en las API.
-| **API Gateway** | Reciba solicitudes de API y realice las operaciones necesarias. |
+| **API Authorization** | Responsable de generar tokens de autorización en las APIs.
+| **API Gateway** | Recibe solicitudes de APIs y realiza las operaciones necesarias. |
 
 ## Instalación
 
