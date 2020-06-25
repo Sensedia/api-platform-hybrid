@@ -1,0 +1,52 @@
+# Default values for agent-authorization.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+ 
+replicaCount: 1
+ 
+image:
+  repository: gcr.io/production-main-231423/agent-authorization
+  tag: 1909.1.1.2
+  pullPolicy: IfNotPresent
+ 
+service:
+  type: ClusterIP
+  port: 80
+ 
+properties:
+  javaOpts: "-Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Xms1536m -Xmx1536m -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError"
+  redis:
+    connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
+    address: "CHANGE_HERE" #Example: x.x.x.x:6379
+    password: "CHANGE_HERE"
+  logLevel: INFO
+  trackExpires: 7
+  #--- IF client in AWS
+  websocketUri: wss://integration-aws.sensedia.com/websocket
+  #--- If client in GCP
+  #websocketUri: wss://integration-production-gcp.sensedia.com/websocket
+  customerId: "CHANGE_HERE"
+  sensediaAuth: "CHANGE_HERE"
+ 
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 1
+  averageUtilization: 70
+ 
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+ 
+resources:
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 600m
+    memory: 640Mi
+

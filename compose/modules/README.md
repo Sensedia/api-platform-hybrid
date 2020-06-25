@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [API Platform Híbrido - Docker Compose Modules](#api-platform-híbrido---docker-compose-modules)
+- [API-Platform Híbrido - Docker Compose Modules](#api-platform-híbrido---docker-compose-modules)
 	- [Requisitos](#requisitos)
 - [Deploy](#deploy)
 	- [Instalação](#instalação)
@@ -14,7 +14,7 @@
 
 <!-- TOC -->
 
-# API Platform Híbrido - Docker Compose Modules
+# API-Platform Híbrido - Docker Compose Modules
 
 Neste método, cada módulo pode ser instanciado separadamente.
 
