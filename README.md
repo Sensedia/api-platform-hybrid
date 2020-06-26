@@ -34,7 +34,7 @@ Ambientes híbridos do API-Platform são ambientes onde apenas uma parte dos com
 
 O ambiente híbrido é necessário quando o cliente deseja realizar operações de APIs, internamente em sua própria infraestrutura.
 
-Nesse caso, existe a possibilidade de que alguns componentes da topologia do API-Plataform operem remotamente, mas ainda assim mantenham comunicação com os módulos core na cloud.
+Nesse caso, existe a possibilidade de que alguns componentes da topologia do API-Platform operem remotamente, mas ainda assim mantenham comunicação com os módulos core na cloud.
 
 ## Composição
 
@@ -66,7 +66,7 @@ Hybrid environments are environments where only a part of the solution component
 
 ## Need
 
-The hybrid environment is necessary when the customer wants to perform API operations, internally in his own infrastructure.
+The hybrid environment is necessary when the customer wants to perform API operations internally, in their own infrastructure.
 
 In this case, there is a possibility that some components of the API-Platform topology operate remotely, but still maintain communication with the core modules on the cloud.
 
@@ -92,7 +92,7 @@ The installation can be performed using the following technologies:
 
 # Español
 
-**API-Platform**: plataforma de administración de API. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más informaciónes en: https://sensedia.com.
+**API-Platform**: plataforma de administración de APIs. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más informaciónes en: https://sensedia.com.
 
 ## Entornos Híbridos de API-Platform
 
@@ -100,7 +100,7 @@ Los entornos híbridos de API-Platform son entornos en los que solo una parte de
 
 ## Necesidad
 
-El entorno híbrido es necesario cuando el cliente desea realizar operaciones API, internamente en su propia infraestructura.
+El entorno híbrido es necesario cuando el cliente desea realizar operaciones de APIs internamente, en su propia infraestructura.
 
 En este caso, existe la posibilidad de que algunos componentes de la topología de la API-Platform operen de forma remota, pero aún mantengan comunicación con los módulos principales en la nube.
 
@@ -115,7 +115,7 @@ Actualmente, el entorno híbrido consta de los siguientes componentes:
 | **Agent Gateway** | Este módulo se conecta con el entorno de la nube y es responsable de recibir todas las actualizaciones de los escenarios API.
 | **Logstash Federated** | Envía masivamente la traza generada en el entorno del cliente. |
 | **API Authorization** | Responsable de generar tokens de autorización en las APIs.
-| **API Gateway** | Recibe solicitudes de APIs y realiza las operaciones necesarias. |
+| **API Gateway** | Recibe peticiones de APIs y realiza las operaciones necesarias. |
 
 ## Instalación
 
