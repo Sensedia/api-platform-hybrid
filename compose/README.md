@@ -19,10 +19,9 @@
 
 # API-Platform Híbrido - Docker Compose
 
-O modelo de deploy **Híbrido** é recomendado para clientes que tem preocupação com latência.
+O modelo de deploy **Híbrido** é recomendado para clientes que têm preocupação com latência.
 
-Muitas vezes é usado para conexões de **backends internos On-Premise**, assim não faz sentido 
-os gateways estarem localizados na nuvem.
+Muitas vezes é usado para conexões de **backends internos On-Premise**, assim não faz sentido os gateways estarem localizados na nuvem.
 
 Esta documentação explica como realizar o deployment dos módulos/serviços utilizados no ambiente híbrido.
 
@@ -34,8 +33,7 @@ Esta documentação explica como realizar o deployment dos módulos/serviços ut
 
 ### Docker
 
-Instale o Docker CE (Community Edition) seguindo as instruções das páginas a seguir de acordo 
-com a distribuição GNU/Linux.
+Instale o Docker CE (Community Edition) seguindo as instruções das páginas a seguir de acordo com a distribuição GNU/Linux.
 
 * No CentOS:
 https://docs.docker.com/install/linux/docker-ce/centos/
@@ -129,7 +127,7 @@ Para o modelo Híbrido o deploy pode ser realizado de três modos, variando em r
 
 ### Módulos
 
-A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter 
+A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter
 ou não um LoadBalancer na frente de cada módulo.
 
 |Módulo|Descrição|Necessário backup?|
@@ -143,13 +141,13 @@ ou não um LoadBalancer na frente de cada módulo.
 
 ### Recursos Recomendados
 
-Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais 
+Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais
 recursos/serviços que possam ser instalados.
 
-    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o 
+    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o
     consumo de recursos de hardware mínimo para o funcionamento dos módulos.
 
-    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos 
+    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos
     de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso diário.
 
 |Servidor|Módulos|CPU|Memória RAM|Disco|
@@ -191,18 +189,18 @@ Para saber mais informações sobre o deploy usando o método **Modules** acesse
 
 ## Alterando a Versão dos Módulos, Porta e Outros Parâmetros
 
-    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar 
-    a versão de um ou mais módulos da plataforma e customizar os demais parâmetros 
+    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar
+    a versão de um ou mais módulos da plataforma e customizar os demais parâmetros
     conforme a necessidade de cada ambiente.
 
-À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente 
+À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente
 híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
 
-Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml`` 
+Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml``
 que instrui o Docker Compose a iniciar um ou mais módulos da plataforma.
 
-A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores 
-podem ser customizados. 
+A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores
+podem ser customizados.
 
 Exemplo 1: Conteúdo do arquivo ``agent-gateway.yaml``.
 
@@ -261,7 +259,7 @@ Exemplo 2: ``- '8080:8080'`` a porta do host é 8080/TCP que escutará as requis
 
 Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do contêiner é 8080/TCP.
 
-    ATENÇÃO!!! A porta do contêiner não é acessível fora do host. Ela só é acessível dentro do host. 
+    ATENÇÃO!!! A porta do contêiner não é acessível fora do host. Ela só é acessível dentro do host.
 
     Todas as requisições são ouvidas na porta do host e encaminhadas para a porta do contêiner, de forma transparente ao usuário.
 
@@ -293,21 +291,21 @@ A configuração do ambiente híbrido tem como pré-requisito a utilização de 
 8. Publique o token por meio do botão **Publish your access token**;
 9. Guarde o token gerado (ele será utilizado no provisionamento dos módulos).
 
-Quando o método de instalação for **Poc-all-in-one**: 
+Quando o método de instalação for **Poc-all-in-one**:
 
 Edite o arquivo ``poc-all-in-one/hybrid.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
-Quando o método de instalação for **All-In-One**: 
+Quando o método de instalação for **All-In-One**:
 
 Edite o arquivo ``all-in-one/hybrid.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
-Quando o método de instalação for **Modules**: 
+Quando o método de instalação for **Modules**:
 
 Edite os arquivos ``modules/logstash-federated/logstash.env``, ``modules/agent-gateway/agent-gateway.env`` e ``modules/agent-authorization/agent-authorization.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
