@@ -74,12 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 /usr/local/bin/docker-compose version
 ```
 
-Maiores informações podem ser obtidas na documentação oficial:
-https://docs.docker.com/compose/install/
+Maiores informações podem ser obtidas na documentação oficial: https://docs.docker.com/compose/install/.
 
 ### Selinux no CentOS/Red Hat
 
-O Selinux pode interferir no permissionamento de arquivos e processos. Para evitar problemas, desabilite-o com o seguinte comandos.
+O Selinux pode interferir no permissionamento de arquivos e processos. Para evitar problemas, desabilite-o com os seguintes comandos.
 
 ```bash
 sudo setenforce 0
@@ -127,8 +126,7 @@ Para o modelo Híbrido o deploy pode ser realizado de três modos, variando em r
 
 ### Módulos
 
-A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter
-ou não um LoadBalancer na frente de cada módulo.
+A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter ou não um LoadBalancer na frente de cada módulo.
 
 |Módulo|Descrição|Necessário backup?|
 |-|-|-|
@@ -141,14 +139,11 @@ ou não um LoadBalancer na frente de cada módulo.
 
 ### Recursos Recomendados
 
-Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais
-recursos/serviços que possam ser instalados.
+Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais recursos/serviços que possam ser instalados.
 
-    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o
-    consumo de recursos de hardware mínimo para o funcionamento dos módulos.
+    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o consumo de recursos de hardware mínimo para o funcionamento dos módulos.
 
-    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos
-    de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso diário.
+    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso diário.
 
 |Servidor|Módulos|CPU|Memória RAM|Disco|
 |-|-|-|-|-|
@@ -171,7 +166,7 @@ recursos/serviços que possam ser instalados.
 
 		3 instâncias contendo **todos** os módulos + redis-cluster compartilhando recursos.
 
-* **Modules** com 6 instâncias para módulos da plataforma + 6 instâncias para redis-cluster (recomendado para ambientes com alto troughput).
+* **Modules** com 6 instâncias para módulos da plataforma + 6 instâncias para redis-cluster (recomendado para ambientes com alto throughput).
 
 		2 instâncias dedicadas para Gateway.
 		2 instâncias dedicadas para Authorization.
