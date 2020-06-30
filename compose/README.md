@@ -184,18 +184,13 @@ Para saber mais informações sobre o deploy usando o método **Modules** acesse
 
 ## Alterando a Versão dos Módulos, Porta e Outros Parâmetros
 
-    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar
-    a versão de um ou mais módulos da plataforma e customizar os demais parâmetros
-    conforme a necessidade de cada ambiente.
+    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar a versão de um ou mais módulos da plataforma e customizar os demais parâmetros conforme a necessidade de cada ambiente.
 
-À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente
-híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
+À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
 
-Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml``
-que instrui o Docker Compose a iniciar um ou mais módulos da plataforma.
+Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml`` que instrui o Docker Compose a iniciar um ou mais módulos da plataforma.
 
-A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores
-podem ser customizados.
+A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores podem ser customizados.
 
 Exemplo 1: Conteúdo do arquivo ``agent-gateway.yaml``.
 
@@ -222,21 +217,21 @@ Exemplo 1: Conteúdo do arquivo ``agent-gateway.yaml``.
 
 Explicação do conteúdo do arquivo ``agent-gateway.yaml``.
 
-* Na **linha 1** é definida a versão do Docker Compose file. Este valor deve ser alterado apenas pelo time da Sensedia quando realmente for necessário, pois afeta a sintaxe de alguns parâmetros e palavras reservadas do arquivo, conforme mostra a documentação oficial do Docker Compose: https://docs.docker.com/compose/compose-file/
+* Na **linha 1** é definida a versão do Docker Compose file. Este valor deve ser alterado apenas pelo time da Sensedia quando realmente for necessário, pois afeta a sintaxe de alguns parâmetros e palavras reservadas do arquivo, conforme mostra a documentação oficial do Docker Compose: https://docs.docker.com/compose/compose-file/.
 
 * A **linha 2** contém um palavra reservada da sintaxe nativa do Docker Compose, que indica o início de um conjunto de instruções para deploy de um ou mais módulos da plataforma.
 
 * A **linha 4** indica o nome de serviço correspondente a um dos módulos da plataforma.
 
-* A **linha 5** contém a localização do arquivo de variáveis de ambiente. O nome, localização e o conteúdo desse arquivo muda de acordo com o módulo. **É necessário que você também edite esse arquivo e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente híbrido.**
+* A **linha 5** contém a localização do arquivo de variáveis de ambiente. O nome, localização e o conteúdo desse arquivo mudam de acordo com o módulo. **É necessário que você também edite esse arquivo e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente híbrido.**
 
-* As **linhas 6 e 7** contém uma referência para as **linhas 16 a 18** que definem a rede Docker a ser usada pelo contêiner que executará esse módulo da plataforma. Você não precisa alterar o conteúdo dessa seção.
+* As **linhas 6 e 7** contém uma referência para as **linhas 16 a 18**, que definem a rede Docker a ser usada pelo contêiner que executará esse módulo da plataforma. Você não precisa alterar o conteúdo dessa seção.
 
-* A **linha 8** contém o endereço do Docker Registry (``gcr.io/production-main-231423``), imagem Docker do módulo da plataforma (``api-gateway``) e versão do módulo (``4.2.0.0``). **Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo e a versão que deve utilizar e alterar no arquivo ``*.yaml`` antes de fazer o deploy**.
+* A **linha 8** contém o endereço do Docker Registry (``gcr.io/production-main-231423``), imagem Docker do módulo da plataforma (``api-gateway``) e versão do módulo (``4.2.0.0``). **Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo e a versão que deve utilizar e alterar no arquivo ``*.yaml`` antes de fazer o deploy.**
 
 * A **linha 9** contém o nome do contêiner que executará o módulo da plataforma. Você não precisa alterar.
 
-* Na **linha 10** você pode definir quantas CPU que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
+* Na **linha 10** você pode definir quantas CPUs que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
 
 * Na **linha 11** você pode definir o limite de memória RAM que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
 
@@ -248,7 +243,7 @@ Explicação do conteúdo do arquivo ``agent-gateway.yaml``.
 
 PORTA_HOST:PORTA_contêiner
 
-Exemplo 2: ``- '8080:8080'`` a porta do host é 8080/TCP que escutará as requisições e encaminhará para a porta do contêiner que é 8080/TCP.
+Exemplo 2: ``- '8080:8080'`` - a porta do host é 8080/TCP, que escutará as requisições e encaminhará para a porta do contêiner, que é 8080/TCP.
 
 **A porta do host pode ser alterada** conforme a necessidade do seu ambiente, mas a porta do contêiner **não deve ser alterada**.
 
@@ -258,13 +253,13 @@ Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do
 
     Todas as requisições são ouvidas na porta do host e encaminhadas para a porta do contêiner, de forma transparente ao usuário.
 
-    Ao configurar regras de firewall leve em consideração apenas as portas do host.
+    Ao configurar regras de firewall, leve em consideração apenas as portas do host.
 
     A porta do host sempre fica à esquerda do ``:``.
 
     A porta do contêiner sempre fica à direita do ``:``.
 
-    Por padrão todas as portas são TCP.
+    Por padrão, todas as portas são TCP.
 
     A porta do host pode ser alterada, mas deve ser uma porta diferente para cada contêiner a ser iniciado.
 
@@ -276,7 +271,7 @@ Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do
 
 A configuração do ambiente híbrido tem como pré-requisito a utilização de um token da plataforma. O token deve ser criado utilizando o seguinte procedimento:
 
-1. Acesse o API Manager.
+1. Acesse o API Manager;
 2. Clique no menu da página de **Access Token**;
 3. Clique no botão **Criar Access token**;
 4. O campo **Owner** deve conter o email de um usuário responsável pelo ambiente;
