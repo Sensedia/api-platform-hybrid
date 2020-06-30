@@ -19,10 +19,9 @@
 
 # API-Platform Híbrido - Docker Compose
 
-O modelo de deploy **Híbrido** é recomendado para clientes que tem preocupação com latência.
+O modelo de deploy **Híbrido** é recomendado para clientes que têm preocupação com latência.
 
-Muitas vezes é usado para conexões de **backends internos On-Premise**, assim não faz sentido 
-os gateways estarem localizados na nuvem.
+Muitas vezes é usado para conexões de **backends internos On-Premise**, assim não faz sentido os gateways estarem localizados na nuvem.
 
 Esta documentação explica como realizar o deployment dos módulos/serviços utilizados no ambiente híbrido.
 
@@ -34,8 +33,7 @@ Esta documentação explica como realizar o deployment dos módulos/serviços ut
 
 ### Docker
 
-Instale o Docker CE (Community Edition) seguindo as instruções das páginas a seguir de acordo 
-com a distribuição GNU/Linux.
+Instale o Docker CE (Community Edition) seguindo as instruções das páginas a seguir de acordo com a distribuição GNU/Linux.
 
 * No CentOS:
 https://docs.docker.com/install/linux/docker-ce/centos/
@@ -76,12 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 /usr/local/bin/docker-compose version
 ```
 
-Maiores informações podem ser obtidas na documentação oficial:
-https://docs.docker.com/compose/install/
+Maiores informações podem ser obtidas na documentação oficial: https://docs.docker.com/compose/install/.
 
 ### Selinux no CentOS/Red Hat
 
-O Selinux pode interferir no permissionamento de arquivos e processos. Para evitar problemas, desabilite-o com o seguinte comandos.
+O Selinux pode interferir no permissionamento de arquivos e processos. Para evitar problemas, desabilite-o com os seguintes comandos.
 
 ```bash
 sudo setenforce 0
@@ -129,8 +126,7 @@ Para o modelo Híbrido o deploy pode ser realizado de três modos, variando em r
 
 ### Módulos
 
-A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter 
-ou não um LoadBalancer na frente de cada módulo.
+A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer ou não backup e de ter ou não um LoadBalancer na frente de cada módulo.
 
 |Módulo|Descrição|Necessário backup?|
 |-|-|-|
@@ -143,14 +139,11 @@ ou não um LoadBalancer na frente de cada módulo.
 
 ### Recursos Recomendados
 
-Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais 
-recursos/serviços que possam ser instalados.
+Cada servidor deve ser provisionado considerando o consumo da distribuição GNU/Linux e demais recursos/serviços que possam ser instalados.
 
-    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o 
-    consumo de recursos de hardware mínimo para o funcionamento dos módulos.
+    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o consumo de recursos de hardware mínimo para o funcionamento dos módulos.
 
-    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos 
-    de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso diário.
+    Essa especificação de hardware deve ser alterada por cada cliente de acordo com a demanda por recursos de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso diário.
 
 |Servidor|Módulos|CPU|Memória RAM|Disco|
 |-|-|-|-|-|
@@ -173,7 +166,7 @@ recursos/serviços que possam ser instalados.
 
 		3 instâncias contendo **todos** os módulos + redis-cluster compartilhando recursos.
 
-* **Modules** com 6 instâncias para módulos da plataforma + 6 instâncias para redis-cluster (recomendado para ambientes com alto troughput).
+* **Modules** com 6 instâncias para módulos da plataforma + 6 instâncias para redis-cluster (recomendado para ambientes com alto throughput).
 
 		2 instâncias dedicadas para Gateway.
 		2 instâncias dedicadas para Authorization.
@@ -191,18 +184,13 @@ Para saber mais informações sobre o deploy usando o método **Modules** acesse
 
 ## Alterando a Versão dos Módulos, Porta e Outros Parâmetros
 
-    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar 
-    a versão de um ou mais módulos da plataforma e customizar os demais parâmetros 
-    conforme a necessidade de cada ambiente.
+    ATENÇÃO!!! Use as explicações desta seção e o exemplo como base para alterar a versão de um ou mais módulos da plataforma e customizar os demais parâmetros conforme a necessidade de cada ambiente.
 
-À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente 
-híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
+À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
 
-Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml`` 
-que instrui o Docker Compose a iniciar um ou mais módulos da plataforma.
+Em cada diretório correspondente a um dos métodos de deploy existe um arquivo no formato ``.yaml`` que instrui o Docker Compose a iniciar um ou mais módulos da plataforma.
 
-A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores 
-podem ser customizados. 
+A seguir é mostrado o exemplo de um arquivo ``.yaml`` para deploy de um módulo e explicado que valores podem ser customizados.
 
 Exemplo 1: Conteúdo do arquivo ``agent-gateway.yaml``.
 
@@ -229,21 +217,21 @@ Exemplo 1: Conteúdo do arquivo ``agent-gateway.yaml``.
 
 Explicação do conteúdo do arquivo ``agent-gateway.yaml``.
 
-* Na **linha 1** é definida a versão do Docker Compose file. Este valor deve ser alterado apenas pelo time da Sensedia quando realmente for necessário, pois afeta a sintaxe de alguns parâmetros e palavras reservadas do arquivo, conforme mostra a documentação oficial do Docker Compose: https://docs.docker.com/compose/compose-file/
+* Na **linha 1** é definida a versão do Docker Compose file. Este valor deve ser alterado apenas pelo time da Sensedia quando realmente for necessário, pois afeta a sintaxe de alguns parâmetros e palavras reservadas do arquivo, conforme mostra a documentação oficial do Docker Compose: https://docs.docker.com/compose/compose-file/.
 
 * A **linha 2** contém um palavra reservada da sintaxe nativa do Docker Compose, que indica o início de um conjunto de instruções para deploy de um ou mais módulos da plataforma.
 
 * A **linha 4** indica o nome de serviço correspondente a um dos módulos da plataforma.
 
-* A **linha 5** contém a localização do arquivo de variáveis de ambiente. O nome, localização e o conteúdo desse arquivo muda de acordo com o módulo. **É necessário que você também edite esse arquivo e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente híbrido.**
+* A **linha 5** contém a localização do arquivo de variáveis de ambiente. O nome, localização e o conteúdo desse arquivo mudam de acordo com o módulo. **É necessário que você também edite esse arquivo e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente híbrido.**
 
-* As **linhas 6 e 7** contém uma referência para as **linhas 16 a 18** que definem a rede Docker a ser usada pelo contêiner que executará esse módulo da plataforma. Você não precisa alterar o conteúdo dessa seção.
+* As **linhas 6 e 7** contém uma referência para as **linhas 16 a 18**, que definem a rede Docker a ser usada pelo contêiner que executará esse módulo da plataforma. Você não precisa alterar o conteúdo dessa seção.
 
-* A **linha 8** contém o endereço do Docker Registry (``gcr.io/production-main-231423``), imagem Docker do módulo da plataforma (``api-gateway``) e versão do módulo (``4.2.0.0``). **Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo e a versão que deve utilizar e alterar no arquivo ``*.yaml`` antes de fazer o deploy**.
+* A **linha 8** contém o endereço do Docker Registry (``gcr.io/production-main-231423``), imagem Docker do módulo da plataforma (``api-gateway``) e versão do módulo (``4.2.0.0``). **Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo e a versão que deve utilizar e alterar no arquivo ``*.yaml`` antes de fazer o deploy.**
 
 * A **linha 9** contém o nome do contêiner que executará o módulo da plataforma. Você não precisa alterar.
 
-* Na **linha 10** você pode definir quantas CPU que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
+* Na **linha 10** você pode definir quantas CPUs que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
 
 * Na **linha 11** você pode definir o limite de memória RAM que o serviço executado no contêiner pode utilizar. Nem todos os módulos contém essa definição por padrão.
 
@@ -255,23 +243,23 @@ Explicação do conteúdo do arquivo ``agent-gateway.yaml``.
 
 PORTA_HOST:PORTA_contêiner
 
-Exemplo 2: ``- '8080:8080'`` a porta do host é 8080/TCP que escutará as requisições e encaminhará para a porta do contêiner que é 8080/TCP.
+Exemplo 2: ``- '8080:8080'`` - a porta do host é 8080/TCP, que escutará as requisições e encaminhará para a porta do contêiner, que é 8080/TCP.
 
 **A porta do host pode ser alterada** conforme a necessidade do seu ambiente, mas a porta do contêiner **não deve ser alterada**.
 
 Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do contêiner é 8080/TCP.
 
-    ATENÇÃO!!! A porta do contêiner não é acessível fora do host. Ela só é acessível dentro do host. 
+    ATENÇÃO!!! A porta do contêiner não é acessível fora do host. Ela só é acessível dentro do host.
 
     Todas as requisições são ouvidas na porta do host e encaminhadas para a porta do contêiner, de forma transparente ao usuário.
 
-    Ao configurar regras de firewall leve em consideração apenas as portas do host.
+    Ao configurar regras de firewall, leve em consideração apenas as portas do host.
 
     A porta do host sempre fica à esquerda do ``:``.
 
     A porta do contêiner sempre fica à direita do ``:``.
 
-    Por padrão todas as portas são TCP.
+    Por padrão, todas as portas são TCP.
 
     A porta do host pode ser alterada, mas deve ser uma porta diferente para cada contêiner a ser iniciado.
 
@@ -283,7 +271,7 @@ Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do
 
 A configuração do ambiente híbrido tem como pré-requisito a utilização de um token da plataforma. O token deve ser criado utilizando o seguinte procedimento:
 
-1. Acesse o API Manager.
+1. Acesse o API Manager;
 2. Clique no menu da página de **Access Token**;
 3. Clique no botão **Criar Access token**;
 4. O campo **Owner** deve conter o email de um usuário responsável pelo ambiente;
@@ -293,21 +281,21 @@ A configuração do ambiente híbrido tem como pré-requisito a utilização de 
 8. Publique o token por meio do botão **Publish your access token**;
 9. Guarde o token gerado (ele será utilizado no provisionamento dos módulos).
 
-Quando o método de instalação for **Poc-all-in-one**: 
+Quando o método de instalação for **Poc-all-in-one**:
 
 Edite o arquivo ``poc-all-in-one/hybrid.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
-Quando o método de instalação for **All-In-One**: 
+Quando o método de instalação for **All-In-One**:
 
 Edite o arquivo ``all-in-one/hybrid.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
-Quando o método de instalação for **Modules**: 
+Quando o método de instalação for **Modules**:
 
 Edite os arquivos ``modules/logstash-federated/logstash.env``, ``modules/agent-gateway/agent-gateway.env`` e ``modules/agent-authorization/agent-authorization.env``, localize os seguintes parâmetros e substitua o termo ``CHANGE_HERE`` pelo token gerado anteriormente.
 
