@@ -18,19 +18,17 @@ Caso você utilize Redis gerenciado, ou já possua uma instalação de Redis, es
 
 ## Módulos
 
-Nesse método devem ser instalados os módulos citados [nessa página](../README.md), na seção ``Módulos``.
+Neste método devem ser instalados os módulos citados [nessa página](../README.md), na seção **Módulos**.
 
 ## Requisitos
 
-Acesse [essa página](../README.md), na seção ``Requisitos``, para obter informações sobre como instalar 
-as dependências para o funcionamento dos módulos.
+Acesse [essa página](../README.md), na seção ``Requisitos``, para obter informações sobre como instalar as dependências para o funcionamento dos módulos.
 
 # Deploy
 
 ## Instalação
 
-1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como 
-**CHANGE_HERE** para os valores condizentes com seu ambiente.
+1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
 
 2 - Crie um token de acesso do ambiente híbrido no API-Manager seguindo as instruções [dessa página](../README.md), na seção **Criação de Token**.
 
@@ -61,7 +59,7 @@ Veja os logs de cada serviço com o seguinte comando.
 sudo docker-compose logs -f SERVICE_NAME
 ```
 
-O termo ``SERVICE_NAME`` deve ser substituído pelo nome do serviço que você deseja visualizar o log.
+O termo ``SERVICE_NAME`` deve ser substituído pelo nome do serviço cujo log você deseja visualizar.
 
 Reinicie o serviço com o seguinte comando.
 
@@ -81,8 +79,7 @@ Inicie novamente o serviço com o seguinte comando.
 sudo docker-compose start SERVICE_NAME
 ```
 
-Se quiser parar o serviço e remover todos os dados, volumes, imagens, rede dos contêineres 
-use o comando a seguir (use apenas se realmente precisar).
+Se quiser parar o serviço e remover todos os dados, volumes, imagens, rede dos contêineres, use o comando a seguir (use apenas se realmente precisar).
 
 ```bash
 cd compose/all-in-one/
