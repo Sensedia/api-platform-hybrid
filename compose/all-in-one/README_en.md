@@ -73,7 +73,7 @@ Stop the service with the following command.
 sudo docker-compose stop SERVICE_NAME
 ```
 
-Start the service again with the following command
+Start the service again with the following command.
 
 ```bash
 sudo docker-compose start SERVICE_NAME

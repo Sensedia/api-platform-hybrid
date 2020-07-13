@@ -48,8 +48,8 @@ Verificar el estatus de los contenedores con el siguiente comando.
 ```bash
 sudo docker-compose ps
 ```
-Se mostrará una lista de servicios con el estatus correspondiente.
 
+Se mostrará una lista de servicios con el estatus correspondiente.
 
 ## Solución de problemas
 
