@@ -22,7 +22,7 @@ En este método, instalar los módulos citados en [esta página](../README_es.md
 
 ## Requisitos
 
-Acceder a [esta página](../README_es.md), en la sección ``Requisitos``, para obtener información sobre cómo instalar las dependencias para el funcionamiento de los módulos.
+Acceder a [esta página](../README_es.md), en la sección **Requisitos**, para obtener información sobre cómo instalar las dependencias para el funcionamiento de los módulos.
 
 # Despliegue
 

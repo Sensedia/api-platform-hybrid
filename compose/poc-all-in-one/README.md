@@ -12,25 +12,23 @@
 
 # POC-all-in-one deployment method
 
-Este método de deployment inicia todos os módulos da plataforma no mesmo host. 
+Este método de deployment inicia todos os módulos da plataforma no mesmo host.
 
     ATENÇÃO!!! Esse método não deve ser utilizado no ambiente de produção.
 
 ## Módulos
 
-Nesse método devem ser instalados os módulos citados [nessa página](../README.md), na seção ``Módulos``.
+Nesse método devem ser instalados os módulos citados [nessa página](../README.md), na seção **Módulos**.
 
 ## Requisitos
 
-Acesse [essa página](../README.md), na seção ``Requisitos``, para obter informações sobre como 
-instalar as dependências para o funcionamento dos módulos.
+Acesse [essa página](../README.md), na seção **Requisitos**, para obter informações sobre como instalar as dependências para o funcionamento dos módulos.
 
 # Deploy
 
 ## Instalação
 
-1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como 
-**CHANGE_HERE** para os valores condizentes com seu ambiente.
+1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
 
 2 - Crie um token de acesso do ambiente híbrido no API-Manager seguindo as instruções [dessa página](../README.md), na seção **Criação de Token**.
 
@@ -81,8 +79,7 @@ Inicie novamente o serviço com o seguinte comando.
 sudo docker-compose start SERVICE_NAME
 ```
 
-Se quiser parar o serviço e remover todos os dados, volumes, imagens, rede dos contêineres 
-use o comando a seguir (use apenas se realmente precisar).
+Se quiser parar o serviço e remover todos os dados, volumes, imagens, rede dos contêineres, use o comando a seguir (use apenas se realmente precisar).
 
 ```bash
 cd compose/poc-all-in-one/
