@@ -1,14 +1,14 @@
+<!-- TOC -->
 
+- [POC-all-in-one deployment method](#poc-all-in-one-deployment-method)
+  - [Modules](#modules)
+  - [Requirements](#requirements)
+- [Deploy](#deploy)
+  - [Installation](#installation)
+  - [Validation](#validation)
+  - [Troubleshooting](#troubleshooting)
 
-
-
-
-
-
-
-
-
-
+<!-- TOC -->
 
 # POC-all-in-one deployment method
 
