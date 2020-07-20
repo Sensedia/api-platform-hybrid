@@ -35,20 +35,20 @@ O modelo de deploy Híbrido é recomendado para clientes que tem preocupação c
 
 O ambiente híbrido é composto por módulos desenvolvidos pela Sensedia e componentes de infraestrutura.
 
-Os componentes de infraestrutura, bem como sua operação e sustentação, são de responsabilidade do cliente. Por essa razão, a infraestrutura, bem como a equipe responsável deve ser capaz de prover soluções para:
+Os componentes de infraestrutura, bem como sua operação e sustentação, são de responsabilidade do cliente. Por essa razão, a infraestrutura, bem como a equipe responsável, deve ser capaz de prover soluções para:
 
 * Ingress/egress
 * Load balancing
 * Backup
 * Monitoramento
 
-Tabela 1: Serviços executados/mantidos pelo Cliente no Ambiente Híbrido.
+Tabela 1: Serviços executados/mantidos pelo cliente no ambiente híbrido.
 
 | **Recurso** | **Opções** | **Detalhes** |
 | --- | --- | --- |
 | Ingress/Load Balancer | HTTP/HTTPS load balancer (_exemplo: ALB / F5 / NGINX / Traefik etc_). | Os certificados devem ser aplicados na camada de balanceamento. |
 | Backup | Qualquer solução que efetue cópia do arquivo de retenção de dados do Redis (_\*.rdb_) para armazenamento (_seguro_) externo. | Este arquivo precisa ser protegido por conter informações sensíveis (_exemplo: access token_). |
-| Monitoramento | Qualquer solução de monitoramento que suporte health check HTTP. | Todos os módulos híbridos expõem métricas através do endpoint (_/metrics_). A única exceção é o Gateway, que expõe métricas pelo endpoint (_/gateway-admin/metrics_). |
+| Monitoramento | Qualquer solução de monitoramento que suporte health check HTTP. | Todos os módulos híbridos expõem métricas através do endpoint ``metrics``. A única exceção é o Gateway, que expõe métricas pelo endpoint ``/gateway-admin/metrics``. |
 
 # Módulos para Ambiente Híbrido
 
@@ -61,7 +61,7 @@ Tabela 2: Descrição de requisito de Ingress, LB e Backup por módulo.
 | Gateway | Responsável por processar as mensagens. | Sim | Não |
 | Authorization | Responsável pela geração de Tokens. | Sim | Não |
 | Logstash-federated | Transferência de Dados analíticos e auditoria de tokens para Cloud Sensedia. | Opcional | Não |
-| Redis | Grid de memória para compartilhamento de informações entre os módulos | Não | Sim (normalmente do \*.rdb) |
+| Redis | Grid de memória para compartilhamento de informações entre os módulos. | Não | Sim (normalmente do \*.rdb) |
 
 # Modelos de Deployment Suportados
 
@@ -89,14 +89,14 @@ Nas seções seguintes são apresentados os requisitos de instalação do API-Pl
 
 ## Criação do Customer ID
 
-O ``customerid`` é a identificação única de cada cliente e é gerado pela Sensedia. 
+O ``customerid`` é a identificação única de cada cliente e é gerado pela Sensedia.
 
-Obtenha o ``customerid`` junto ao time de suporte. Você precisará dessa informação para usar durante a realização de ajustes na configuração de parâmetros do helm chart de alguns módulos do API-Platform. 
+Obtenha o ``customerid`` junto ao time de suporte. Você precisará dessa informação para usar durante a realização de ajustes na configuração de parâmetros do helm chart de alguns módulos do API-Platform.
 
-Exemplo de configuração do ``customerid`` em um arquivo de configuração:
+Exemplo de uso do ``customerid`` em um arquivo de configuração:
 
 ```
-customerId: "CHANGE_HERE" 
+customerId: "CHANGE_HERE"
 ```
 
 ## Criação de Token
@@ -168,7 +168,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 chmod +x kubectl
 
 sudo mv kubectl /usr/local/bin/kubectl
- 
+
 kubectl version --client
 ```
 
@@ -217,7 +217,7 @@ Atualize a lista de charts disponíveis para instalação
 helm repo update
 ```
 
-Liste todas as versões de Helm Charts disponíveis para instalação. Observe o nome do chart na coluna **NAME** e a versão na coluna **CHART_VERSION**. Pode ignorar a informação contida na coluna **APP VERSION**, porque optamos por não indexar a versão de cada módulo do API-Platform nessa coluna e indexar apenas na imagem Docker informada dentro do arquivo ``*.yaml`` de cada chart. 
+Liste todas as versões de Helm Charts disponíveis para instalação. Observe o nome do chart na coluna **NAME** e a versão na coluna **CHART_VERSION**. Pode ignorar a informação contida na coluna **APP VERSION**, porque optamos por não indexar a versão de cada módulo do API-Platform nessa coluna e indexar apenas na imagem Docker informada dentro do arquivo ``*.yaml`` de cada chart.
 
 ```bash
 helm search repo sensedia-helm-s3 -l
@@ -277,25 +277,25 @@ As seções a seguir apresentam as informações de instalação dos módulos do
 
 À medida que o desenvolvimento da plataforma evolui e de acordo com as necessidades do ambiente híbrido de cada cliente, pode ser necessário customizar alguns parâmetros antes de fazer o deploy.
 
-Em cada arquivo no formato .yaml que for criado nas seções seguintes haverá um conjunto de opções que podem ser customizadas. 
+Em cada arquivo no formato .yaml que for criado nas seções seguintes haverá um conjunto de opções que podem ser customizadas.
 
 
-A seguir é mostrado o exemplo de um arquivo .yaml para deploy de um módulo e explicado que valores podem ser customizados. 
+A seguir é mostrado o exemplo de um arquivo .yaml para deploy de um módulo e explicado que valores podem ser customizados.
 
 Exemplo 1: Conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization**.
 
 ```yaml
 1 replicaCount: 1
-2 
+2
 3 image:
 4   repository: gcr.io/production-main-231423/agent-authorization
 5   tag: 1909.1.1.2
 6   pullPolicy: IfNotPresent
-7 
+7
 8 service:
 9   type: ClusterIP
 10   port: 80
-11 
+11
 12 properties:
 13   javaOpts: "-Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Xms1536m -Xmx1536m -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError"
 14   redis:
@@ -306,13 +306,13 @@ Exemplo 1: Conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization
 19   websocketUri: wss://integration-aws.sensedia.com/websocket
 20   customerId: "CHANGE_HERE"
 21   sensediaAuth: "CHANGE_HERE"
-22 
+22
 23 autoscaling:
 24   enabled: false
 25   minReplicas: 1
 26   maxReplicas: 1
 27   averageUtilization: 70
-28 
+28
 29 ingress:
 30   enabled: false
 31   annotations: {}
@@ -320,7 +320,7 @@ Exemplo 1: Conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization
 33     - host: chart-example.local
 34       paths: []
 35   tls: []
-36 
+36
 37 resources:
 38   limits:
 39     cpu: "1"
@@ -472,7 +472,7 @@ A instalação do ambiente é baseado em Gateways Pools. Esses pools representam
 ![Add environment](../images/add_environment.png)
 
   * Crie um Map para definir a variável de **Destination do Authorization**, o valor será o endpoint do **Authorization** criado durante a instalação dos módulos híbridos do API-Platform.
-  * 
+  *
 ![Add map](../images/add_map.png)
 
 * Acesse o menu **APIs**.
