@@ -1,18 +1,18 @@
+<!-- TOC -->
 
+- [API-Platform Híbrido - Docker Compose Modules](#api-platform-híbrido---docker-compose-modules)
+  - [Requisitos](#requisitos)
+- [Despliegue](#despliegue)
+  - [Instalación](#instalación)
+    - [Logstash](#logstash)
+    - [Agent-Authorization](#agent-authorization)
+    - [Agent-Gateway](#agent-gateway)
+    - [API-Authorization](#api-authorization)
+    - [API-Gateway](#api-gateway)
+  - [Validación](#validación)
+  - [Solución de problemas](#solución-de-problemas)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- TOC -->
 
 # API-Platform Híbrido - Docker Compose Modules
 
