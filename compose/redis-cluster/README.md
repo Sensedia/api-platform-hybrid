@@ -23,8 +23,7 @@ A documentação oficial do redis (https://redis.io/topics/cluster-tutorial) rec
 
 Neste cenário, os nodes do tipo **1** são **nodes master**. Os nodes do tipo **2** são **nodes slaves**.
 
-Esse deployment também pode ser reduzido para **3 nodes**, sob pena de maior risco de perda de dados, 
-para o seguinte cenário.
+Esse deployment também pode ser reduzido para **3 nodes**, sob pena de maior risco de perda de dados, para o seguinte cenário.
 
 |node_1|node_2|node_3|
 |-|-|-|
@@ -35,8 +34,7 @@ Caso um dos hosts fique indisponível, o serviço ainda ficará disponível e ca
 
 ## Requisitos
 
-Acesse [essa página](../README.md), na seção ``Requisitos``, para obter informações sobre como instalar 
-as dependências para o funcionamento dos módulos.
+Acesse [essa página](../README.md), na seção **Requisitos**, para obter informações sobre como instalar as dependências para o funcionamento dos módulos.
 
 ## Deploy Redis Cluster Utilizando 6 Nodes (full mode)
 
