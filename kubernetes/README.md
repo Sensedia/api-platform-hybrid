@@ -31,7 +31,7 @@
 
 # API-Platform Híbrido - Kubernetes
 
-O modelo de deploy Híbrido é recomendado para clientes que tem preocupação com latência. Esta documentação explica como realizar o deployment dos módulos/serviços utilizados no ambiente híbrido usando [Kubernetes](https://kubernetes.io) e [Helm](https://helm.sh).
+O modelo de deploy Híbrido é recomendado para clientes que têm preocupação com latência. Esta documentação explica como realizar o deployment dos módulos/serviços utilizados no ambiente híbrido usando [Kubernetes](https://kubernetes.io) e [Helm](https://helm.sh).
 
 O ambiente híbrido é composto por módulos desenvolvidos pela Sensedia e componentes de infraestrutura.
 
@@ -54,7 +54,7 @@ Tabela 1: Serviços executados/mantidos pelo cliente no ambiente híbrido.
 
 Tabela 2: Descrição de requisito de Ingress, LB e Backup por módulo.
 
-| **Módulo** | **Descrição** | **Necessário Load balancer?** | **Necessário backup?** |
+| **Módulo** | **Descrição** | **Necessário load balancer?** | **Necessário backup?** |
 | --- | --- | --- | --- |
 | Agent-authorization | Transferência de Cenário entre Cloud Sensedia e Authorization Híbrido. | Não | Não |
 | Agent-gateway | Transferência de Cenário entre Cloud Sensedia e Gateway Híbrido. | Não | Não |
@@ -69,11 +69,11 @@ Tabela 3: Opções de provisionamento por módulo.
 
 | **Módulo** | **Kubernetes** | **Docker** | **VM (Centos / Red Hat 7)** | **Serviços Gerenciados** |
 | --- | --- | --- | --- | --- |
-| Agent-authorization | Sim | Sim | Sim (sobre docker-compose) | N/A |
-| Agent-gateway | Sim | Sim | Sim (sobre docker-compose) | N/A |
-| Gateway | Sim | Sim | Sim (sobre docker-compose) | N/A |
-| Authorization | Sim | Sim | Sim (sobre docker-compose) | N/A |
-| Logstash-federated | Sim | Sim | Sim (sobre docker-compose) | N/A |
+| Agent-authorization | Sim | Sim | Sim (sobre docker-compose) | n/a |
+| Agent-gateway | Sim | Sim | Sim (sobre docker-compose) | n/a |
+| Gateway | Sim | Sim | Sim (sobre docker-compose) | n/a |
+| Authorization | Sim | Sim | Sim (sobre docker-compose) | n/a |
+| Logstash-federated | Sim | Sim | Sim (sobre docker-compose) | n/a |
 | Redis (>= 4.0.11) | Livre escolha ||| - ElastiCache (AWS) <br> - Memorystore (GCP) |
 | Ingress | Sim (service/ingress) | Sim (load balancer do Cliente) | Sim (load balancer do Cliente) | - ELB / ALB (AWS) <br> - Compute Load Balancer (GCP) |
 
@@ -101,18 +101,17 @@ customerId: "CHANGE_HERE"
 
 ## Criação de Token
 
-
 A configuração do ambiente híbrido tem como pré-requisito a utilização de um token da plataforma. O token deve ser criado utilizando o seguinte procedimento:
 
-* Acesse o API-Manager;
-* Clique no menu da página de **Access Token**;
-* Clique no botão **Criar Access token**;
-* O campo **Owner** deve conter o email de um usuário responsável pelo ambiente;
-* Defina o valor **API Platform Integration** no campo **APP**;
+* Acesse o API-Manager.
+* Clique no menu da página de **Access Token**.
+* Clique no botão **Create Access token**.
+* O campo **Owner** deve conter o email de um usuário responsável pelo ambiente.
+* Defina o valor **API Platform Integration** no campo **APP**.
 
 ![Create token](../images/create_token1.png)
 
-* Na próxima página, selecione a API **API Manager 3.0.0**
+* Na próxima página, selecione a API **API Manager 3.0.0**.
 
 ![Select API](../images/create_token2.png)
 
@@ -154,11 +153,11 @@ O API-Platform é compatível com o Memorystore (serviço gerenciado do Redis na
 
 ### Instalação do Redis com Docker Compose
 
-Como objetivo de facilitar a instalação, a Sensedia provê uma documentação sobre a instalação do Redis em ambientes on-premisse usando o Docker Compose. É recomendado, porém, que o responsável pela instalação tenha entendimento da tecnologia e observe cada passo. Acesse a documentação [aqui](../compose/redis-cluster/README.md).
+Como objetivo de facilitar a instalação, a Sensedia provê uma documentação sobre a instalação do Redis em ambientes on-premises usando o Docker Compose. É recomendado, porém, que o responsável pela instalação tenha entendimento da tecnologia e observe cada passo. Acesse a documentação [aqui](../compose/redis-cluster/README.md).
 
 ## Instalação do Kubectl
 
-Kubectl é o um utilitário de linha de comando utilizado para administrar cluster Kubernetes.
+Kubectl é o um utilitário de linha de comando utilizado para administrar clusters Kubernetes.
 
 Execute os seguintes comandos para instalar o ``kubectl`` no GNU/Linux.
 
@@ -172,12 +171,12 @@ sudo mv kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 
-Obtenha mais informações sobre o ``kubectl`` na página: https://kubernetes.io/docs/reference/kubectl/overview/
+Obtenha mais informações sobre o ``kubectl`` na página: https://kubernetes.io/docs/reference/kubectl/overview/.
 
 
 ## Instalação do Helm
 
-A instalação do API-Platform é realizada por meio de pacotes helm também conhecidos por **helm charts** ou simplesmente **charts**.
+A instalação do API-Platform é realizada por meio de pacotes Helm, também conhecidos como **Helm charts** ou simplesmente **charts**.
 
 Helm é o gerenciador de pacotes do Kubernetes. Assim como um gerenciador de pacotes do sistema operacional facilita a instalação de aplicativos e ferramentas, o Helm facilita a instalação de aplicativos e recursos nos clusters do Kubernetes.
 
@@ -205,19 +204,19 @@ helm ls
 
 ### Repositório de Helm Charts da Sensedia
 
-Adicione o repositório de helm charts estáveis da Sensedia disponível na AWS-S3.
+Adicione o repositório de Helm charts estáveis da Sensedia disponível na AWS-S3.
 
 ```bash
 helm repo add sensedia-helm-s3 http://sensedia-helm-charts-s3.s3.amazonaws.com
 ```
 
-Atualize a lista de charts disponíveis para instalação
+Atualize a lista de charts disponíveis para instalação.
 
 ```bash
 helm repo update
 ```
 
-Liste todas as versões de Helm Charts disponíveis para instalação. Observe o nome do chart na coluna **NAME** e a versão na coluna **CHART_VERSION**. Pode ignorar a informação contida na coluna **APP VERSION**, porque optamos por não indexar a versão de cada módulo do API-Platform nessa coluna e indexar apenas na imagem Docker informada dentro do arquivo ``*.yaml`` de cada chart.
+Liste todas as versões de Helm charts disponíveis para instalação. Observe o nome do chart na coluna **NAME** e a versão na coluna **CHART_VERSION**. Pode ignorar a informação contida na coluna **APP VERSION**, porque optamos por não indexar a versão de cada módulo do API-Platform nessa coluna e indexar apenas na imagem Docker informada dentro do arquivo ``*.yaml`` de cada chart.
 
 ```bash
 helm search repo sensedia-helm-s3 -l
@@ -279,7 +278,6 @@ As seções a seguir apresentam as informações de instalação dos módulos do
 
 Em cada arquivo no formato .yaml que for criado nas seções seguintes haverá um conjunto de opções que podem ser customizadas.
 
-
 A seguir é mostrado o exemplo de um arquivo .yaml para deploy de um módulo e explicado que valores podem ser customizados.
 
 Exemplo 1: Conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization**.
@@ -334,11 +332,11 @@ Altere os valores definidos como ``CHANGE_HERE`` para os valores condizentes com
 
 Explicação do conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization**.
 
-* Na **linha 1** é definida a quantidade de réplicas do pod, que executa o módulo e que podem ser executadas no cluster Kubernetes. Altere o valor conforme a demanda e disponibilidade de recursos de CPU, memória e endereços IP.
+* Na **linha 1** é definida a quantidade de réplicas do pod, que executam o módulo e que podem ser executadas no cluster Kubernetes. Altere o valor conforme a demanda e disponibilidade de recursos de CPU, memória e endereços IP.
 * A **linha 4** contém o endereço do Docker Registry e o nome da imagem Docker do respectivo módulo (``gcr.io/production-main-231423/agent-authorization``). Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo que deve utilizar e alterar no arquivo ``.yaml`` antes de fazer o deploy.
 * A **linha 5** contém a versão do módulo (``1909.1.1.2``). Você deve entrar em contato com o time da Sensedia para saber qual a versão que deve utilizar e alterar no arquivo ``.yaml`` antes de fazer o deploy.
 * As **linhas 23 a 27** contém a definição de autoscaling para o pod. Altere conforme a demanda e a disponibilidade de recursos de hardware no cluster e de endereços IP.
-* As **linhas 29 a 35** contém a definição de ingress e tls para o módulo. Altere conforme a necessidade do ambiente.
+* As **linhas 29 a 35** contém a definição de ingress e TLS para o módulo. Altere conforme a necessidade do ambiente.
 * As **linhas 37 a 43** contém a definição dos limites de uso dos recursos de CPU e memória a serem utilizados por cada pod do módulo. Altere conforme a demanda e a disponibilidade de recursos de hardware no cluster.
 
 ## Instalação do Agent Authorization
@@ -353,7 +351,7 @@ cd ~
 mkdir api-platform-hybrid
 ```
 
-Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/agent-authorization.yaml``
+Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/agent-authorization.yaml``.
 
 ```bash
 cp api-platform-hybrid/kubernetes/helm/values_examples/agent-authorization/values.yaml ~/api-platform-hybrid/agent-authorization.yaml
@@ -363,7 +361,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/agent-authori
 
 Use o seguinte comando para fazer o deploy do **Agent Authorization**.
 
-> Observação: Altere o termo **VERSION** pelo número da versão do helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/agent-authorization.yaml
@@ -373,7 +371,7 @@ helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization 
 
 O arquivo contendo exemplos de parâmetros de configuração para o módulo **Agent Gateway** está disponível [aqui](helm/values_examples/agent-gateway/values.yaml).
 
-Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/agent-gateway.yaml``
+Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/agent-gateway.yaml``.
 
 ```bash
 cp api-platform-hybrid/kubernetes/helm/values_examples/agent-gateway/values.yaml ~/api-platform-hybrid/agent-gateway.yaml
@@ -383,7 +381,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/agent-gateway
 
 Use o seguinte comando para fazer o deploy do **Agent Gateway**.
 
-> Observação: Altere o termo **VERSION** pelo número da versão do helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/agent-gateway.yaml
@@ -393,7 +391,7 @@ helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VE
 
 O arquivo contendo exemplos de parâmetros de configuração para o módulo **Logstash-Federated** está disponível [aqui](helm/values_examples/logstash-federated/values.yaml).
 
-Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/logstash-federated.yaml``
+Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/logstash-federated.yaml``.
 
 ```bash
 cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values.yaml ~/api-platform-hybrid/logstash-federated.yaml
@@ -403,7 +401,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/logstash-fede
 
 Use o seguinte comando para fazer o deploy do **Logstash-Federated**.
 
-> Observação: Altere o termo **VERSION** pelo número da versão do helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/logstash-federated.yaml.yaml
@@ -413,7 +411,7 @@ helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --
 
 O arquivo contendo exemplos de parâmetros de configuração para o módulo **API Authorization** está disponível [aqui](helm/values_examples/api-authorization/values.yaml).
 
-Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/api-authorization.yaml``
+Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/api-authorization.yaml``.
 
 ```bash
 cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.yaml ~/api-platform-hybrid/api-authorization.yaml
@@ -423,7 +421,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-authoriza
 
 Use o seguinte comando para fazer o deploy do **API Authorization**.
 
-> Observação: Altere o termo **VERSION** pelo número da versão do helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
 
 ```bash
 helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-authorization.yaml
@@ -433,7 +431,7 @@ helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --ve
 
 O arquivo contendo exemplos de parâmetros de configuração para o módulo **API Gateway** está disponível [aqui](helm/values_examples/api-gateway/values.yaml).
 
-Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/api-gateway.yaml``
+Crie uma cópia do arquivo ``values.yaml`` de exemplo para o arquivo ``api-platform-hybrid/api-gateway.yaml``.
 
 ```bash
 cp api-platform-hybrid/kubernetes/helm/values_examples/api-gateway/values.yaml ~/api-platform-hybrid/api-gateway.yaml
@@ -443,9 +441,9 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-gateway.y
 
 Use o seguinte comando para fazer o deploy do **API Gateway**.
 
-> Observação: Altere o termo **VERSION** pelo número da versão do helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
 
-```
+```bash
 helm upgrade --install api-gateway sensedia-helm-s3/api-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-gateway.yaml
 ```
 
@@ -457,7 +455,7 @@ kubectl get pods -n MY_HYBRID_ENV
 
 # Ativação de Ambiente Híbrido
 
-A instalação do ambiente é baseado em Gateways Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
+A instalação do ambiente é baseado em Gateway Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
 
 > Observação: Apenas a criação do Gateway Pool é efetuada pela equipe de **Suporte e Operações** da Sensedia através da abertura de chamado ou ticket.
 
@@ -466,8 +464,8 @@ A instalação do ambiente é baseado em Gateways Pools. Esses pools representam
   * Name;
   * Inbound URL;
   * Description;
-  * Gateway Pool (neste campo você deve informar o Gateway Pool no qual foi informado pela equipe da Sensedia via ticket).
-  * Clique em **Add Map**
+  * Gateway Pool (neste campo você deve informar o Gateway Pool no qual foi informado pela equipe da Sensedia via ticket);
+  * Clique em **Add Map**.
 
 ![Add environment](../images/add_environment.png)
 
@@ -502,4 +500,4 @@ Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
 | Agent Authorization | /health | 200 | /metrics |
 | Gateway | /health | 200 | /metrics |
 | Authorization | /health | 200 | /metrics |
-| Logstash | /health | 200 | N/A |
+| Logstash | /health | 200 | n/a |
