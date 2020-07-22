@@ -121,5 +121,5 @@ Actualmente, el entorno híbrido consta de los siguientes componentes:
 
 La instalación se puede realizar utilizando las siguientes tecnologías:
 
-* [Docker Compose](componer/README_es.md).
+* [Docker Compose](compose/README_es.md).
 * [Kubernetes + Helm](kubernetes/README_es.md).
