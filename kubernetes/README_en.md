@@ -1,31 +1,33 @@
+<!-- TOC -->
 
+- [Hybrid API-Platform - Kubernetes](#hybrid-api-platform---kubernetes)
+- [Hybrid Environment Modules](#hybrid-environment-modules)
+- [Supported Deployment Modelos](#supported-deployment-modelos)
+- [Macro Topology](#macro-topology)
+- [Installation Requirements](#installation-requirements)
+  - [Customer ID creation](#customer-id-creation)
+  - [Token creation](#token-creation)
+  - [Redis](#redis)
+    - [AWS ElastiCache](#aws-elasticache)
+    - [GCP Memorystore](#gcp-memorystore)
+    - [Installing Redis with Docker Compose](#installing-redis-with-docker-compose)
+  - [Installing Kubectl](#installing-kubectl)
+  - [Installing Helm](#installing-helm)
+    - [Downloading Helm](#downloading-helm)
+    - [Sensedia Helm Charts Repository](#sensedia-helm-charts-repository)
+  - [Creation of Namespace on the Kubernetes Cluster](#creation-of-namespace-on-the-kubernetes-cluster)
+- [Useful Commands](#useful-commands)
+- [Installation of the API-Platform Modules](#installation-of-the-api-platform-modules)
+  - [Changing Modules Versions and Other Parameters](#changing-modules-versions-and-other-parameters)
+  - [Installing Agent Authorization](#installing-agent-authorization)
+  - [Installing Agent Gateway](#installing-agent-gateway)
+  - [Installing Logstash-Federated](#installing-logstash-federated)
+  - [Installing API-Authorization](#installing-api-authorization)
+  - [Installing API-Gateway](#installing-api-gateway)
+- [Hybrid Environment Activation](#hybrid-environment-activation)
+- [Monitoring](#monitoring)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- TOC -->
 
 
 
@@ -65,7 +67,7 @@ Table 2: Description of Ingress, LB and Backup requirements by module.
 
 # Supported Deployment Modelos
 
-Table 3. Provisioning options by module
+Table 3. Provisioning options by module.
 
 | **Module** | **Kubernetes** | **Docker** | **VM (Centos / Red Hat 7)** | **Managed Services** |
 | --- | --- | --- | --- | --- |
@@ -103,11 +105,11 @@ customerId: "CHANGE_HERE"
 
 Using a Platform token is a requirement for configuring the hybrid environment. The token must be created following this procedure:
 
-* Access the API-Manager.
+* Access the API Manager.
 * Click the **Access Token** option on the main menu.
 * Click the **Create access token** button.
 * The field **Owner** must contain the email address of a user responsible for the environment.
-* Define the **API Platform Integration** value on the field **APP**.
+* Define the **API Platform Integration** value on the field **App**.
 
 ![Create token](../images/create_token1.png)
 
@@ -180,7 +182,7 @@ The API-Platform installation is performed using Helm packages, also known as **
 
 Helms is a package manager for Kubernetes. Just as a package manager for an operational system facilitates the installation of applications and tools, Helm helps to install applications and resources on Kubernetes clusters.
 
-## Downloading Helm
+### Downloading Helm
 
 Run the following commands to install **Helm 3** on GNU/Linux.
 
@@ -278,7 +280,7 @@ As the Platform evolves and according to the needs of each client's hybrid envir
 
 Each .yaml file created over the following sections will contain a set of options that may be customised.
 
-The following example illustrates a .yaml file to deploy a module and there are subsequent explanations on which values can be customised.
+The following example illustrates a .yaml file to deploy a module and there are subsequent explanations on which values can be replaced.
 
 Example 1. Content of the ``values.yaml`` file of the **Agent Authorization** module.
 
@@ -333,7 +335,7 @@ Replace the values defined as ``CHANGE_HERE`` with values consistent with your h
 Explanation on the content of the ``values.yaml`` file of the **Agent Authorization** module.
 
 * **Line 1** defines the quantity of pod replicas, which execute the module and may be executed on the Kubernetes cluster. Change the value according to the demand and availability of CPU and memory resources and of IP addresses.
-* **Line 4** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-231423/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL and the name of the module's docker image you must use and alter in the ``.yaml`` file before deployment.
+* **Line 4** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-231423/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL, module docker image name that you must use and alter in the ``.yaml`` file before deployment.
 * **Line 5** contains the module version (``1909.1.1.2``). You should get in touch with the Sensedia team to know which version to use and alter in the ``.yaml`` file before deployment.
 * **Lines 23 to 27** contain the autoscaling definition for the pod. Alter it according to the demand and availability of hardware resources on the cluster and of IP addresses.
 * **Lines 29 to 35** contain the ingress and TLS definition for the module. Alter it according to the needs of the environment.
@@ -341,7 +343,7 @@ Explanation on the content of the ``values.yaml`` file of the **Agent Authorizat
 
 ## Installing Agent Authorization
 
-The file containing examples of configuration parameters for the module **Agent Authorization** is available [aqui](helm/values_examples/agent-authorization/values.yaml).
+The file containing examples of configuration parameters for the module **Agent Authorization** is available [here](helm/values_examples/agent-authorization/values.yaml).
 
 Access your ``/home`` directory and create the directory ``api-platform-hybrid``.
 
@@ -369,7 +371,7 @@ helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization 
 
 ## Installing Agent Gateway
 
-The file containing examples of configuration parameters for the module **Agent Authorization** is available [aqui](helm/values_examples/agent-gateway/values.yaml).
+The file containing examples of configuration parameters for the module **Agent Gateway** is available [here](helm/values_examples/agent-gateway/values.yaml).
 
 Create a copy of the sample ``values.yaml`` to the file ``api-platform-hybrid/agent-gateway.yaml``.
 
@@ -389,7 +391,7 @@ helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VE
 
 ## Installing Logstash-Federated
 
-The file containing examples of configuration parameters for the module **Logstash-Federated** is available [aqui](helm/values_examples/logstash-federated/values.yaml).
+The file containing examples of configuration parameters for the module **Logstash-Federated** is available [here](helm/values_examples/logstash-federated/values.yaml).
 
 Create a copy of the sample ``values.yaml`` to the file ``api-platform-hybrid/logstash-federated.yaml``.
 
@@ -409,7 +411,7 @@ helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --
 
 ## Installing API-Authorization
 
-The file containing examples of configuration parameters for the module **API Authorization** is available [aqui](helm/values_examples/api-authorization/values.yaml).
+The file containing examples of configuration parameters for the module **API Authorization** is available [here](helm/values_examples/api-authorization/values.yaml).
 
 Create a copy of the sample ``values.yaml`` to the file ``api-platform-hybrid/api-authorization.yaml``.
 
@@ -429,7 +431,7 @@ helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --ve
 
 ## Installing API-Gateway
 
-The file containing examples of configuration parameters for the module **API-Gateway** is available [aqui](helm/values_examples/api-gateway/values.yaml).
+The file containing examples of configuration parameters for the module **API-Gateway** is available [here](helm/values_examples/api-gateway/values.yaml).
 
 Create a copy of the sample ``values.yaml`` to the file ``api-platform-hybrid/api-gateway.yaml``.
 
@@ -457,14 +459,46 @@ kubectl get pods -n MY_HYBRID_ENV
 
 Environment installation is based on gateway pools. These pools represent a group of gateways that can be used by one or more virtual environments.
 
-> NOTE: Only the creation of a gateway pool is performed by the **Sensedia Support and Operations** team through the opening of a ticket.
+> NOTE: Only the creation of a gateway pool is performed by the Sensedia **Support and Operations** team through the opening of a ticket.
 
 * To activate a hybrid environment, access the **API Manager** and click on the **Environments** menu.
 * Create a new **Environment** and fill out these fields:
   * Name;
   * Inbound URL;
   * Description;
-  * Gateway Poll (here you must inform the gateway pool sent by the Sensedia team on your ticket);
-  * Click on **Add Map**.
+  * Gateway Pool (here you must inform the gateway pool sent by the Sensedia team on your ticket).
+* Click on **Add Map**.
 
 ![Add environment](../images/add_environment.png)
+
+* Create a Map to define de **Authorization Destination** variable, the value that will be the endpoint of the **Authorization** created while installing the API-Platform hybrid modules.
+
+![Add map](../images/add_map.png)
+
+* Access the **APIs** menu.
+* Either select or create the API you wish the gateway pool to use.
+* Add the **Federated Environment** to the API you selected/created.
+* Deploy the **Federated Environment**.
+
+![Add API](../images/add_API.png)
+
+* Validate your API by making a request to the hybrid gateway.
+
+
+# Monitoring
+
+The client is responsible for monitoring their hybrid environment and can use their preferred tools.
+
+Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
+
+The following table shows the endpoints to apply monitoring to the modules.
+
+Table 4: Monitoring endpoint for Platform modules.
+
+| **Module** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
+| --- | --- | --- | --- |
+| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Authorization | /health | 200 | /metrics |
+| Gateway | /health | 200 | /metrics |
+| Authorization | /health | 200 | /metrics |
+| Logstash | /health | 200 | n/a |

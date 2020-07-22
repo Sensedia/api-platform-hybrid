@@ -107,7 +107,7 @@ A configuração do ambiente híbrido tem como pré-requisito a utilização de 
 * Clique no menu da página de **Access Token**.
 * Clique no botão **Create Access token**.
 * O campo **Owner** deve conter o email de um usuário responsável pelo ambiente.
-* Defina o valor **API Platform Integration** no campo **APP**.
+* Defina o valor **API Platform Integration** no campo **App**.
 
 ![Create token](../images/create_token1.png)
 
@@ -421,7 +421,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-authoriza
 
 Use o seguinte comando para fazer o deploy do **API Authorization**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-authorization.yaml
@@ -441,7 +441,7 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-gateway.y
 
 Use o seguinte comando para fazer o deploy do **API Gateway**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install api-gateway sensedia-helm-s3/api-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-gateway.yaml
@@ -464,23 +464,23 @@ A instalação do ambiente é baseado em Gateway Pools. Esses pools representam 
   * Name;
   * Inbound URL;
   * Description;
-  * Gateway Pool (neste campo você deve informar o Gateway Pool no qual foi informado pela equipe da Sensedia via ticket);
-  * Clique em **Add Map**.
+  * Gateway Pool (neste campo você deve indicar o Gateway Pool que foi informado pela equipe da Sensedia via ticket).
+* Clique em **Add Map**.
 
 ![Add environment](../images/add_environment.png)
 
-  * Crie um Map para definir a variável de **Destination do Authorization**, o valor será o endpoint do **Authorization** criado durante a instalação dos módulos híbridos do API-Platform.
-  *
+* Crie um Map para definir a variável de **Destination do Authorization**, o valor será o endpoint do **Authorization** criado durante a instalação dos módulos híbridos do API-Platform.
+
 ![Add map](../images/add_map.png)
 
 * Acesse o menu **APIs**.
-* Selecione/Crie a API que deseja que seja utilizada por esse Gateway Pool;
-* Adicione o **Environment Federado** na API selecionada/criada;
+* Selecione/Crie a API que deseja que seja utilizada por esse Gateway Pool.
+* Adicione o **Environment Federado** na API selecionada/criada.
 * Efetue o deploy do **Environment Federado**.
 
 ![Add API](../images/add_API.png)
 
-* Efetue o teste de validação de sua API efetuando uma requisição no Gateway Híbrido.
+* Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido.
 
 
 # Monitoramento
@@ -493,8 +493,7 @@ Seguem os endpoints para aplicação do monitoramento dos módulos.
 
 Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
 
-
-| **Módulo** | **EndPoint** | **Status code esperado** | **Métricas para Prometheus** |
+| **Módulo** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- |
 | Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | Agent Authorization | /health | 200 | /metrics |

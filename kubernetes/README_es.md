@@ -1,33 +1,33 @@
+<!-- TOC -->
 
+- [API-Platform Híbrido - Kubernetes](#api-platform-híbrido---kubernetes)
+- [Módulos para Entorno Híbrido](#módulos-para-entorno-híbrido)
+- [Modelos de Despliegue Soportados](#modelos-de-despliegue-soportados)
+- [Topología Macro](#topología-macro)
+- [Requisitos de Instalación](#requisitos-de-instalación)
+  - [Creación de Customer ID](#creación-de-customer-id)
+  - [Creación de Tokens](#creación-de-tokens)
+  - [Redis](#redis)
+    - [AWS ElastiCache](#aws-elasticache)
+    - [GCP Memorystore](#gcp-memorystore)
+    - [Instalación de Redis con Docker Compose](#instalación-de-redis-con-docker-compose)
+  - [Instalación de Kubectl](#instalación-de-kubectl)
+  - [Instalación del Helm](#instalación-del-helm)
+    - [Descarga de Helm](#descarga-de-helm)
+    - [Repositorio de Helm Charts de Sensedia](#repositorio-de-helm-charts-de-sensedia)
+  - [Creación de Namespace en el Clúster Kubernetes](#creación-de-namespace-en-el-clúster-kubernetes)
+- [Comandos Útiles](#comandos-útiles)
+- [Instalación de los Módulos de la API-Platform](#instalación-de-los-módulos-de-la-api-platform)
+  - [Cambio de la Versión de los Módulos y Otros Parámetros](#cambio-de-la-versión-de-los-módulos-y-otros-parámetros)
+  - [Instalación de Agent Authorization](#instalación-de-agent-authorization)
+  - [Instalación de Agent Gateway](#instalación-de-agent-gateway)
+  - [Instalación de Logstash-Federated](#instalación-de-logstash-federated)
+  - [Instalación de API-Authorization](#instalación-de-api-authorization)
+  - [Instalación de API-Gateway](#instalación-de-api-gateway)
+- [Activación del Entorno Híbrido](#activación-del-entorno-híbrido)
+- [Seguimiento](#seguimiento)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- TOC -->
 
 # API-Platform Híbrido - Kubernetes
 
@@ -48,7 +48,7 @@ Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 | --- | --- | --- |
 | Ingress/Balance de Carga | Balance de carga HTTP/HTTPS (_ejemplo: ALB/F5/Nginx/Traefik, etc._). | Los certificados deben aplicarse a la capa de balanceo. |
 | Copia de Seguridad | Cualquier solución que copia el archivo de retención de datos de Redis (_\*.rdb_) en un almacenamiento externo (_seguro_). | Este archivo debe protegerse mediante el contenido de información confidencial (_ejemplo: token de acceso_). |
-| Seguimiento | Cualquier solución de seguimiento que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es el Gateway, que expone métricas a través del endpoint ``gateway-admin/metrics``. |
+| Seguimiento | Cualquier solución de seguimiento que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
 
 # Módulos para Entorno Híbrido
 
@@ -81,7 +81,7 @@ Cuadro 3: Opciones de aprovisionamiento por módulo.
 
 Figura 1: Representación de módulos y conexiones del Modelo Híbrido.
 
-![API-Platform: topología](../images/api-platform_topology.png)
+![API-Platform: topology](../images/api-platform_topology.png)
 
 # Requisitos de Instalación
 
@@ -103,26 +103,26 @@ customerID: "CHANGE_HERE"
 
 La configuración del entorno híbrido es un requisito previo para usar un token de la Plataforma. El token debe crearse mediante el siguiente procedimiento:
 
-* Acceder al API-Manager.
+* Acceder al API Manager.
 * Acceder a la página **Token de acceso** en el menú principal.
 * Hacer clic en el botón **Create access token**.
 * El campo **Owner** debe contener la dirección de correo electrónico de un usuario responsable del entorno.
-* Establecer el valor de **API Platform Integration** en el campo **APP** .
+* Establecer el valor de **API Platform Integration** en el campo **App** .
 
-![Crear token](../images/create_token1.png)
+![Create token](../images/create_token1.png)
 
 * En la página siguiente, seleccionar la API **API Manager 3.0.0**.
 
-![Seleccionar la API](../images/create_token2.png)
+![Select API](../images/create_token2.png)
 
 * Seleccionar el plan **Federated Plan**.
 
-![Seleccionar el Plan](../images/create_token3.png)
+![Select Plan](../images/create_token3.png)
 
 * Hacer clic en el botón **Save Plan**.
 * En la página siguiente, publicar el token a través del botón **Publish your access token**.
 
-![Publicar token](../images/create_token4.png)
+![Publish token](../images/create_token4.png)
 
 * Guardar el token generado y almacenar en algún archivo, ya que lo necesitará para personalizar algunos parámetros de configuración para algunos módulos de la API-Platforma.
 
@@ -132,7 +132,7 @@ Módulo responsable de almacenar los tokens de acceso y escenarios de API. La im
 
 ### AWS ElastiCache
 
-La plataforma API admite ElastiCache (servicio gestionado de Redis en AWS). Este documento es solo una guía básica sobre la implementación con ElastiCache. Para obtener apoyo oficial, se recomienda leer la documentación oficial del servicio: https://aws.amazon.com/elasticache.
+La Plataforma de API admite ElastiCache (servicio gestionado de Redis en AWS). Este documento es solo una guía básica sobre la implementación con ElastiCache. Para obtener apoyo oficial, se recomienda leer la documentación oficial del servicio: https://aws.amazon.com/elasticache.
 
 * Acceder a la consola de ElastiCache (https://console.aws.amazon.com/elasticache).
 * Hacer clic en **Create** para iniciar el asistente **de Cache Cluster** .
@@ -144,7 +144,7 @@ El resultado del proceso de instalación debe ser el **configuration endpoint** 
 
 ### GCP Memorystore
 
-La API-Platform admite Memorystore (servicio administrado Redis en GCP). Este documento es solo una guía básica sobre la implementación con Memorystore. Para obtener apoyo oficial, se recomienda leer la documentación oficial del servicio: https://console.cloud.google.com/memorystore/instances.
+La API-Platform admite Memorystore (servicio gestionado de Redis en GCP). Este documento es solo una guía básica sobre la implementación con Memorystore. Para obtener apoyo oficial, se recomienda leer la documentación oficial del servicio: https://console.cloud.google.com/memorystore/instances.
 
 * Crear un memorystore en modo **Cluster**.
 * El número de nodos varía en función de la carga de trabajo esperada para el entorno.
@@ -176,7 +176,7 @@ Más información sobre kubectl en: https://kubernetes.io/docs/reference/kubectl
 
 ## Instalación del Helm
 
-La instalación de la plataforma API se realiza a través de paquetes del Helm, también conocidos como **Helm charts** o simplemente **charts** .
+La instalación de la Plataforma de API se realiza a través de paquetes del Helm, también conocidos como **Helm charts** o simplemente **charts** .
 
 Helm es el administrador de paquetes Kubernetes. Al igual que un administrador de paquetes del sistema operativo facilita la instalación de aplicaciones y herramientas, Helm ayuda a instalar aplicaciones y recursos en clústeres de Kubernetes.
 
@@ -252,7 +252,7 @@ Ejemplos de nombres de namespace:
 
 # Comandos Útiles
 
-Durante la instalación de los módulos de la Plataforma, es posible listar los objetos creados, así como sus respectivos registros utilizando los siguientes comandos.
+Durante la instalación de los módulos de la Plataforma, es posible listar los objetos creados, así como sus respectivos registros, utilizando los siguientes comandos.
 
 Ejecutar este comando para enumerar el ``id`` de cada pod en un namespace:
 
@@ -274,7 +274,7 @@ Las siguientes secciones proporcionan información sobre la instalación de mód
 
 > Nota: Utilizar las explicaciones de esta sección y el ejemplo como base para cambiar la versión de uno o más módulos de la Plataforma y personalizar los demás parámetros según sea necesario para cada entorno.
 
-A medida que el desarrollo de la plataforma evoluciona y de acuerdo con las necesidades del entorno híbrido de cada cliente, puede ser necesario personalizar algunos parámetros antes de la implementación.
+A medida que el desarrollo de la Plataforma evoluciona y de acuerdo con las necesidades del entorno híbrido de cada cliente, puede ser necesario personalizar algunos parámetros antes de la implementación.
 
 Cada archivo en formato .yaml que se crea en las siguientes secciones contendrá un conjunto de opciones que se pueden personalizar.
 
@@ -369,7 +369,7 @@ helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization 
 
 ## Instalación de Agent Gateway
 
-El archivo que contiene parámetros de configuración de ejemplo para el módulo **Agent Authorization** está disponible [aquí](helm/values_examples/agent-gateway/values.yaml) .
+El archivo que contiene parámetros de configuración de ejemplo para el módulo **Agent Gateway** está disponible [aquí](helm/values_examples/agent-gateway/values.yaml) .
 
 Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/agent-gateway.yaml``.
 
@@ -453,4 +453,50 @@ Listar los pods de su namespace para comprobar que todos los módulos están ins
 kubectl get pods -n MY_HYBRID_ENV
 ```
 
-#
+# Activación del Entorno Híbrido
+
+La instalación del entorno se basa en grupos de puertas de enlace (gateway pools). Estos pools representan un grupo de puertas de enlace que pueden utilizar uno o más entornos virtuales.
+
+> NOTA: Solo la creación del grupo de puertas de enlace es realizada por el equipo de **Soporte y Operaciones** de Sensedia a través de la apertura de un llamado.
+
+* Para activar un entorno híbrido, acceder al **API Manager** y hacer clic en el menú **Environments**.
+* Crear un nuevo **Environment** y rellenar los campos:
+  * Name;
+  * Inbound URL;
+  * Description;
+  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de suporte).
+* Hacer clic en **Add Map**.
+
+![Add environment](../images/add_environment.png)
+
+  * Crear un Map para establecer la variable **Destination de Authorization**, el valor será el endpoint de la **Authorization** creada durante la instalación de módulos híbridos de la API-Platform.  
+
+![Add map](../images/add_map.png)
+
+* Acceder al menú **APIs**.
+* Seleccionar/Crear la API que desea ser utilizada por este grupo de puertas de enlace;
+* Agregar el **Entorno Federado a** la API seleccionada/creada;
+* Desplegar el **Entorno Federado**.
+
+![Add API](../images/add_API.png)
+
+* Para validar su API, realizar una petición a la puerta de enlace híbrida.
+
+
+# Seguimiento
+
+El seguimiento del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
+
+Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
+
+A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
+
+Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
+
+| **Módulo** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
+| --- | --- | --- | --- |
+| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Authorization | /health | 200 | /metrics |
+| Gateway | /health | 200 |/metrics |
+| Authorization | /health | 200 | /metrics |
+| Logstash | /health | 200 | n/a |
