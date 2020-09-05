@@ -3,8 +3,16 @@
 <!-- TOC -->
 
 - [Changelog](#changelog)
+- [v2.0.1](#v201)
+- [v2.0.0](#v200)
 - [v1.0.0](#v100)
 <!-- TOC -->
+
+# v2.0.1
+
+Date: 2020/09/04
+
+* Fix bugs and update tags.
 
 # v2.0.0
 
