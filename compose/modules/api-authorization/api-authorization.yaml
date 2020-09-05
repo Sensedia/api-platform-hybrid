@@ -5,9 +5,9 @@ services:
     env_file: api-authorization.env
     networks:
       - api-platform
-    image: gcr.io/production-main-231423/api-authorization:4.1.1.0
+    image: gcr.io/production-main-268117/api-authorization:4.1.1.0
     container_name: api-authorization
-    mem_limit: 1024m
+    mem_limit: 2048m
     restart: always
     ports:
       - '8084:8084'

@@ -288,7 +288,7 @@ Example 1. Content of the ``values.yaml`` file of the **Agent Authorization** mo
 1 replicaCount: 1
 2
 3 image:
-4   repository: gcr.io/production-main-231423/agent-authorization
+4   repository: gcr.io/production-main-268117/agent-authorization
 5   tag: 1909.1.1.2
 6   pullPolicy: IfNotPresent
 7
@@ -335,7 +335,7 @@ Replace the values defined as ``CHANGE_HERE`` with values consistent with your h
 Explanation on the content of the ``values.yaml`` file of the **Agent Authorization** module.
 
 * **Line 1** defines the quantity of pod replicas, which execute the module and may be executed on the Kubernetes cluster. Change the value according to the demand and availability of CPU and memory resources and of IP addresses.
-* **Line 4** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-231423/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL, module docker image name that you must use and alter in the ``.yaml`` file before deployment.
+* **Line 4** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-268117/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL, module docker image name that you must use and alter in the ``.yaml`` file before deployment.
 * **Line 5** contains the module version (``1909.1.1.2``). You should get in touch with the Sensedia team to know which version to use and alter in the ``.yaml`` file before deployment.
 * **Lines 23 to 27** contain the autoscaling definition for the pod. Alter it according to the demand and availability of hardware resources on the cluster and of IP addresses.
 * **Lines 29 to 35** contain the ingress and TLS definition for the module. Alter it according to the needs of the environment.

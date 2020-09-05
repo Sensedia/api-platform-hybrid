@@ -5,7 +5,7 @@ services:
     env_file: agent-authorization.env
     networks:
       - api-platform
-    image: gcr.io/production-main-231423/agent-authorization:1909.1.1.2
+    image: gcr.io/production-main-268117/agent-authorization:1909.1.1.2
     container_name: agent-authorization
     mem_limit: 512m
     restart: always

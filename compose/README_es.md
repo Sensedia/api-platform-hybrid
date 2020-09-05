@@ -202,7 +202,7 @@ Ejemplo 1: Contenido del archivo ``agent-gateway.yaml``.
 5       env_file: api-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
 6       networks:
 7         - api-platform
-8       image: gcr.io/production-main-231423/api-gateway:4.2.0.0 # puede cambiar
+8       image: gcr.io/production-main-268117/api-gateway:4.3.0.2 # puede cambiar
 9       container_name: api-gateway
 10      cpu_count: 1      # puede cambiar
 11      mem_limit: 1024m  # puede cambiar
@@ -227,7 +227,7 @@ Explicación del contenido del archivo ``agent-gateway.yaml``.
 
 * Las **líneas 6 y 7** contienen una referencia a las **líneas 16 a 18**, que definen una red Docker para ser utilizada por el contenedor que ejecutará este módulo de la Plataforma. No tiene que cambiar el contenido de esta sección.
 
-* La **línea 8** contiene la dirección del Docker Registry (``gcr.io/production-main-231423``), imagen Docker del módulo de la Plataforma (``api-gateway``) y la versão del módulo (``4.2.0.0``). **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
+* La **línea 8** contiene la dirección del Docker Registry (``gcr.io/production-main-268117``), imagen Docker del módulo de la Plataforma (``api-gateway``) y la versão del módulo (``4.3.0.2``). **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
 
 * La **línea 9** contiene el nombre del contenedor que ejecutará el módulo de la Plataforma. No tiene que cambiarla.
 
