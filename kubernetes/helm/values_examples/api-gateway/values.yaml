@@ -35,6 +35,7 @@ properties:
   apigateway_http_socket_timeoutmillis: 10000
   apigateway_label: "federated"
   apigateway_use_cachemanager: "false"
+  spring_profiles_active: "federated"
 
 autoscaling:
   enabled: false
