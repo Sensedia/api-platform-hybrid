@@ -25,7 +25,6 @@
   - [Instalación de API-Authorization](#instalación-de-api-authorization)
   - [Instalación de API-Gateway](#instalación-de-api-gateway)
 - [Activación del Entorno Híbrido](#activación-del-entorno-híbrido)
-- [Seguimiento](#seguimiento)
 
 <!-- TOC -->
 
@@ -482,21 +481,3 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 
 * Para validar su API, realizar una petición a la puerta de enlace híbrida.
 
-
-# Seguimiento
-
-El seguimiento del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
-
-Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
-
-A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
-
-Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
-
-| **Módulo** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
-| --- | --- | --- | --- |
-| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
-| Agent Authorization | /health | 200 | /metrics |
-| Gateway | /health | 200 |/metrics |
-| Authorization | /health | 200 | /metrics |
-| Logstash | /health | 200 | n/a |

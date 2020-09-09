@@ -25,7 +25,6 @@
   - [Installing API-Authorization](#installing-api-authorization)
   - [Installing API-Gateway](#installing-api-gateway)
 - [Hybrid Environment Activation](#hybrid-environment-activation)
-- [Monitoring](#monitoring)
 
 <!-- TOC -->
 
@@ -484,21 +483,3 @@ Environment installation is based on gateway pools. These pools represent a grou
 
 * Validate your API by making a request to the hybrid gateway.
 
-
-# Monitoring
-
-The client is responsible for monitoring their hybrid environment and can use their preferred tools.
-
-Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
-
-The following table shows the endpoints to apply monitoring to the modules.
-
-Table 4: Monitoring endpoint for Platform modules.
-
-| **Module** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
-| --- | --- | --- | --- |
-| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
-| Agent Authorization | /health | 200 | /metrics |
-| Gateway | /health | 200 | /metrics |
-| Authorization | /health | 200 | /metrics |
-| Logstash | /health | 200 | n/a |

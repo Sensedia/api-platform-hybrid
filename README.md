@@ -5,16 +5,19 @@
   - [Necessidade](#necessidade)
   - [Composição](#composição)
   - [Instalação](#instalação)
+  - [Monitoramento](#monitoramento)
 - [English](#english)
   - [Hybrid Environments](#hybrid-environments)
   - [Need](#need)
   - [Composition](#composition)
   - [Installation](#installation)
+  - [Monitoring](#monitoring)
 - [Español](#español)
   - [Entornos Híbridos de API-Platform](#entornos-híbridos-de-api-platform)
-  - [Necesitar](#necesitar)
+  - [Necesidad](#necesidad)
   - [Composición](#composición)
   - [Instalación](#instalación)
+  - [Seguimiento](#seguimiento)
 
 <!-- TOC -->
 
@@ -56,6 +59,24 @@ A instalação pode ser realizada utilizando as seguintes tecnologias:
 * [Docker Compose](compose/README.md).
 * [Kubernetes + Helm](kubernetes/README.md).
 
+## Monitoramento
+
+O monitoramento do ambiente híbrido é de responsabilidade do cliente, podendo ser utilizadas as ferramentas de sua preferência.
+
+Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informações detalhadas de métricas.
+
+Seguem os endpoints para aplicação do monitoramento dos módulos.
+
+Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
+
+| **Módulo** | **Porta Padrão** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
+| --- | --- | --- | --- | --- |
+| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Authorization | 8092/TCP | /health | 200 | /metrics |
+| API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| API Authorization | 8084/TCP | /health | 200 | /metrics |
+| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |
+
 # English
 
 **API-Platform**: API management platform. Accelerate your digital strategies with integrations and API Management. Learn more at: https://sensedia.com
@@ -90,6 +111,24 @@ The installation can be performed using the following technologies:
 * [Docker Compose](compose/README_en.md).
 * [Kubernetes + Helm](kubernetes/README_en.md).
 
+## Monitoring
+
+The client is responsible for monitoring their hybrid environment and can use their preferred tools.
+
+Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
+
+The following table shows the endpoints to apply monitoring to the modules.
+
+Table 4: Monitoring endpoint for Platform modules.
+
+| **Module** | **Port** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
+| --- | --- | --- | --- | --- |
+| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Authorization | 8092/TCP | /health | 200 | /metrics |
+| API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| API Authorization | 8084/TCP | /health | 200 | /metrics |
+| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |
+
 # Español
 
 **API-Platform**: plataforma de administración de APIs. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más informaciónes en: https://sensedia.com.
@@ -123,3 +162,21 @@ La instalación se puede realizar utilizando las siguientes tecnologías:
 
 * [Docker Compose](compose/README_es.md).
 * [Kubernetes + Helm](kubernetes/README_es.md).
+
+## Seguimiento
+
+El seguimiento del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
+
+Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
+
+A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
+
+Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
+
+| **Módulo** | **Puerta** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
+| --- | --- | --- | --- | --- |
+| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Authorization | 8092/TCP | /health | 200 | /metrics |
+| API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| API Authorization | 8084/TCP | /health | 200 | /metrics |
+| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |

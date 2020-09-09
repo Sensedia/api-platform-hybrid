@@ -25,7 +25,6 @@
   - [Instalação do API-Authorization](#instalação-do-api-authorization)
   - [Instalação do API-Gateway](#instalação-do-api-gateway)
 - [Ativação de Ambiente Híbrido](#ativação-de-ambiente-híbrido)
-- [Monitoramento](#monitoramento)
 
 <!-- TOC -->
 
@@ -483,20 +482,4 @@ A instalação do ambiente é baseado em Gateway Pools. Esses pools representam 
 * Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido.
 
 
-# Monitoramento
 
-O monitoramento do ambiente híbrido é de responsabilidade do cliente, podendo ser utilizadas as ferramentas de sua preferência.
-
-Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informações detalhadas de métricas.
-
-Seguem os endpoints para aplicação do monitoramento dos módulos.
-
-Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
-
-| **Módulo** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
-| --- | --- | --- | --- |
-| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
-| Agent Authorization | /health | 200 | /metrics |
-| Gateway | /health | 200 | /metrics |
-| Authorization | /health | 200 | /metrics |
-| Logstash | /health | 200 | n/a |
