@@ -5,7 +5,7 @@
 replicaCount: 2
  
 image:
-  repository: gcr.io/production-main-231423/api-authorization
+  repository: gcr.io/production-main-268117/api-authorization
   tag: 4.1.1.0
   pullPolicy: IfNotPresent
  
@@ -43,7 +43,7 @@ ingress:
 resources:
   limits:
     cpu: "1"
-    memory: 1Gi
+    memory: 2Gi
   requests:
     cpu: 600m
     memory: 640Mi

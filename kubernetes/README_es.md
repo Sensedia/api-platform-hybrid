@@ -286,7 +286,7 @@ Ejemplo 1: Contenido del archivo ``values.yaml`` del módulo **Agent Authorizati
 1 replicaCount: 1
 2
 3 image:
-4   repository: gcr.io/production-main-231423/agent-authorization
+4   repository: gcr.io/production-main-268117/agent-authorization
 5   tag: 1909.1.1.2
 6   pullPolicy: IfNotPresent
 7
@@ -333,7 +333,7 @@ Cambiar los valores que contienen``CHANGE_HERE`` a valores consistentes con su e
 Explicación del contenido del archivo ``values.yaml`` del módulo **Agent Authorization** .
 
 * La **línea 1** define el número de réplicas del pod, que ejecuta el módulo y se puede ejecutar en el clúster de Kubernetes. Cambiar el valor según la demanda y disponibilidad de recursos de CPU, memoria y direcciones IP.
-* La **línea 4** contiene la dirección del Docker Registry y el nombre de la imagen Docker del módulo respectivo (``gcr.io/production-main-231423/agent-authorization`` ). Debe ponerse en contacto con el equipo de Sensedia para averiguar la URL del Docker Registry, el nombre de la imagen docker del módulo que debe usar y cambiar en el ``archivo.yaml`` antes del despliegue.
+* La **línea 4** contiene la dirección del Docker Registry y el nombre de la imagen Docker del módulo respectivo (``gcr.io/production-main-268117/agent-authorization`` ). Debe ponerse en contacto con el equipo de Sensedia para averiguar la URL del Docker Registry, el nombre de la imagen docker del módulo que debe usar y cambiar en el ``archivo.yaml`` antes del despliegue.
 * La **línea 5** contiene la versión del módulo (``1909.1.1.2`` ). Debe ponerse en contacto con el equipo de Sensedia para averiguar qué versión usar y cambiar en el archivo ``.yaml`` antes del despliegue.
 * Las **líneas 23 a 27** contienen la definición de autoscaling para el pod. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster y las direcciones IP.
 * Las **líneas 29 a 35** contienen la definición de ingress y TLS para el módulo. Cambiar según la necesidad del entorno.

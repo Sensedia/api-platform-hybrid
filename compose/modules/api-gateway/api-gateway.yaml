@@ -5,10 +5,10 @@ services:
     env_file: api-gateway.env
     networks:
       - api-platform
-    image: gcr.io/production-main-231423/api-gateway:4.2.0.0
+    image: gcr.io/production-main-268117/api-gateway:4.3.0.2
     container_name: api-gateway
     cpu_count: 1
-    mem_limit: 1024m
+    mem_limit: 2048m
     restart: always
     ports:
       - '8080:8080'

@@ -5,7 +5,7 @@ services:
     env_file: agent-gateway.env
     networks:
       - api-platform
-    image: gcr.io/production-main-231423/agent-gateway:1909.1.1.1
+    image: gcr.io/production-main-268117/agent-gateway:1909.1.1.1
     container_name: agent-gateway
     mem_limit: 512m
     restart: always
