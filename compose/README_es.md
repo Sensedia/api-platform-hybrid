@@ -116,12 +116,11 @@ En el método **Servicio autogestionado**, la copia de seguridad de Redis se gua
 
 ## Métodos de Despliegue
 
-En el caso del modelo híbrido, el despliegue puede realizarse de três maneras, que varían de la carga prevista y la necesidad de una alta disponibilidad. Todos los modos utilizan Docker Compose para realizar la instalación y configuración de la Plataforma.
+En el caso del modelo híbrido, el despliegue puede realizarse de dos maneras, que varían de la carga prevista y la necesidad de una alta disponibilidad. Todos los modos utilizan Docker Compose para realizar la instalación y configuración de la Plataforma.
 
 |Método|Descripción|Escenario Recomendado|Disponibilidad|Carga esperada|
 |-|-|-|-|-|
-|[**All-In-One**](all-in-one/README_es.md)|Ejecuta los módulos Restful (todos los módulos excepto Redis)|Puede ser usado para la producción en escenarios de carga baja y/o moderada, siempre y cuando todos los módulos funcionen en más de un host, para que haya alta disponibilidad. |Moderada |Moderada
-|[**Poc-all-in-one**](poc-all-in-one/README_es.md)|Ejecutar todos los módulos en un solo host|Debe ser usado sólo en escenarios POC, nunca en ambientes productivos. No tiene una alta disponibilidad, ni soporta una alta carga. |Baja |Baja
+|[**All-In-One**](all-in-one/README_es.md)|Ejecutar todos los módulos en un solo host|Debe ser usado sólo en escenarios POC, nunca en ambientes productivos. No tiene una alta disponibilidad, ni soporta una alta carga. |Baja |Baja
 |[**Módulos**](modules/README_es.md)|Contiene todos los módulos segregados. Cada módulo puede funcionar en un host dedicado. |Recomendado para entornos productivos. El dimensionamiento dependerá de la carga esperada.|Alta |Alta
 
 ### Módulos
@@ -157,14 +156,9 @@ Cada servidor debe ser aprovisionado considerando el consumo de la distribución
 
 ### Ejemplos de Deployment
 
-* **All-in-one para carga moderada**: 3 instancias para módulos de la Plataforma + 3 instancias para Redis cluster (uso moderado).
+* **All-in-one para carga baja**: 1 instancia (sugerido para un consumo bajo).
 
-		3 instancias que contienen **todos** los módulos **(excepto Redis)** compartiendo recursos.
-		3 instancias para Redis proporcionando disponibilidad en caso de fallo.
-
-* **All-in-one para carga baja**: 3 instancias (sugerido para un consumo bajo).
-
-		3 instancias que contienen **todos** los módulos + redis-cluster compartiendo recursos.
+		1 instancia que contienen **todos** los módulos + redis-standalone compartiendo recursos.
 
 * **Modules** con 6 instancias para módulos de la Plataforma + 6 instancias para redis-cluster (sugerido para entornos con throughput alto).
 
@@ -177,8 +171,6 @@ Cada servidor debe ser aprovisionado considerando el consumo de la distribución
 ### Despliegue de Servicios
 
 Para saber más sobre el despliegue usando el método **All-In-One** acceda al archivo [all-in-one/README_es.md](all-in-one/README_es.md).
-
-Para saber más sobre el despliegue usando el método **Poc-all-in-one** acceda al archivo [poc-all-in-one/README_es.md](poc-all-in-one/README_es.md).
 
 Para saber más sobre el despliegue usando el método **Modules** acceda al archivo [modules/README_es.md](modules/README_es.md).
 
@@ -280,13 +272,6 @@ La configuración del entorno híbrido tiene como requisito previo el uso de un 
 7. Seleccionar el Plan **Federated Plan**;
 8. Publicar el token usando el botón **Publish your access token**;
 9. Guardar el token generado (se utilizará en el aprovisionamiento de los módulos).
-
-Cuando el método de instalación sea **Poc-all-in-one**:
-
-Editar el archivo ``poc-all-in-one/hybrid.env``, ubicar los siguientes parámetros e sustituir el término ``CHANGE_HERE`` por el token generado anteriormente.
-
-* WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
-* SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
 Cuando el método de instalación sea **All-in-one**:
 

@@ -116,12 +116,11 @@ For the **Self-managed service** method, the Redis backup is saved in the ``/dat
 
 ## Deployment Methods
 
-Regarding the hybrid model, deployment can be done in three ways, which vary according to the expected load and the need for high availability. All modes use Docker Compose to carry out installation and configuration actions.
+Regarding the hybrid model, deployment can be done in two ways, which vary according to the expected load and the need for high availability. All modes use Docker Compose to carry out installation and configuration actions.
 
 |Method|Description|Recommended Scenario|Availability|Expected Load|
 |-|-|-|-|-|
-|[**All-In-One**](all-in-one/README_en.md)|Runs Restful modules (all modules except Redis)|Can be used for production scenarios of light and/or moderate load, as long as all modules run on more than one host, so that there is high availability.|Moderate|Moderate
-|[**Poc-all-in-one**](poc-all-in-one/README_en.md)|Executes all modules on a single host|Must only be used in POC scenarios, never in productive environments. Does not have high availability, nor supports heavy load. |Low|Light|
+|[**All-In-One**](all-in-one/README_en.md)|Executes all modules on a single host|Must only be used in POC scenarios, never in productive environments. Does not have high availability, nor supports heavy load. |Low|Light|
 |[**Modules**](modules/README_en.md)|Contains all segregated modules. Each module can run on a dedicated host. |Recommended for productive environments. Sizing will depend on the expected load. |High|Heavy|
 
 ### Modules
@@ -157,14 +156,9 @@ Each server must be provisioned considering the performance of the GNU/Linux dis
 
 ### Deployment Examples
 
-* **All-in-one for moderate load**: 3 instances for Platform modules + 3 instances for Redis cluster (moderate use).
+* **All-in-one for light load**: 1 instance (recommended for low consumption).
 
-		3 instances containing **all** modules **(except Redis)** sharing resources.
-		3 instances for Redis providing availability in case of failure.
-
-* **All-in-one for light load**: 3 instances (recommended for low consumption).
-
-		3 instances containing **all** modules + redis-cluster sharing resources.
+		1 instance containing **all** modules + redis-standalone sharing resources.
 
 * **Modules** with 6 instances for for Platform modules + 6 instances for redis-cluster (recommended for environments with high throughput).
 
@@ -177,8 +171,6 @@ Each server must be provisioned considering the performance of the GNU/Linux dis
 ### Deploying the services
 
 To know more about deployment using the method **All-In-One**, check this file: [all-in-one/README_en.md](all-in-one/README_en.md).
-
-To know more about deployment using the method **Poc-all-in-one**, check this file: [poc-all-in-one/README_en.md](poc-all-in-one/README_en.md).
 
 To know more about deployment using the method **Modules** check this file: [modules/README_en.md](modules/README_en.md).
 
@@ -280,13 +272,6 @@ The configuration of the hybrid environment has as a prerequisite the usage of a
 7. Select the Plan **Federated Plan**;
 8. Publish the token by clicking the button **Publish your access token**;
 9. Save the token generated (it will be used to provision the modules).
-
-When the installation method is **Poc-all-in-one**:
-
-Edit the file ``poc-all-in-one/hybrid.env``, find the following parameters and replace the term ``CHANGE_HERE`` with the token generated previously.
-
-* WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
-* SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
 
 When the installation method is **All-in-one**:
 

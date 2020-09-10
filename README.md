@@ -43,6 +43,8 @@ Nesse caso, existe a possibilidade de que alguns componentes da topologia do API
 
 Atualmente, o ambiente híbrido é composto pelos seguintes componentes:
 
+Tabela 1: Módulos da plataforma.
+
 | Módulo | Descrição |
 |:---|:---|
 | **Redis** | Utilizado para armazenamento de cenários e tokens na plataforma. É um componente que deverá ser fornecido preferencialmente pelos clientes. |
@@ -67,7 +69,7 @@ Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informa�
 
 Seguem os endpoints para aplicação do monitoramento dos módulos.
 
-Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
+Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 
 | **Módulo** | **Porta Padrão** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
@@ -75,7 +77,7 @@ Tabela 4: Endpoints de monitoramento dos módulos da plataforma.
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
-| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |
+| Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |
 
 # English
 
@@ -94,6 +96,8 @@ In this case, there is a possibility that some components of the API-Platform to
 ## Composition
 
 Currently, the hybrid environment consists of the following components:
+
+Table 1: Platform modules.
 
 | Module | Description |
 |:---|:---|
@@ -119,7 +123,7 @@ Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough me
 
 The following table shows the endpoints to apply monitoring to the modules.
 
-Table 4: Monitoring endpoint for Platform modules.
+Table 2: Monitoring endpoint for Platform modules.
 
 | **Module** | **Port** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
 | --- | --- | --- | --- | --- |
@@ -127,7 +131,7 @@ Table 4: Monitoring endpoint for Platform modules.
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
-| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |
+| Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |
 
 # Español
 
@@ -146,6 +150,8 @@ En este caso, existe la posibilidad de que algunos componentes de la topología 
 ## Composición
 
 Actualmente, el entorno híbrido consta de los siguientes componentes:
+
+Cuadro 1: Módulos de la Plataforma.
 
 | Módulo | Descripción |
 |:---|:---|
@@ -171,7 +177,7 @@ Además, proporcionamos el exportador de Prometheus, que exhibe información mé
 
 A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
 
-Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
+Cuadro 2: Endpoints de seguimiento de los módulos de la Plataforma.
 
 | **Módulo** | **Puerta** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
@@ -179,4 +185,4 @@ Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
-| Logstash | 8070/TCP, 9600/TCP | / | 200 | N/A |
+| Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |

@@ -14,7 +14,7 @@
 
 Este método de despliegue inicia todos los módulos *stateless* de la Plataforma en el mismo host.
 
-Si usa Redis administrado o tiene una instalación de Redis, este modelo puede ser el mejor.
+> ATENCIÓN!!! Este método no deve utilizarse en el entorno de producción. Este método se recomienda solo para demostraciones, pruebas o PoC (*Proof of concept*).
 
 ## Módulos
 
