@@ -7,7 +7,7 @@ services:
       - api-platform
     image: redis:5.0.9-alpine
     container_name: redis
-    command: redis-server --notify-keyspace-events KEA
+    command: redis-server --notify-keyspace-events KEA --save 900 1 --save 300 10
     mem_limit: 512m
     volumes:
        - /data/redis-standalone:/data

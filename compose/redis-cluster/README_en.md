@@ -44,32 +44,32 @@ Access the **Requirements** section of [this page](../README.md) to read on how 
 
 ### Installing Redis on Node 1
 
-Copy the file ``minimal/groupA/groupA.yaml`` to the host ``node_1``.
+Copy the file ``minimal/group_redis/group.yaml`` to ``redis_groupA.yaml`` on the host ``node_1``.
 
 Execute the following commands to start group A's **redis-master** and **redis-replica**.
 
 ```bash
-sudo docker-compose -f groupA.yaml up -d
+sudo docker-compose -f redis_groupA.yaml up -d
 ```
 
 ### Installing Redis on Node 2
 
-Copy the file ``minimal/groupB/groupB.yaml`` to the host ``node_2``.
+Copy the file ``minimal/group_redis/group.yaml`` to ``redis_groupB.yaml`` on the host ``node_2``.
 
 Execute the following commands to start group B's **redis-master** and **redis-replica**.
 
 ```bash
-sudo docker-compose -f groupB.yaml up -d
+sudo docker-compose -f redis_groupB.yaml up -d
 ```
 
 ### Installing Redis on Node 3
 
-Copy the file ``minimal/groupC/groupC.yaml`` to the host ``node_3``.
+Copy the file ``minimal/group_redis/group.yaml`` to ``redis_groupC.yaml`` on the host ``node_3``.
 
 Execute the following commands to start group C's **redis-master** and **redis-replica**.
 
 ```bash
-sudo docker-compose -f groupC.yaml up -d
+sudo docker-compose -f redis_groupC.yaml up -d
 ```
 
 ### Configuring the Redis Cluster
@@ -85,7 +85,7 @@ sudo docker run -i --rm --entrypoint redis-cli redis:5.0.3 --cluster create node
 Consult logs with the following command.
 
 ```bash
-sudo docker-compose -f group{ID} logs -f
+sudo docker-compose -f redis_group{ID} logs -f
 ```
 
 The term ``{ID}`` must be replaced with the node number.
@@ -93,7 +93,7 @@ The term ``{ID}`` must be replaced with the node number.
 Stop the service with the following command.
 
 ```bash
-sudo docker-compose -f group{ID} down
+sudo docker-compose -f redis_group{ID} down
 ```
 
 ## Backup

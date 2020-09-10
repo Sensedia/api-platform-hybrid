@@ -15,6 +15,8 @@ services:
       - "--cluster-config-file nodes.conf"
       - "--cluster-node-timeout 5000"
       - "--appendonly yes"
+      - "--save 900 1"
+      - "--save 300 10"
     volumes:
        - /data/redis-master:/data
 
@@ -35,5 +37,7 @@ services:
       - "--cluster-slave-validity-factor 0"
       - "--cluster-replica-validity-factor 0"
       - "--appendonly yes"
+      - "--save 900 1"
+      - "--save 300 10"
     volumes:
        - /data/redis-replica:/data

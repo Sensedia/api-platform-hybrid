@@ -73,7 +73,7 @@ Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 
 | **Módulo** | **Porta Padrão** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
-| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
@@ -127,7 +127,7 @@ Table 2: Monitoring endpoint for Platform modules.
 
 | **Module** | **Port** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
 | --- | --- | --- | --- | --- |
-| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
@@ -181,7 +181,7 @@ Cuadro 2: Endpoints de seguimiento de los módulos de la Plataforma.
 
 | **Módulo** | **Puerta** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
-| Agent Gateway | 8091/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
+| Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
