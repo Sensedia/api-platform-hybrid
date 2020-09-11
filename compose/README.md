@@ -120,7 +120,7 @@ Para o modelo Híbrido o deploy pode ser realizado de dois modos, variando em re
 
 |Método|Descrição|Cenário recomendado|Disponibilidade|Carga Esperada|
 |-|-|-|-|-|
-|[**All-In-One**](all-in-one/README.md)|Executa todos os módulos em um único host|Deve ser utilizado somente em cenário de POC, nunca, em ambientes produtivos. Não conta com alta disponibilidade, nem suporta carga alta.|Baixa|Baixa|
+|[**All-In-One**](all-in-one/README.md)|Executa todos os módulos em um único host|Deve ser utilizado somente em cenário de POC, nunca em ambientes produtivos. Não conta com alta disponibilidade, nem suporta carga alta.|Baixa|Baixa|
 |[**Modules**](modules/README.md)|Contém todos os módulos segregados. Cada módulo pode ser executado em um host dedicado.|Recomendado para ambientes produtivos. O dimensionamento dependerá da carga prevista.|Alta|Alta|
 
 ### Módulos
