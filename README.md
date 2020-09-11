@@ -263,4 +263,4 @@ En este caso, existe la posibilidad de que algunos componentes de la topología 
       - [Instalación de API-Authorization](kubernetes/README_es.md#instalación-de-api-authorization)
       - [Instalación de API-Gateway](kubernetes/README_es.md#instalación-de-api-gateway)
     - [Activación del Entorno Híbrido](kubernetes/README_es.md#activación-del-entorno-híbrido)
-- [Seguimiento, Health Check y Balanceo](README_es.md#seguimiento-health-check-y-balanceo)
+- [Monitoreo, Health Check y Balanceo](README_es.md#monitoreo-health-check-y-balanceo)

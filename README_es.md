@@ -3,7 +3,7 @@
 - [Español](#español)
   - [Composición](#composición)
   - [Instalación](#instalación)
-  - [Seguimiento, Health Check y Balanceo](#seguimiento-health-check-y-balanceo)
+  - [Monitoreo, Health Check y Balanceo](#monitoreo-health-check-y-balanceo)
 
 <!-- TOC -->
 
@@ -31,9 +31,9 @@ La instalación se puede realizar utilizando las siguientes tecnologías:
 * [Docker Compose](compose/README_es.md).
 * [Kubernetes + Helm](kubernetes/README_es.md).
 
-## Seguimiento, Health Check y Balanceo
+## Monitoreo, Health Check y Balanceo
 
-El seguimiento, *health check* y balanceo de carga del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
+El monitoreo, *health check* y balanceo de carga del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
 
 Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
 
@@ -41,7 +41,7 @@ Es muy importante utilizar un Load Balancer de su elección para comprobar peri�
 
 A continuación se presentan los endpoints de las métricas y health check de los módulos.
 
-Cuadro 2: Endpoints de seguimiento de los módulos de la Plataforma.
+Cuadro 2: Endpoints de monitoreo de los módulos de la Plataforma.
 
 | **Módulo** | **Puerta** | **Health check Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |

@@ -39,7 +39,7 @@ Los componentes de la infraestructura, así como su funcionamiento y soporte, so
 * Ingress/egress
 * Balance de carga
 * Copia de seguridad
-* Seguimiento
+* Monitoreo
 
 Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 
@@ -47,7 +47,7 @@ Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 | --- | --- | --- |
 | Ingress/Balance de Carga | Balance de carga HTTP/HTTPS (_ejemplo: ALB/F5/Nginx/Traefik, etc._). | Los certificados deben aplicarse a la capa de balanceo. |
 | Copia de Seguridad | Cualquier solución que copia el archivo de retención de datos de Redis (_\*.rdb_) en un almacenamiento externo (_seguro_). | Este archivo debe protegerse mediante el contenido de información confidencial (_ejemplo: token de acceso_). |
-| Seguimiento | Cualquier solución de seguimiento que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
+| Monitoreo | Cualquier solución de monitoreo que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
 
 # Módulos para Entorno Híbrido
 
