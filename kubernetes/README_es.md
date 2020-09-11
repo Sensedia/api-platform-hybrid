@@ -25,7 +25,6 @@
   - [Instalación de API-Authorization](#instalación-de-api-authorization)
   - [Instalación de API-Gateway](#instalación-de-api-gateway)
 - [Activación del Entorno Híbrido](#activación-del-entorno-híbrido)
-- [Seguimiento](#seguimiento)
 
 <!-- TOC -->
 
@@ -40,7 +39,7 @@ Los componentes de la infraestructura, así como su funcionamiento y soporte, so
 * Ingress/egress
 * Balance de carga
 * Copia de seguridad
-* Seguimiento
+* Monitoreo
 
 Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 
@@ -48,7 +47,7 @@ Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 | --- | --- | --- |
 | Ingress/Balance de Carga | Balance de carga HTTP/HTTPS (_ejemplo: ALB/F5/Nginx/Traefik, etc._). | Los certificados deben aplicarse a la capa de balanceo. |
 | Copia de Seguridad | Cualquier solución que copia el archivo de retención de datos de Redis (_\*.rdb_) en un almacenamiento externo (_seguro_). | Este archivo debe protegerse mediante el contenido de información confidencial (_ejemplo: token de acceso_). |
-| Seguimiento | Cualquier solución de seguimiento que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
+| Monitoreo | Cualquier solución de monitoreo que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
 
 # Módulos para Entorno Híbrido
 
@@ -482,21 +481,3 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 
 * Para validar su API, realizar una petición a la puerta de enlace híbrida.
 
-
-# Seguimiento
-
-El seguimiento del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
-
-Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
-
-A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
-
-Cuadro 4: Endpoints de seguimiento de los módulos de la Plataforma.
-
-| **Módulo** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
-| --- | --- | --- | --- |
-| Agent Gateway | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
-| Agent Authorization | /health | 200 | /metrics |
-| Gateway | /health | 200 |/metrics |
-| Authorization | /health | 200 | /metrics |
-| Logstash | /health | 200 | n/a |

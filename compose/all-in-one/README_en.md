@@ -14,6 +14,8 @@
 
 This deployment method starts all Platform's stateless modules on the same host.
 
+> ATTENTION!!! This method should not be used in the production environment. This method is recommended only for demonstrations, tests or PoC (Proof of concept).
+
 If you use fully-managed Redis or already have a Redis installation, this might be the ideal model.
 
 ## Modules

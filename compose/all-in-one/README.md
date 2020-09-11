@@ -14,7 +14,7 @@
 
 Este método de deployment inicia todos os módulos *stateless* da plataforma no mesmo host.
 
-Caso você utilize Redis gerenciado, ou já possua uma instalação de Redis, este modelo pode ser o ideal.
+> ATENÇÃO!!! Esse método não deve ser utilizado no ambiente de produção. Este método é recomendado apenas para demontrações, testes ou PoC (*Proof of concept*).
 
 ## Módulos
 
@@ -43,7 +43,7 @@ sudo docker-compose -f sensedia-all-in-one.yaml up -d
 
 ## Validação
 
-Veja o status dos containers com o seguinte comando.
+Veja o status dos contêineres com o seguinte comando.
 
 ```bash
 sudo docker-compose ps
