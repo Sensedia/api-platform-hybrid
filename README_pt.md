@@ -39,7 +39,7 @@ Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informa�
 
 É muito importante utilizar um load balancer de sua preferência para que periodicamente seja verificado o estado ou integridade da execução das aplicações. O estado das aplicações é considerado saudável quando o load balancer envia requisições HTTP aos endpoints de *health check* das aplicações e obtém o código de retorno 200. Qualquer código de retorno diferente disso indica que o estado da aplicação não é considerado saudável. Ao perceber que uma aplicação não está saudável, o load balancer deve redirecionar o tráfego para outro servidor que esteja executando uma aplicação similar considerada saudável.
 
-Seguem os *endpoints* de métricas e *health check* dos módulos.
+Seguem os endpoints de métricas e *health check* dos módulos.
 
 Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 
