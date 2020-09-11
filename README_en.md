@@ -33,7 +33,7 @@ The installation can be performed using the following technologies:
 
 ## Monitoring, health check and load balancing
 
-The client is responsible for monitoring, health check and load balancing their hybrid environment and can use their preferred tools.
+The client is responsible for health checks, load balancing and monitoring their hybrid environment and can use their preferred tools for that.
 
 Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
 
