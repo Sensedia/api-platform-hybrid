@@ -21,7 +21,7 @@ Table 1: Platform modules.
 | **Agent Authorization** | This module connects with the environment cloud and is responsible for the telemetry of the tokens generated in the client environment |
 | **Agent Gateway** | This module connects with the environment cloud and is responsible for receiving all updates to API scenarios |
 | **Logstash Federated** | Massively sends the trace generated in the client environment |
-| **API Authorization** | Responsible for generating authorization tokens in the APIs |
+| **API Authorization** | Responsible for generating authorization tokens for the APIs |
 | **API Gateway** | Receives API requests and performs necessary operations |
 
 ## Installation
