@@ -3,7 +3,7 @@
 - [English](#english)
   - [Composition](#composition)
   - [Installation](#installation)
-  - [Monitoring](#monitoring)
+  - [Monitoring, health check and load balancing](#monitoring-health-check-and-load-balancing)
 
 <!-- TOC -->
 
@@ -31,17 +31,19 @@ The installation can be performed using the following technologies:
 * [Docker Compose](compose/README_en.md).
 * [Kubernetes + Helm](kubernetes/README_en.md).
 
-## Monitoring
+## Monitoring, health check and load balancing
 
-The client is responsible for monitoring their hybrid environment and can use their preferred tools.
+The client is responsible for monitoring, health check and load balancing their hybrid environment and can use their preferred tools.
 
 Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
 
-The following table shows the endpoints to apply monitoring to the modules.
+It is very important to use a Load Balancer of your choice to periodically check the status or integrity of the applications' execution. The state of the applications is considered healthy when Load Balancer sends HTTP requests to the health check endpoints of the applications and obtains the return code 200. Any return code other than this, indicates that the state of the application is not considered healthy. When realizing that an application is not healthy, Load Balancer should redirect traffic to another server that is running a similar application that is considered healthy.
+
+The following table shows the endpoints of metrics and health check to the modules.
 
 Table 2: Monitoring endpoint for Platform modules.
 
-| **Module** | **Port** | **Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
+| **Module** | **Port** | **Health check Endpoint** | **Expected Status Code** | **Prometheus Metrics** |
 | --- | --- | --- | --- | --- |
 | Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |

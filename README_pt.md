@@ -3,7 +3,7 @@
 - [Português](#português)
   - [Composição](#composição)
   - [Instalação](#instalação)
-  - [Monitoramento](#monitoramento)
+  - [Monitoramento, Health Check e Balanceamento](#monitoramento-health-check-e-balanceamento)
 
 <!-- TOC -->
 
@@ -31,17 +31,19 @@ A instalação pode ser realizada utilizando as seguintes tecnologias:
 * [Docker Compose](compose/README.md).
 * [Kubernetes + Helm](kubernetes/README.md).
 
-## Monitoramento
+## Monitoramento, Health Check e Balanceamento
 
-O monitoramento do ambiente híbrido é de responsabilidade do cliente, podendo ser utilizadas as ferramentas de sua preferência.
+O monitoramento, *health check* e balanceamento de carga no ambiente híbrido é de responsabilidade do cliente, podendo ser utilizadas as ferramentas de sua preferência.
 
 Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informações detalhadas de métricas.
 
-Seguem os endpoints para aplicação do monitoramento dos módulos.
+É muito importante utilizar um Load Balancer de sua preferência para que periodicamente seja verificado o estado ou integridade da execução das aplicações. O estado das aplicações é considerado saudável quando o Load Balancer envia requisições HTTP aos endpoints de *health check* das aplicações e obtém o código de retorno 200. Qualquer código de retorno diferente disso, indica que o estado da aplicação não é considedo saudável. Ao perceber que uma aplicação não está saudável, o Load Balancer deve redirecionar o tráfego para outro servidor que esteja executando uma aplicação similar considerada saudável.
+
+Seguem os *endpoints* de métricas e *health check* dos módulos.
 
 Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 
-| **Módulo** | **Porta Padrão** | **Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
+| **Módulo** | **Porta Padrão** | **Health check Endpoint** | **Status Code Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
 | Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |

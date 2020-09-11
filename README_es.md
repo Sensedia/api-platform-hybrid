@@ -3,7 +3,7 @@
 - [Español](#español)
   - [Composición](#composición)
   - [Instalación](#instalación)
-  - [Seguimiento](#seguimiento)
+  - [Seguimiento, Health Check y Balanceo](#seguimiento-health-check-y-balanceo)
 
 <!-- TOC -->
 
@@ -31,17 +31,19 @@ La instalación se puede realizar utilizando las siguientes tecnologías:
 * [Docker Compose](compose/README_es.md).
 * [Kubernetes + Helm](kubernetes/README_es.md).
 
-## Seguimiento
+## Seguimiento, Health Check y Balanceo
 
-El seguimiento del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
+El seguimiento, *health check* y balanceo de carga del entorno híbrido es responsabilidad del cliente y se pueden utilizar las herramientas de su elección.
 
 Además, proporcionamos el exportador de Prometheus, que exhibe información métrica detallada.
 
-A continuación se presentan los endpoints para aplicar el seguimiento de los módulos.
+Es muy importante utilizar un Load Balancer de su elección para comprobar periódicamente el estado o la integridad de la ejecución de las aplicaciones. El estado de las aplicaciones se considera saludable cuando Load Balancer envía solicitudes HTTP a los puntos finales de * verificación de estado * de las aplicaciones y obtiene el código de retorno 200. Cualquier código de retorno distinto de este indica que el estado de la aplicación no se considera saludable. Al darse cuenta de que una aplicación no está en buen estado, Load Balancer debe redirigir el tráfico a otro servidor que esté ejecutando una aplicación similar que se considere en buen estado.
+
+A continuación se presentan los endpoints de las métricas y health check de los módulos.
 
 Cuadro 2: Endpoints de seguimiento de los módulos de la Plataforma.
 
-| **Módulo** | **Puerta** | **Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
+| **Módulo** | **Puerta** | **Health check Endpoint** | **Código de Estado Esperado** | **Métricas para Prometheus** |
 | --- | --- | --- | --- | --- |
 | Agent Gateway | 8091/TCP | /health | 200 | /metrics |
 | Agent Authorization | 8092/TCP | /health | 200 | /metrics |

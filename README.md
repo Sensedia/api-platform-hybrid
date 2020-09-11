@@ -99,7 +99,7 @@ Nesse caso, existe a possibilidade de que alguns componentes da topologia do API
       - [Instalação do API-Authorization](kubernetes/README.md#instalação-do-api-authorization)
       - [Instalação do API-Gateway](kubernetes/README.md#instalação-do-api-gateway)
     - [Ativação de Ambiente Híbrido](kubernetes/README.md#ativação-de-ambiente-híbrido)
-- [Monitoramento](README_pt.md#monitoramento)
+- [Monitoramento, Health Check e Balanceamento](README_pt.md#monitoramento-health-check-e-balanceamento)
 
 <!-- TOC -->
 
@@ -263,4 +263,4 @@ En este caso, existe la posibilidad de que algunos componentes de la topología 
       - [Instalación de API-Authorization](kubernetes/README_es.md#instalación-de-api-authorization)
       - [Instalación de API-Gateway](kubernetes/README_es.md#instalación-de-api-gateway)
     - [Activación del Entorno Híbrido](kubernetes/README_es.md#activación-del-entorno-híbrido)
-- [Seguimiento](README_es.md#seguimiento)
+- [Seguimiento, Health Check y Balanceo](README_es.md#seguimiento-health-check-y-balanceo)
