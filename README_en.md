@@ -37,7 +37,7 @@ The client is responsible for health checks, load balancing and monitoring their
 
 Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
 
-It is very important to use a Load Balancer of your choice to periodically check the status or integrity of the applications' execution. The state of the applications is considered healthy when Load Balancer sends HTTP requests to the health check endpoints of the applications and obtains the return code 200. Any return code other than this, indicates that the state of the application is not considered healthy. When realizing that an application is not healthy, Load Balancer should redirect traffic to another server that is running a similar application that is considered healthy.
+It is very important to use a load balancer of your choice to periodically check the status or integrity of application execution. The state of the applications is considered healthy when the load balancer sends HTTP requests to the health-check endpoints of the applications and obtains the return code 200. Any return code other than this indicates that the state of the application is not considered healthy. When an application is deemed unhealthy, the load balancer should redirect traffic to another server that is running a similar and healthy application.
 
 The following table shows the endpoints of metrics and health check to the modules.
 
