@@ -116,7 +116,7 @@ No método **Self-managed service**, o backup do Redis é salvo no diretório ``
 
 ## Métodos de Deploy
 
-Para o modelo Híbrido o deploy pode ser realizado de dois modos, variando em relação a carga esperada e a necessidade de alta disponibilidade. Todos os modos usam Docker Compose para realizar a instalação e configuração da plataforma.
+Para o modelo Híbrido o deploy pode ser realizado de dois modos, variando em relação à carga esperada e à necessidade de alta disponibilidade. Todos os modos usam Docker Compose para realizar a instalação e configuração da Plataforma.
 
 |Método|Descrição|Cenário recomendado|Disponibilidade|Carga Esperada|
 |-|-|-|-|-|
