@@ -17,7 +17,7 @@ Table 1: Platform modules.
 
 | Module | Description |
 |:---|:---|
-| **Redis** | Used to store scenarios and tokens on the platform. It is a component that should be provided preferably by customers. |
+| **Redis** | Used to store scenarios and tokens on the Platform. It is a component that should be provided preferably by customers. |
 | **Agent Authorization** | This module connects with the environment cloud and is responsible for the telemetry of the tokens generated in the client environment |
 | **Agent Gateway** | This module connects with the environment cloud and is responsible for receiving all updates to API scenarios |
 | **Logstash Federated** | Massively sends the trace generated in the client environment |
@@ -50,4 +50,3 @@ Table 2: Monitoring endpoint for Platform modules.
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
 | Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |
-
