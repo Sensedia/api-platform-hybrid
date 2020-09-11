@@ -14,7 +14,7 @@
 
 Este método de despliegue inicia todos los módulos *stateless* de la Plataforma en el mismo host.
 
-> ATENCIÓN!!! Este método no deve utilizarse en el entorno de producción. Este método se recomienda solo para demostraciones, pruebas o PoC (*Proof of concept*).
+> ¡¡¡ATENCIÓN!!! Este método no debe utilizarse en el entorno de producción. Este método se recomienda solo para demostraciones, pruebas o PoC (*Proof of concept*).
 
 ## Módulos
 
