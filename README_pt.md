@@ -37,9 +37,9 @@ O monitoramento, *health check* e balanceamento de carga no ambiente híbrido é
 
 Adicionalmente, disponibilizamos o exporter para Prometheus, que possui informações detalhadas de métricas.
 
-É muito importante utilizar um Load Balancer de sua preferência para que periodicamente seja verificado o estado ou integridade da execução das aplicações. O estado das aplicações é considerado saudável quando o Load Balancer envia requisições HTTP aos endpoints de *health check* das aplicações e obtém o código de retorno 200. Qualquer código de retorno diferente disso, indica que o estado da aplicação não é considirado saudável. Ao perceber que uma aplicação não está saudável, o Load Balancer deve redirecionar o tráfego para outro servidor que esteja executando uma aplicação similar considerada saudável.
+É muito importante utilizar um load balancer de sua preferência para que periodicamente seja verificado o estado ou integridade da execução das aplicações. O estado das aplicações é considerado saudável quando o load balancer envia requisições HTTP aos endpoints de *health check* das aplicações e obtém o código de retorno 200. Qualquer código de retorno diferente disso indica que o estado da aplicação não é considerado saudável. Ao perceber que uma aplicação não está saudável, o load balancer deve redirecionar o tráfego para outro servidor que esteja executando uma aplicação similar considerada saudável.
 
-Seguem os *endpoints* de métricas e *health check* dos módulos.
+Seguem os endpoints de métricas e *health check* dos módulos.
 
 Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 
@@ -50,4 +50,3 @@ Tabela 2: Endpoints de monitoramento dos módulos da plataforma.
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
 | Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |
-

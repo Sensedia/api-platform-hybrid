@@ -17,11 +17,11 @@ Table 1: Platform modules.
 
 | Module | Description |
 |:---|:---|
-| **Redis** | Used to store scenarios and tokens on the platform. It is a component that should be provided preferably by customers. |
+| **Redis** | Used to store scenarios and tokens on the Platform. It is a component that should be provided preferably by customers. |
 | **Agent Authorization** | This module connects with the environment cloud and is responsible for the telemetry of the tokens generated in the client environment |
 | **Agent Gateway** | This module connects with the environment cloud and is responsible for receiving all updates to API scenarios |
 | **Logstash Federated** | Massively sends the trace generated in the client environment |
-| **API Authorization** | Responsible for generating authorization tokens in the APIs |
+| **API Authorization** | Responsible for generating authorization tokens for the APIs |
 | **API Gateway** | Receives API requests and performs necessary operations |
 
 ## Installation
@@ -33,11 +33,11 @@ The installation can be performed using the following technologies:
 
 ## Monitoring, health check and load balancing
 
-The client is responsible for monitoring, health check and load balancing their hybrid environment and can use their preferred tools.
+The client is responsible for health checks, load balancing and monitoring their hybrid environment and can use their preferred tools for that.
 
 Additionally, we provide a Prometheus exporter - Prometheus exhibits thorough metrics information.
 
-It is very important to use a Load Balancer of your choice to periodically check the status or integrity of the applications' execution. The state of the applications is considered healthy when Load Balancer sends HTTP requests to the health check endpoints of the applications and obtains the return code 200. Any return code other than this, indicates that the state of the application is not considered healthy. When realizing that an application is not healthy, Load Balancer should redirect traffic to another server that is running a similar application that is considered healthy.
+It is very important to use a load balancer of your choice to periodically check the status or integrity of application execution. The state of the applications is considered healthy when the load balancer sends HTTP requests to the health-check endpoints of the applications and obtains the return code 200. Any return code other than this indicates that the state of the application is not considered healthy. When an application is deemed unhealthy, the load balancer should redirect traffic to another server that is running a similar and healthy application.
 
 The following table shows the endpoints of metrics and health check to the modules.
 
@@ -50,4 +50,3 @@ Table 2: Monitoring endpoint for Platform modules.
 | API Gateway | 8080/TCP | /gateway-admin/enabled | 200 | /gateway-admin/metrics |
 | API Authorization | 8084/TCP | /health | 200 | /metrics |
 | Logstash | 8090/TCP, 9600/TCP | / | 200 | N/A |
-

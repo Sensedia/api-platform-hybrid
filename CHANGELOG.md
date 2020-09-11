@@ -13,7 +13,7 @@
 
 Date: 2020/09/11
 
-* Merge of installation methods **poc-all-in-one** e **all-in-one**.
+* Merge of installation methods **poc-all-in-one** and **all-in-one**.
 * Fix bugs.
 * Add default ports of modules.
 * Add info about health check.
