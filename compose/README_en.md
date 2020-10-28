@@ -144,7 +144,7 @@ Each server must be provisioned considering the performance of the GNU/Linux dis
 
 	These hardware specs must be altered by each client according to hardware resource needs and demand for services, to be observed with daily use.
 
-|Server|Módulos|CPU|RAM Memory|Hard disk|
+|Server|Modules|CPU|RAM Memory|Hard disk|
 |-|-|-|-|-|
 |API-Gateway 01|Agent Gateway<br>Agent Authorization<br>API Gateway<br>API Authorization|2|4 GB|60 GB|
 |API-Gateway 02|Agent Gateway<br>Agent Authorization<br>API Gateway<br>API Authorization|2|4 GB|60 GB|
