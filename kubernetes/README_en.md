@@ -93,7 +93,7 @@ Each application must be provisioned considering the hardware resources of the K
 
     This table does not represent the specification of the hardware nodes, just a specification of the pods for each application, and must be changed by each customer according to the demand for hardware resources and for the use of services, which is to be observed with daily use and monitoring.
 
-|Módulos|CPU|RAM Memory|Hard disk|
+|Modules|CPU|RAM Memory|Hard disk|
 |-|-|-|-|
 |Agent Gateway|1|2 GB|60 GB|
 |Agent Authorization|1|2 GB|60 GB|
