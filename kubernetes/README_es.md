@@ -4,6 +4,7 @@
 - [Módulos para Entorno Híbrido](#módulos-para-entorno-híbrido)
 - [Modelos de Despliegue Soportados](#modelos-de-despliegue-soportados)
 - [Topología Macro](#topología-macro)
+- [Recursos Recomendados](#recursos-recomendados)
 - [Requisitos de Instalación](#requisitos-de-instalación)
   - [Creación de Customer ID](#creación-de-customer-id)
   - [Creación de Tokens](#creación-de-tokens)
@@ -81,6 +82,23 @@ Cuadro 3: Opciones de aprovisionamiento por módulo.
 Figura 1: Representación de módulos y conexiones del Modelo Híbrido.
 
 ![API-Platform: topology](../images/api-platform_topology.png)
+
+# Recursos Recomendados
+
+Cada aplicación debe aprovisionarse teniendo en cuenta los recursos de hardware de los nodos del clúster de Kubernetes y el monitoreo diario de las métricas de CPU, la memoria del pod y la cantidad de peticiones por segundo.
+
+    ¡¡¡ATENCIÓN!!! La siguiente tabla expresa sólo una sugerencia inicial y considera sólo el consumo de recursos mínimos por una única réplica del pod que ejecuta cada aplicación.
+
+    Esta tabla no representa la especificación hardware de los nodos, sólo la especificación de los pods para cada aplicación, y debe ser cambiada por cada cliente de acuerdo a la demanda de recursos de hardware y según la demanda de uso de los servicios, a ser observada con uso y seguimiento diario.
+
+|Módulos|CPU|Memoria RAM|Disco|
+|-|-|-|-|
+|Agent Gateway|1|2 GB|60 GB|
+|Agent Authorization|1|2 GB|60 GB|
+|API Gateway|1|2 GB|60 GB|
+|API Authorization|1|2 GB|60 GB|
+|Logstash Federated|1|1 GB|100 GB|
+|Redis Data Node|2|4 GB|60 GB|
 
 # Requisitos de Instalación
 
@@ -480,4 +498,3 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 ![Add API](../images/add_API.png)
 
 * Para validar su API, realizar una petición a la puerta de enlace híbrida.
-

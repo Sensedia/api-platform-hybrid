@@ -4,6 +4,7 @@
 - [Módulos para Ambiente Híbrido](#módulos-para-ambiente-híbrido)
 - [Modelos de Deployment Suportados](#modelos-de-deployment-suportados)
 - [Topologia Macro](#topologia-macro)
+- [Recursos Recomendados](#recursos-recomendados)
 - [Requisitos de Instalação](#requisitos-de-instalação)
   - [Criação do Customer ID](#criação-do-customer-id)
   - [Criação de Token](#criação-de-token)
@@ -81,6 +82,23 @@ Tabela 3: Opções de provisionamento por módulo.
 Figura 1: Representação dos módulos e conexões do Modelo Híbrido.
 
 ![API-Platform: topology](../images/api-platform_topology.png)
+
+# Recursos Recomendados
+
+Cada aplicação deve ser provisionada considerando os recursos de hardware dos nodes do cluster Kubernetes e o monitoramento diário das métricas de CPU, memória dos pods e a quantidade de requisições por segundo.
+
+    ATENÇÃO!!! A tabela a seguir expressa apenas uma sugestão inicial e considera apenas o consumo de recursos mínimos por uma única réplica do pod que executa cada aplicação.
+
+    Essa tabela não representa a especificação de hardware dos nodes, apenas a especificação dos pods de cada aplicação e deve ser alterada por cada cliente de acordo com a demanda por recursos de hardware e de acordo com a demanda para utilização dos serviços, a ser observada com o uso e monitoramento diário.
+
+|Módulos|CPU|Memória RAM|Disco|
+|-|-|-|-|
+|Agent Gateway|1|2 GB|60 GB|
+|Agent Authorization|1|2 GB|60 GB|
+|API Gateway|1|2 GB|60 GB|
+|API Authorization|1|2 GB|60 GB|
+|Logstash Federated|1|1 GB|100 GB|
+|Redis Data Node|2|4 GB|60 GB|
 
 # Requisitos de Instalação
 

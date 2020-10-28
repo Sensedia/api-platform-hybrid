@@ -4,6 +4,7 @@
 - [Hybrid Environment Modules](#hybrid-environment-modules)
 - [Supported Deployment Modelos](#supported-deployment-modelos)
 - [Macro Topology](#macro-topology)
+- [Recommended Resources](#recommended-resources)
 - [Installation Requirements](#installation-requirements)
   - [Customer ID creation](#customer-id-creation)
   - [Token creation](#token-creation)
@@ -83,6 +84,23 @@ Table 3. Provisioning options by module.
 Figure 1. Representation of the modules and connections of the Hybrid Model.
 
 ![API-Platform: topology](../images/api-platform_topology.png)
+
+# Recommended Resources
+
+Each application must be provisioned considering the hardware resources of the Kubernetes cluster nodes and the daily monitoring of CPU metrics, pod memory and the number of requests per second.
+
+    ATTENTION!!! The following table expresses only an initial suggestion and considers only the consumption of resources by a single replica of the pod that runs each application.
+
+    This table does not represent the specification of the hardware nodes, just a specification of the pods for each application, and must be changed by each customer according to the demand for hardware resources and for the use of services, which is to be observed with daily use and monitoring.
+
+|Modules|CPU|RAM Memory|Hard disk|
+|-|-|-|-|
+|Agent Gateway|1|2 GB|60 GB|
+|Agent Authorization|1|2 GB|60 GB|
+|API Gateway|1|2 GB|60 GB|
+|API Authorization|1|2 GB|60 GB|
+|Logstash Federated|1|1 GB|100 GB|
+|Redis Data Node|2|4 GB|60 GB|
 
 # Installation Requirements
 
@@ -482,4 +500,3 @@ Environment installation is based on gateway pools. These pools represent a grou
 ![Add API](../images/add_API.png)
 
 * Validate your API by making a request to the hybrid gateway.
-
