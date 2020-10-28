@@ -87,7 +87,7 @@ Figure 1. Representation of the modules and connections of the Hybrid Model.
 
 # Recommended Resources
 
-Each application must be provisioned considering the hardware resources of the Kubernetes cluster nodes and the daily monitoring of metrics pod CPU, memory and the number of requests per second.
+Each application must be provisioned considering the hardware resources of the Kubernetes cluster nodes and the daily monitoring of CPU metrics, pod memory and the number of requests per second.
 
     ATTENTION!!! The following table expresses only an initial suggestion and considers only the consumption of resources, by a single replica of the pod that runs each application.
 
@@ -500,4 +500,3 @@ Environment installation is based on gateway pools. These pools represent a grou
 ![Add API](../images/add_API.png)
 
 * Validate your API by making a request to the hybrid gateway.
-
