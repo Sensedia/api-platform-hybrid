@@ -42,4 +42,4 @@ Date: 07/22/2020
 
 Date: 06/25/2020
 
-* Version initial of documentation of API-Platform in hybrid environments.
+* Initial version of documentation of API-Platform in hybrid environments.
