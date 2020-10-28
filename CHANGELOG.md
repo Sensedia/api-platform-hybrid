@@ -36,7 +36,7 @@ Date: 09/04/2020
 
 Date: 07/22/2020
 
-* Translated of documentation to en-US and es.
+* Translation of documentation to en-US and es.
 
 # v1.0.0
 
