@@ -85,7 +85,7 @@ Figura 1: Representación de módulos y conexiones del Modelo Híbrido.
 
 # Recursos Recomendados
 
-Cada aplicación debe aprovisionarse teniendo en cuenta los recursos de hardware de los nodos del clúster de Kubernetes y el monitoreo diario de las métricas de CPU, la memoria del pod y la cantidad de solicitudes por segundo.
+Cada aplicación debe aprovisionarse teniendo en cuenta los recursos de hardware de los nodos del clúster de Kubernetes y el monitoreo diario de las métricas de CPU, la memoria del pod y la cantidad de peticiones por segundo.
 
     ¡¡¡ATENCIÓN!!! La siguiente tabla expresa solo una sugerencia inicial y considera solo el consumo de recursos mínimos por una única réplica del pod que ejecuta cada aplicación.
 
@@ -498,4 +498,3 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 ![Add API](../images/add_API.png)
 
 * Para validar su API, realizar una petición a la puerta de enlace híbrida.
-
