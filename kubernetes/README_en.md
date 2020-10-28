@@ -89,7 +89,7 @@ Figure 1. Representation of the modules and connections of the Hybrid Model.
 
 Each application must be provisioned considering the hardware resources of the Kubernetes cluster nodes and the daily monitoring of CPU metrics, pod memory and the number of requests per second.
 
-    ATTENTION!!! The following table expresses only an initial suggestion and considers only the consumption of resources, by a single replica of the pod that runs each application.
+    ATTENTION!!! The following table expresses only an initial suggestion and considers only the consumption of resources by a single replica of the pod that runs each application.
 
     This table does not represent the specification of the hardware nodes, just a specification of the pods for each application, and must be changed by each customer according to the demand for hardware resources and for the use of services, which is to be observed with daily use and monitoring.
 
