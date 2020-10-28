@@ -91,7 +91,7 @@ Each application must be provisioned considering the hardware resources of the K
 
     ATTENTION!!! The following table expresses only an initial suggestion and considers only the consumption of resources, by a single replica of the pod that runs each application.
 
-    This table does not represent the specification of the hardware nodes, just a specification of the pods for each application and must be changed by each customer according to the demand for hardware resources and according to the demand for the use of services, one being observed with daily use and monitoring.
+    This table does not represent the specification of the hardware nodes, just a specification of the pods for each application, and must be changed by each customer according to the demand for hardware resources and for the use of services, which is to be observed with daily use and monitoring.
 
 |Módulos|CPU|RAM Memory|Hard disk|
 |-|-|-|-|
