@@ -87,7 +87,7 @@ Figura 1: Representación de módulos y conexiones del Modelo Híbrido.
 
 Cada aplicación debe aprovisionarse teniendo en cuenta los recursos de hardware de los nodos del clúster de Kubernetes y el monitoreo diario de las métricas de CPU, la memoria del pod y la cantidad de peticiones por segundo.
 
-    ¡¡¡ATENCIÓN!!! La siguiente tabla expresa solo una sugerencia inicial y considera solo el consumo de recursos mínimos por una única réplica del pod que ejecuta cada aplicación.
+    ¡¡¡ATENCIÓN!!! La siguiente tabla expresa sólo una sugerencia inicial y considera sólo el consumo de recursos mínimos por una única réplica del pod que ejecuta cada aplicación.
 
     Esta tabla no representa la especificación hardware de los nodos, solo la especificación de los pods para cada aplicación y debe ser cambiada por cada cliente de acuerdo a la demanda de recursos hardware y según la demanda de uso de los servicios, a ser observado con uso y seguimiento diario.
 
