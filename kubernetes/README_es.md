@@ -89,7 +89,7 @@ Cada aplicación debe aprovisionarse teniendo en cuenta los recursos de hardware
 
     ¡¡¡ATENCIÓN!!! La siguiente tabla expresa sólo una sugerencia inicial y considera sólo el consumo de recursos mínimos por una única réplica del pod que ejecuta cada aplicación.
 
-    Esta tabla no representa la especificación hardware de los nodos, solo la especificación de los pods para cada aplicación y debe ser cambiada por cada cliente de acuerdo a la demanda de recursos hardware y según la demanda de uso de los servicios, a ser observado con uso y seguimiento diario.
+    Esta tabla no representa la especificación hardware de los nodos, sólo la especificación de los pods para cada aplicación, y debe ser cambiada por cada cliente de acuerdo a la demanda de recursos de hardware y según la demanda de uso de los servicios, a ser observada con uso y seguimiento diario.
 
 |Módulos|CPU|Memoria RAM|Disco|
 |-|-|-|-|
