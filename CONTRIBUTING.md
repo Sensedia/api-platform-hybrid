@@ -58,7 +58,7 @@ git push --set-upstream origin BRANCH_NAME
 
 ```bash
 git checkout master
-git pull upstream master
+git pull
 ```
 
 * Remova a branch local após a aprovação e merge do seu PR, usando o seguinte comando:
