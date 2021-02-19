@@ -458,6 +458,8 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 
 Alter the parameter values of the file ``api-platform-hybrid/api-gateway.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
+> NOTE: The property ``apigateway_label`` must be filled in with the desired name for the Gateway Pool, and informed later through the opening of a ticket to ** Support and Operations ** team can complete the creation.
+
 Run the following command to deploy **API Gateway**.
 
 > NOTE: Replace the term ``VERSION`` with the Helm chart version number, as shown in the section **Sensedia Helm Charts Repository**.
@@ -471,6 +473,8 @@ List your namespace pods to check whether all modules are installed.
 ```bash
 kubectl get pods -n MY_HYBRID_ENV
 ```
+
+> NOTE: The api-gateway pods will not be available until the next step is completed ([Hybrid Environment Activation](#hybrid-environment-activation)).
 
 # Hybrid Environment Activation
 
