@@ -472,7 +472,7 @@ Listar los pods de su namespace para comprobar que todos los módulos están ins
 kubectl get pods -n MY_HYBRID_ENV
 ```
 
-> NOTA: Los pods de api-gateway no estarán disponibles hasta que se complete el siguiente paso ([Activación del Entorno Híbrido](#activación-del-entorno-híbrido)).
+> NOTA: Los pods **api-gateway** no estarán en buen estado hasta que se complete el paso ([Activación del Entorno Híbrido](#activación-del-entorno-híbrido)).
 
 # Activación del Entorno Híbrido
 

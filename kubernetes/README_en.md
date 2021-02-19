@@ -474,7 +474,7 @@ List your namespace pods to check whether all modules are installed.
 kubectl get pods -n MY_HYBRID_ENV
 ```
 
-> NOTE: The api-gateway pods will not be available until the next step is completed ([Hybrid Environment Activation](#hybrid-environment-activation)).
+> NOTE: The **api-gateway** pods will not be healthy until the ([Hybrid Environment Activation](#hybrid-environment-activation)) step is completed.
 
 # Hybrid Environment Activation
 
