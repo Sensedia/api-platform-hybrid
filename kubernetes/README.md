@@ -472,7 +472,7 @@ Liste os pods do seu namespace para verificar se todos os módulos estão instal
 kubectl get pods -n MY_HYBRID_ENV
 ```
 
-> Observação: Os pods do **api-gateway** não ficarão health até que o passo [Ativação de Ambiente Híbrido](#ativação-de-ambiente-híbrido) seja concluído .
+> Observação: Os pods do **api-gateway** não ficarão health até que o passo [Ativação de Ambiente Híbrido](#ativação-de-ambiente-híbrido) seja concluído.
 
 # Ativação de Ambiente Híbrido
 
