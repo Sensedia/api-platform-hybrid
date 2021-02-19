@@ -458,7 +458,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 
 Alter the parameter values of the file ``api-platform-hybrid/api-gateway.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-> NOTE: The property ``apigateway_label`` must be filled in with the desired name for the Gateway Pool, and informed later through the opening of a ticket to ** Support and Operations ** team can complete the creation.
+> NOTE: The property ``apigateway_label`` must be filled in with the desired name for the Gateway Pool and informed later through the opening of a ticket so that the ** Support and Operations ** team can conclude the creation.
 
 Run the following command to deploy **API Gateway**.
 
