@@ -30,6 +30,7 @@ It is often used for **On-Premise internal backends**, when there is no point fo
  * Docker 18.09 or higher
  * Docker Compose 1.18 or higher
  * Redis 4.0.11 or higher
+ * Host without internet access restrictions (proxy not supported)
 
 ### Docker
 
