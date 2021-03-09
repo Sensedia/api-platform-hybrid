@@ -30,6 +30,7 @@ Esta documentación explica cómo implantar los módulos/servicios utilizados en
 * Docker 18.09 o superior
 * Docker Compose 1.18 o superior
 * Redis 4.0.11 o superior
+* Host sin restricciones de acceso a Internet (no se admite proxy)
 
 ## Docker
 

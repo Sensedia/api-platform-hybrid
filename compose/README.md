@@ -30,6 +30,7 @@ Esta documentação explica como realizar o deployment dos módulos/serviços ut
 * Docker 18.09 ou versão superior
 * Docker Compose 1.18 ou versão superior
 * Redis 4.0.11 ou versão superior
+* Host sem restrições de acesso à internet (proxy não suportado)
 
 ### Docker
 
