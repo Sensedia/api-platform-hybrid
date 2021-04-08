@@ -74,6 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 /usr/local/bin/docker-compose version
 ```
+ATTENTION!!! The ``docker-compose`` command may not be found after installation. If this happens, run the following command to create a symbolic link:
+
+```bash
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
 
 You can find more information on the official documentation: https://docs.docker.com/compose/install/.
 
