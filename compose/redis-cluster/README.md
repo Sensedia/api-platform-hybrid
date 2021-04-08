@@ -77,7 +77,7 @@ sudo docker-compose -f redis_groupC.yaml up -d
 Execute o seguinte comando no host ``node_1`` (e confirme).
 
 ```bash
-sudo docker run -i --rm --entrypoint redis-cli redis:5.0.3 --cluster create node_1:6379 node_2:6379 node_3:6379 node_1:6380 node_3:6380 node_2:6380 --cluster-replicas 1
+sudo docker run -i --rm --network host --entrypoint redis-cli redis:5.0.3 --cluster create node_1:6379 node_2:6379 node_3:6379 node_1:6380 node_3:6380 node_2:6380 --cluster-replicas 1
 ```
 
 ### Comandos Úteis

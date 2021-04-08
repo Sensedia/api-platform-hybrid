@@ -74,6 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 /usr/local/bin/docker-compose version
 ```
+Nota: Talvez o comando "docker-compose" falhe após a instalação. Caso isso aconteça, rodar o comando abaixo:
+
+```bash
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
 
 Maiores informações podem ser obtidas na documentação oficial: https://docs.docker.com/compose/install/.
 
