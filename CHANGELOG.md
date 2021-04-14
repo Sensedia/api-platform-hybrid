@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Changelog](#changelog)
+- [v2.1.4](#v214)
 - [v2.1.3](#v213)
 - [v2.1.2](#v212)
 - [v2.1.1](#v211)
@@ -11,6 +12,12 @@
 - [v2.0.0](#v200)
 - [v1.0.0](#v100)
 <!-- TOC -->
+
+# v2.1.4
+
+Date: 04/13/2021
+
+* Added **new variables in deployment of api-gateway** in hybrid environments.
 
 # v2.1.3
 
