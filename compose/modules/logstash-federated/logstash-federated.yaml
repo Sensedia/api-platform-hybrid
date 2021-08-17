@@ -5,7 +5,7 @@ services:
     env_file: logstash-federated.env
     networks:
       - api-platform
-    image: gcr.io/production-main-268117/logstash-federated:4.1.1.0
+    image: gcr.io/production-main-268117/logstash-federated:4.1.2.0
     container_name: logstash-federated
     cpu_count: 1
     mem_limit: 1024M
