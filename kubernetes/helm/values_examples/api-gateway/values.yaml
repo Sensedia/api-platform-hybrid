@@ -37,6 +37,13 @@ properties:
   apigateway_use_cachemanager: "false"
   spring_profiles_active: "federated"
 
+proxy:
+  enabled: false
+  sensedia_apigateway_proxy_url: "proxy.example.com"
+  sensedia_apigateway_proxy_port: 3128
+  sensedia_apigateway_proxy_username: ""
+  sensedia_apigateway_proxy_password: ""
+
 autoscaling:
   enabled: false
   minReplicas: 2
