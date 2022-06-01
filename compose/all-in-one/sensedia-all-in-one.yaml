@@ -60,9 +60,9 @@ services:
       - api-platform
     depends_on:
       - agent-authorization
+      - redis
     image: gcr.io/production-main-268117/api-authorization:4.1.1.0
     container_name: api-authorization
-    depends_on:
       - redis
     mem_limit: 2048m
     restart: always
@@ -74,7 +74,7 @@ services:
     networks:
       - api-platform
     depends_on:
-      -redis
+      - redis
       - agent-gateway
       - logstash-federated
     image: gcr.io/production-main-268117/api-gateway:4.3.0.2
