@@ -300,49 +300,50 @@ A seguir é mostrado o exemplo de um arquivo .yaml para deploy de um módulo e e
 Exemplo 1: Conteúdo do arquivo ``values.yaml`` do módulo **Agent Authorization**.
 
 ```yaml
-1 replicaCount: 1
-2
-3 image:
-4   repository: gcr.io/production-main-268117/agent-authorization
-5   tag: 1909.1.1.2
-6   pullPolicy: IfNotPresent
-7
-8 service:
-9   type: ClusterIP
-10   port: 80
-11
-12 properties:
-13   javaOpts: "-Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Dlog4j2.formatMsgNoLookups=True -Xms1536m -Xmx1536m -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError"
-14   redis:
-15     connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
-16     address: "CHANGE_HERE" #Example: x.x.x.x:6379
-17   logLevel: INFO
-18   trackExpires: 7
-19   websocketUri: wss://integration-aws.sensedia.com/websocket
-20   customerId: "CHANGE_HERE"
-21   sensediaAuth: "CHANGE_HERE"
-22
-23 autoscaling:
-24   enabled: false
-25   minReplicas: 1
-26   maxReplicas: 1
-27   averageUtilization: 70
-28
-29 ingress:
-30   enabled: false
-31   annotations: {}
-32   hosts:
-33     - host: chart-example.local
-34       paths: []
-35   tls: []
-36
-37 resources:
-38   limits:
-39     cpu: "1"
-40     memory: 1Gi
-41   requests:
-42     cpu: 600m
-43     memory: 640Mi
+# Default values for agent-authorization.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: gcr.io/production-main-268117/agent-authorization
+  tag: 1909.1.1.2
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+properties:
+  javaOpts: "-Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Dlog4j2.formatMsgNoLookups=True -Xms1536m -Xmx1536m -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError"
+  redis:
+    connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
+    address: "CHANGE_HERE" #Example: x.x.x.x:6379
+    password: "CHANGE_HERE" #Password base64
+  logLevel: INFO
+  trackExpires: 7
+  #--- IF client in AWS
+  websocketUri: wss://integration-aws.sensedia.com/websocket
+  #--- If client in GCP
+  #websocketUri: wss://integration-production-gcp.sensedia.com/websocket
+  customerId: "CHANGE_HERE"
+  sensediaAuth: "CHANGE_HERE"
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 1
+  averageUtilization: 70
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+resources:
+  limits:
+    cpu: "1"
+    memory: 2Gi
+  requests:
+    cpu: 600m
+    memory: 640Mi
 ```
 
 Altere os valores definidos como ``CHANGE_HERE`` para os valores condizentes com seu ambiente híbrido.
@@ -352,6 +353,7 @@ Explicação do conteúdo do arquivo ``values.yaml`` do módulo **Agent Authoriz
 * Na **linha 1** é definida a quantidade de réplicas do pod, que executam o módulo e que podem ser executadas no cluster Kubernetes. Altere o valor conforme a demanda e disponibilidade de recursos de CPU, memória e endereços IP.
 * A **linha 4** contém o endereço do Docker Registry e o nome da imagem Docker do respectivo módulo (``gcr.io/production-main-268117/agent-authorization``). Você deve entrar em contato com o time da Sensedia para saber qual a URL do Docker Registry, nome da imagem docker do módulo que deve utilizar e alterar no arquivo ``.yaml`` antes de fazer o deploy.
 * A **linha 5** contém a versão do módulo (``1909.1.1.2``). Você deve entrar em contato com o time da Sensedia para saber qual a versão que deve utilizar e alterar no arquivo ``.yaml`` antes de fazer o deploy.
+* Das **linhas 14 a 17**, encontramos as informações referentes ao redis. Nesta sessão do yaml, é preciso alterar as informações de endereçamento do redis e caso necessário, aplicar uma senha de acesso. Tal senha precisa ser codificada em base64. 
 * As **linhas 23 a 27** contém a definição de autoscaling para o pod. Altere conforme a demanda e a disponibilidade de recursos de hardware no cluster e de endereços IP.
 * As **linhas 29 a 35** contém a definição de ingress e TLS para o módulo. Altere conforme a necessidade do ambiente.
 * As **linhas 37 a 43** contém a definição dos limites de uso dos recursos de CPU e memória a serem utilizados por cada pod do módulo. Altere conforme a demanda e a disponibilidade de recursos de hardware no cluster.
@@ -399,6 +401,8 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/agent-gateway
 Use o seguinte comando para fazer o deploy do **Agent Gateway**.
 
 > Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
+
+Conforme mencionado anteriormente no Agent-Authorization, é possível configurar uma senha de acesso ao redis em base64 caso necessário. 
 
 ```bash
 helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/agent-gateway.yaml
