@@ -47,7 +47,34 @@ resources:
   requests:
     cpu: 600m
     memory: 640Mi
- 
+    
+metrics:
+  enabled: false
+  imageTag: 5.0.0.0
+  containerPort: 9198
+  resources:
+    limits:
+      cpu: 100m
+      memory: 200Mi
+    requests:
+      cpu: 10m
+      memory: 20Mi
+
+serviceMonitor:
+  # Depends on metrics to be enabled
+  enabled: false
+  additionalLabels: {}
+  path: "/metrics"
+  scrapeTimeout: "5s"
+  # namespace: "monitoring"
+  # scrapeInterval: 30s
+  # honorLabels: true
+  namespaceSelector: {}
+  # Default: scrape .Release.Namespace only
+  # To scrape all, use the following:
+  # namespaceSelector:
+  #   any: true
+
 nodeSelector: {}
  
 tolerations: []
