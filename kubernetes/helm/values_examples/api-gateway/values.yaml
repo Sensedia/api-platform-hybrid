@@ -6,7 +6,7 @@ replicaCount: 2
 
 image:
   repository: gcr.io/production-main-268117/api-gateway
-  tag: 4.3.0.2
+  tag: "CHANGE_HERE"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
