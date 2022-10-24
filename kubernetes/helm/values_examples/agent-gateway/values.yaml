@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: gcr.io/production-main-268117/agent-gateway
-  tag: 1909.1.1.1
+  tag: "CHANGE_HERE" 
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
