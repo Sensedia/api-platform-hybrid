@@ -306,7 +306,7 @@ Ejemplo 1: Contenido del archivo ``values.yaml`` del módulo **Agent Authorizati
 replicaCount: 1
 image:
   repository: gcr.io/production-main-268117/agent-authorization
-  tag: 1909.1.1.2
+  tag: "CHANGE_HERE"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
