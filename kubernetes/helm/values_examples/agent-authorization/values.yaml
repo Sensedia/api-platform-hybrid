@@ -6,7 +6,7 @@ replicaCount: 1
  
 image:
   repository: gcr.io/production-main-268117/agent-authorization
-  tag: 1909.1.1.2
+  tag: x.x.x.x (version reported by support team)
   pullPolicy: IfNotPresent
  
 service:
