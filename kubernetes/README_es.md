@@ -383,7 +383,7 @@ Utilizar el siguiente comando para el despliegue de **Agent Authorization**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/agent-authorization.yaml
+helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values a~/api-platform-hybrid/agent-authorization.yaml
 ```
 
 ## Instalación de Agent Gateway
@@ -405,7 +405,7 @@ Utilizar el siguiente comando para el despliegue de **Agent Gateway**.
 Como se mencionó anteriormente en Autorización del agente, puede configurar una contraseña redis base64 si es necesario.
 
 ```bash
-helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/agent-gateway.yaml
+helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/agent-gateway.yaml
 ```
 
 ## Instalación de Logstash-Federated
@@ -425,7 +425,7 @@ Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/logstash-federated.yaml.yaml
+helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml.yaml
 ```
 
 ## Instalación de API-Authorization
@@ -445,7 +445,7 @@ Utilizar el siguiente comando para el despliegue de **API Authorization**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-authorization.yaml
+helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/api-authorization.yaml
 ```
 
 ## Instalación de API-Gateway
@@ -467,7 +467,7 @@ Utilizar el siguiente comando para el despliegue de **API Gateway**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install api-gateway sensedia-helm-s3/api-gateway --version VERSION --namespace MY_HYBRID_ENV --values api-platform-hybrid/api-gateway.yaml
+helm upgrade --install api-gateway sensedia-helm-s3/api-gateway --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/api-gateway.yaml
 ```
 
 Listar los pods de su namespace para comprobar que todos los módulos están instalados.
