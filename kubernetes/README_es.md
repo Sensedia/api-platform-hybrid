@@ -383,7 +383,7 @@ Utilizar el siguiente comando para el despliegue de **Agent Authorization**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values a~/api-platform-hybrid/agent-authorization.yaml
+helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/agent-authorization.yaml
 ```
 
 ## Instalación de Agent Gateway
