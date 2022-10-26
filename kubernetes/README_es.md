@@ -425,7 +425,7 @@ Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
 ```bash
-helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml.yaml
+helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
 ```
 
 ## Instalación de API-Authorization
