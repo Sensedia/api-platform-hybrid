@@ -455,7 +455,7 @@ El archivo que contiene parámetros de configuración de ejemplo para el módulo
 Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/api-gateway.yaml``.
 
 ```bash
-cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.yaml ~/api-platform-hybrid/api-authorization.yaml
+cp api-platform-hybrid/kubernetes/helm/values_examples/api-gateway/values.yaml ~/api-platform-hybrid/api-gateway.yaml
 ```
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/api-gateway.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
