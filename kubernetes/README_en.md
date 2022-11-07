@@ -458,7 +458,7 @@ The file containing examples of configuration parameters for the module **API-Ga
 Create a copy of the sample ``values.yaml`` to the file ``api-platform-hybrid/api-gateway.yaml``.
 
 ```bash
-cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.yaml ~/api-platform-hybrid/api-authorization.yaml
+cp api-platform-hybrid/kubernetes/helm/values_examples/api-gateway/values.yaml ~/api-platform-hybrid/api-gateway.yaml
 ```
 
 Alter the parameter values of the file ``api-platform-hybrid/api-gateway.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
