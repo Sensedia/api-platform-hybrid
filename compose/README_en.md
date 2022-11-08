@@ -270,7 +270,7 @@ Example 3 ``- '80:8080'``. In this case, the host port is 80/TCP and the contain
 The configuration of the hybrid environment has as a prerequisite the usage of a Platform token. The token must be generated following this procedure:
 
 1. Access the API Manager;
-2. Click the **Access Tokens** option on the main menu;
+2. Click the **Consumers** --> **Access Tokens** option on the main menu;
 3. Click the **Create Access token** button;
 4. The field **Owner** must contain the email of a user responsible for the environment;
 5. Define the value **API-Platform Integration** on the field **APP Field**;
