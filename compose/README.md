@@ -270,7 +270,7 @@ Exemplo 3: ``- '80:8080'``. Neste caso, a porta do host é 80/TCP e a a porta do
 A configuração do ambiente híbrido tem como pré-requisito a utilização de um token da plataforma. O token deve ser criado utilizando o seguinte procedimento:
 
 1. Acesse o API Manager;
-2. Clique no menu da página de **Access Token**;
+2. Clique no menu da página de **Consumers** --> **Access Tokens**;
 3. Clique no botão **Criar Access token**;
 4. O campo **Owner** deve conter o email de um usuário responsável pelo ambiente;
 5. Defina o valor **API-Platform Integration** no campo **APP Field**;
