@@ -121,7 +121,7 @@ customerID: "CHANGE_HERE"
 La configuración del entorno híbrido es un requisito previo para usar un token de la Plataforma. El token debe crearse mediante el siguiente procedimiento:
 
 * Acceder al API Manager.
-* Acceder a la página **Token de acceso** en el menú principal.
+* Acceder a la página **consumers**-->  **Access Token** en el menú principal.
 * Hacer clic en el botón **Create access token**.
 * El campo **Owner** debe contener la dirección de correo electrónico de un usuario responsable del entorno.
 * Establecer el valor de **API Platform Integration** en el campo **App** .
