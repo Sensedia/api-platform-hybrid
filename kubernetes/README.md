@@ -370,12 +370,15 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values
 
 Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/logstash-federated.yaml`` conforme as instruções da seção **Alterando a Versão dos Módulos e Outros Parâmetros**.
 
-Use o seguinte comando para fazer o deploy do **Logstash-Federated**.
+Use o seguinte comando para obter a versão do Helm chart do **Logstash-Federated**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 ```bash
 helm search repo sensedia-helm-s3/logstash-federated -l
 ```
+
+Use o seguinte comando para fazer o deploy do **Logstash-Federated**.
+
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
@@ -401,12 +404,15 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-authorization/value
 
 Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/agent-authorization.yaml`` conforme as instruções da seção **Alterando a Versão dos Módulos e Outros Parâmetros**.
 
-Use o seguinte comando para fazer o deploy do **Agent Authorization**.
+Use o seguinte comando para obter a versão do Helm chart do **Agent Authorization**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 ```bash
 helm search repo sensedia-helm-s3/agent-authorization -l
 ```
+
+Use o seguinte comando para fazer o deploy do **Agent Authorization**.
+
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install agent-authorization sensedia-helm-s3/agent-authorization --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/agent-authorization.yaml
@@ -424,14 +430,17 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-gateway/values.yaml
 
 Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/agent-gateway.yaml`` conforme as instruções da seção **Alterando a Versão dos Módulos e Outros Parâmetros**.
 
-Use o seguinte comando para fazer o deploy do **Agent Gateway**.
-
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
-
 Conforme mencionado anteriormente no Agent-Authorization, é possível configurar uma senha de acesso ao redis em base64 caso necessário. 
+
+Use o seguinte comando para obter a versão do Helm chart do **Agent Gateway**.
+
 ```bash
 helm search repo sensedia-helm-s3/agent-gateway -l
 ```
+
+Use o seguinte comando para fazer o deploy do **Agent Gateway**.
+
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/agent-gateway.yaml
@@ -449,12 +458,15 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 
 Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-authorization.yaml`` conforme as instruções da seção **Alterando a Versão dos Módulos e Outros Parâmetros**.
 
-Use o seguinte comando para fazer o deploy do **API Authorization**.
+Use o seguinte comando para obter a versão do Helm chart do  **API Authorization**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 ```bash
 helm search repo sensedia-helm-s3/api-authorization -l
 ```
+
+Use o seguinte comando para fazer o deploy do **API Authorization**.
+
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install api-authorization sensedia-helm-s3/api-authorization --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/api-authorization.yaml
@@ -474,12 +486,15 @@ Altere os valores dos parâmetros do arquivo ``api-platform-hybrid/api-gateway.y
 
 > Observação: A propriedade ``apigateway_label`` deve ser preenchida com o nome desejado para o Gateway Pool e informada posteriormente através de abertura de chamado ou ticket para que a equipe de **Suporte e Operações** possa concluir o cadastro.
 
-Use o seguinte comando para fazer o deploy do **API Gateway**.
+Use o seguinte comando para obter a versão do Helm chart do **API Gateway**.
 
-> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 ```bash
 helm search repo sensedia-helm-s3/api-gateway -l
 ```
+
+Use o seguinte comando para fazer o deploy do **API Gateway**.
+
+> Observação: Altere o termo ``VERSION`` pelo número da versão do Helm chart, conforme mostrado na seção **Repositório de Helm Charts da Sensedia**.
 
 ```bash
 helm upgrade --install api-gateway sensedia-helm-s3/api-gateway --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/api-gateway.yaml
