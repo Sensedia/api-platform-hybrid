@@ -358,6 +358,32 @@ Explicación del contenido del archivo ``values.yaml`` del módulo **Agent Autho
 * Las **líneas 29 a 35** contienen la definición de ingress y TLS para el módulo. Cambiar según la necesidad del entorno.
 * Las **líneas 37 a 43** contienen la definición de los límites de uso de los recursos de CPU y memoria que utilizará cada pod del módulo. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster.
 
+## Instalación de Logstash-Federated
+
+El archivo que contiene parámetros de configuración de ejemplo para el módulo **Logstash-Federated** está disponible [aquí](helm/values_examples/logstash-federated/values.yaml) .
+
+Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/logstash-federated.yaml``.
+
+```bash
+cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values.yaml ~/api-platform-hybrid/logstash-federated.yaml
+```
+
+Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/logstash-federated.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
+
+Utilizar el siguiente comando para listar la version del Helm charts de **Logstash-Federated**.
+
+```bash
+helm search repo sensedia-helm-s3/logstash-federated -l
+```
+
+Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
+
+> NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
+
+```bash
+helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
+```
+
 ## Instalación de Agent Authorization
 
 El archivo que contiene parámetros de configuración de ejemplo para el módulo **Agent Authorization** está disponible [aquí](helm/values_examples/agent-authorization/values.yaml) .
@@ -377,6 +403,12 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-authorization/value
 ```
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/agent-authorization.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
+
+Utilizar el siguiente comando para listar la version del Helm charts de **Agent Authorization**.
+
+```bash
+helm search repo sensedia-helm-s3/agent-authorization -l
+```
 
 Utilizar el siguiente comando para el despliegue de **Agent Authorization**.
 
@@ -398,34 +430,20 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-gateway/values.yaml
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/agent-gateway.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
+Como se mencionó anteriormente en Autorización del agente, puede configurar una contraseña redis base64 si es necesario.
+
+Utilizar el siguiente comando para listar la version del Helm charts de **Agent Gateway**.
+
+```bash
+helm search repo sensedia-helm-s3/agent-gateway -l
+```
+
 Utilizar el siguiente comando para el despliegue de **Agent Gateway**.
 
 > NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
 
-Como se mencionó anteriormente en Autorización del agente, puede configurar una contraseña redis base64 si es necesario.
-
 ```bash
 helm upgrade --install agent-gateway sensedia-helm-s3/agent-gateway --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/agent-gateway.yaml
-```
-
-## Instalación de Logstash-Federated
-
-El archivo que contiene parámetros de configuración de ejemplo para el módulo **Logstash-Federated** está disponible [aquí](helm/values_examples/logstash-federated/values.yaml) .
-
-Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/logstash-federated.yaml``.
-
-```bash
-cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values.yaml ~/api-platform-hybrid/logstash-federated.yaml
-```
-
-Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/logstash-federated.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
-
-Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
-
-> NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
-
-```bash
-helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
 ```
 
 ## Instalación de API-Authorization
@@ -439,6 +457,12 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 ```
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/api-authorization.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
+
+Utilizar el siguiente comando para listar la version del Helm charts de **API Authorization**.
+
+```bash
+helm search repo sensedia-helm-s3/api-authorization -l
+```
 
 Utilizar el siguiente comando para el despliegue de **API Authorization**.
 
@@ -461,6 +485,12 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-gateway/values.yaml ~
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/api-gateway.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
 > Nota: La propiedad ``apigateway_label`` debe ser completada con el nombre deseado para el Gateway Pool e informada posteriormente mediante la apertura de un llamado para que el equipo de **Soporte y Operaciones** pueda completar la creación.
+
+Utilizar el siguiente comando para listar la version del Helm charts de **API Gateway**.
+
+```bash
+helm search repo sensedia-helm-s3/api-gateway -l
+```
 
 Utilizar el siguiente comando para el despliegue de **API Gateway**.
 
