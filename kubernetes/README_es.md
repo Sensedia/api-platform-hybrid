@@ -287,26 +287,6 @@ kubectl logs -f POD_ID -n MY_HYBRID_ENV
 
 Las siguientes secciones proporcionan información sobre la instalación de módulos de la API-Platform para entornos híbridos.
 
-## Instalación de Logstash-Federated
-
-El archivo que contiene parámetros de configuración de ejemplo para el módulo **Logstash-Federated** está disponible [aquí](helm/values_examples/logstash-federated/values.yaml) .
-
-Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/logstash-federated.yaml``.
-
-```bash
-cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values.yaml ~/api-platform-hybrid/logstash-federated.yaml
-```
-
-Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/logstash-federated.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
-
-Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
-
-> NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
-
-```bash
-helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
-```
-
 ## Cambio de la Versión de los Módulos y Otros Parámetros
 
 > Nota: Utilizar las explicaciones de esta sección y el ejemplo como base para cambiar la versión de uno o más módulos de la Plataforma y personalizar los demás parámetros según sea necesario para cada entorno.
@@ -377,6 +357,26 @@ Explicación del contenido del archivo ``values.yaml`` del módulo **Agent Autho
 * Las **líneas 23 a 27** contienen la definición de autoscaling para el pod. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster y las direcciones IP.
 * Las **líneas 29 a 35** contienen la definición de ingress y TLS para el módulo. Cambiar según la necesidad del entorno.
 * Las **líneas 37 a 43** contienen la definición de los límites de uso de los recursos de CPU y memoria que utilizará cada pod del módulo. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster.
+
+## Instalación de Logstash-Federated
+
+El archivo que contiene parámetros de configuración de ejemplo para el módulo **Logstash-Federated** está disponible [aquí](helm/values_examples/logstash-federated/values.yaml) .
+
+Crear una copia del ``values.yaml`` de ejemplo en el archivo ``api-platform-hybrid/logstash-federated.yaml``.
+
+```bash
+cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values.yaml ~/api-platform-hybrid/logstash-federated.yaml
+```
+
+Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/logstash-federated.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
+
+Utilizar el siguiente comando para el despliegue de **Logstash-Federated**.
+
+> NOTA: Cambiar el término ``VERSION`` por el número de versión del Helm chart, como se muestra en la sección **Repositorio de Helm Charts de Sensedia**.
+
+```bash
+helm upgrade --install logstash-federated sensedia-helm-s3/logstash-federated --version VERSION --namespace MY_HYBRID_ENV --values ~/api-platform-hybrid/logstash-federated.yaml
+```
 
 ## Instalación de Agent Authorization
 
