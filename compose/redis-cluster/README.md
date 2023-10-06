@@ -2,7 +2,6 @@
 
 - [Redis Cluster](#redis-cluster)
 	- [Requisitos](#requisitos)
-	- [Deploy Redis Cluster Utilizando 6 Nodes (full mode)](#deploy-redis-cluster-utilizando-6-nodes-full-mode)
 	- [Deploy Redis Cluster Utilizando 3 Nodes (minimal mode)](#deploy-redis-cluster-utilizando-3-nodes-minimal-mode)
 		- [Instalando o Redis no Node 1](#instalando-o-redis-no-node-1)
 		- [Instalando o Redis no Node 2](#instalando-o-redis-no-node-2)
@@ -36,9 +35,6 @@ Caso um dos hosts fique indisponível, o serviço ainda ficará disponível e ca
 
 Acesse [essa página](../README.md), na seção **Requisitos**, para obter informações sobre como instalar as dependências para o funcionamento dos módulos.
 
-## Deploy Redis Cluster Utilizando 6 Nodes (full mode)
-
-//Em construção
 
 ## Deploy Redis Cluster Utilizando 3 Nodes (minimal mode)
 
