@@ -18,7 +18,7 @@ properties:
   redis:
     connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
     address: "CHANGE_HERE" #Example: x.x.x.x:6379
-    password: "CHANGE_HERE"
+    password: "CHANGE_HERE" #encrypt passwords in base64
   logLevel: INFO
   trackExpires: 7
   #--- IF client in AWS
