@@ -36,7 +36,8 @@ properties:
   apigateway_label: "federated"
   apigateway_use_cachemanager: "false"
   spring_profiles_active: "federated"
-
+  allowedOrigins: "127.0.0.1"
+  
 proxy:
   enabled: false
   sensedia_apigateway_proxy_url: "proxy.example.com"
