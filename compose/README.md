@@ -13,6 +13,7 @@
     - [Deploy dos Serviços](#deploy-dos-serviços)
   - [Alterando a Versão dos Módulos, Porta e Outros Parâmetros](#alterando-a-versão-dos-módulos-porta-e-outros-parâmetros)
     - [Criação de Token](#criação-de-token)
+- [Ativação de Ambiente Híbrido](#ativação-de-ambiente-híbrido)
 
 <!-- TOC -->
 
@@ -292,3 +293,41 @@ Edite os arquivos ``modules/logstash-federated/logstash.env``, ``modules/agent-g
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
+
+# Ativação de Ambiente Híbrido
+
+A instalação do ambiente é baseado em Gateway Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
+
+> Observação: Apenas a criação do Gateway Pool é efetuada pela equipe de **Suporte e Operações** da Sensedia através da abertura de chamado ou ticket.
+* Adicione um Inbound Address acesse o **API-Manager** e clique no menu **VirtualHosts** e apos em Inbound Address
+* Crie um novo **Inbound Address** e preencha os campos:
+  * Name;
+  * Gateway Type;
+  * Protocol Type;
+  * Host /Inbound Address;
+* Clique em **Save**.
+
+![Add environment](../images/add_inbound-address.jpg)
+
+* Para ativar um ambiente híbrido, acesse o **API-Manager** e clique no menu **Environments**.
+* Crie um novo **Environment** e preencha os campos:
+  * Name;
+  * Inbound URL;
+  * Description;
+  * Gateway Pool (neste campo você deve indicar o Gateway Pool que foi informado pela equipe da Sensedia via ticket).
+* Clique em **Add Map**.
+
+![Add environment](../images/add_environment_new.jpg)
+
+* Crie um Map para definir a variável de **Destination do Authorization**, o valor será o endpoint do **Authorization** criado durante a instalação dos módulos híbridos do API-Platform.
+
+![Add map](../images/add_map_new.jpg)
+
+* Acesse o menu **APIs**.
+* Selecione/Crie a API que deseja que seja utilizada por esse Gateway Pool.
+* Adicione o **Environment Federado** na API selecionada/criada.
+* Efetue o deploy do **Environment Federado**.
+
+![Add API](../images/add_api_new.jpg)
+
+* Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido.
