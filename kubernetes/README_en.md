@@ -128,20 +128,20 @@ Using a Platform token is a requirement for configuring the hybrid environment. 
 * The field **Owner** must contain the email address of a user responsible for the environment.
 * Define the **API Platform Integration** value on the field **App**.
 
-![Create token](../images/create_token1.png)
+![Create token](../images/create_token1_new.jpg)
 
 * On the next page, select the API **API Manager 3.0.0**.
 
-![Select API](../images/create_token2.png)
+![Select API](../images/create_token2_new.jpg)
 
 * Select the plan **Federated Plan**.
 
-![Select Plan](../images/create_token3.png)
+![Select Plan](../images/create_token2_new.jpg)
 
 * Click the **Save Plan** button.
 * On the next page, publish the token by clicking the button **Publish your access token**.
 
-![Publish token](../images/create_token4.png)
+![Publish token](../images/create_token4_new.jpg)
 
 * Save the token and store it in a file, since you will use it to customise some configuration parameters of some API-Platform modules.
 
@@ -516,6 +516,16 @@ Environment installation is based on gateway pools. These pools represent a grou
 
 > NOTE: Only the creation of a gateway pool is performed by the Sensedia **Support and Operations** team through the opening of a ticket.
 
+* Add an **Inbound Address** by accessing the **API-Manager**, clicking on the **VirtualHosts** menu, and then selecting **Inbound Address**.  
+* Create a new **Inbound Address** and fill in the following fields:  
+  * Name;  
+  * Gateway Type;  
+  * Protocol Type;  
+  * Host / Inbound Address;  
+* Click **Save**.
+
+![Add environment](../images/add_inbound-address.jpg)
+
 * To activate a hybrid environment, access the **API Manager** and click on the **Environments** menu.
 * Create a new **Environment** and fill out these fields:
   * Name;
@@ -524,17 +534,17 @@ Environment installation is based on gateway pools. These pools represent a grou
   * Gateway Pool (here you must inform the gateway pool sent by the Sensedia team on your ticket).
 * Click on **Add Map**.
 
-![Add environment](../images/add_environment.png)
+![Add environment](../images/add_environment_new.jpg)
 
 * Create a Map to define de **Authorization Destination** variable, the value that will be the endpoint of the **Authorization** created while installing the API-Platform hybrid modules.
 
-![Add map](../images/add_map.png)
+![Add map](../images/add_map_new.jpg)
 
 * Access the **APIs** menu.
 * Either select or create the API you wish the gateway pool to use.
 * Add the **Federated Environment** to the API you selected/created.
 * Deploy the **Federated Environment**.
 
-![Add API](../images/add_API.png)
+![Add API](../images/add_api_new.jpg)
 
 * Validate your API by making a request to the hybrid gateway.
