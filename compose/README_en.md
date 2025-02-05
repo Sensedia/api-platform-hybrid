@@ -12,6 +12,7 @@
 		- [Deploying the services](#deploying-the-services)
 	- [Changing Modules Version, Port and Other Parameters](#changing-modules-version-port-and-other-parameters)
 		- [Token Generation](#token-generation)
+  - [Hybrid Environment Activation](#hybrid-environment-activation)
 <!-- TOC END -->
 
 
@@ -292,3 +293,41 @@ Edit the files ``modules/logstash-federated/logstash.env``, ``modules/agent-gate
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
+# Hybrid Environment Activation
+
+Environment installation is based on gateway pools. These pools represent a group of gateways that can be used by one or more virtual environments.
+
+> NOTE: Only the creation of a gateway pool is performed by the Sensedia **Support and Operations** team through the opening of a ticket.
+
+* Add an **Inbound Address** by accessing the **API-Manager**, clicking on the **VirtualHosts** menu, and then selecting **Inbound Address**.  
+* Create a new **Inbound Address** and fill in the following fields:  
+  * Name;  
+  * Gateway Type;  
+  * Protocol Type;  
+  * Host / Inbound Address;  
+* Click **Save**.
+
+![Add environment](../images/add_inbound-address.jpg)
+
+* To activate a hybrid environment, access the **API Manager** and click on the **Environments** menu.
+* Create a new **Environment** and fill out these fields:
+  * Name;
+  * Inbound URL;
+  * Description;
+  * Gateway Pool (here you must inform the gateway pool sent by the Sensedia team on your ticket).
+* Click on **Add Map**.
+
+![Add environment](../images/add_environment_new.jpg)
+
+* Create a Map to define de **Authorization Destination** variable, the value that will be the endpoint of the **Authorization** created while installing the API-Platform hybrid modules.
+
+![Add map](../images/add_map_new.jpg)
+
+* Access the **APIs** menu.
+* Either select or create the API you wish the gateway pool to use.
+* Add the **Federated Environment** to the API you selected/created.
+* Deploy the **Federated Environment**.
+
+![Add API](../images/add_api_new.jpg)
+
+* Validate your API by making a request to the hybrid gateway.
