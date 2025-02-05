@@ -126,20 +126,20 @@ A configuração do ambiente híbrido tem como pré-requisito a utilização de 
 * O campo **Owner** deve conter o email de um usuário responsável pelo ambiente.
 * Defina o valor **API Platform Integration** no campo **App**.
 
-![Create token](../images/create_token1.png)
+![Create token](../images/create_token1_new.jpg)
 
 * Na próxima página, selecione a API **API Manager 3.0.0**.
 
-![Select API](../images/create_token2.png)
+![Select API](../images/create_token2_new.jpg)
 
 * Selecione o plano **Federated Plan**.
 
-![Select Plan](../images/create_token3.png)
+![Select Plan](../images/create_token3_new.jpg)
 
 * Clique no botão **Save Plan**.
 * Na próxima página, publique o token por meio do botão **Publish your access token**.
 
-![Publish token](../images/create_token4.png)
+![Publish token](../images/create_token4_new.jpg)
 
 * Salve o token gerado e armazene em algum arquivo, pois você precisará dele para customizar alguns parâmetros de configuração de alguns módulos do API-Platform.
 
@@ -513,6 +513,15 @@ kubectl get pods -n MY_HYBRID_ENV
 A instalação do ambiente é baseado em Gateway Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
 
 > Observação: Apenas a criação do Gateway Pool é efetuada pela equipe de **Suporte e Operações** da Sensedia através da abertura de chamado ou ticket.
+* Adicione um Inbound Address acesse o **API-Manager** e clique no menu **VirtualHosts** e apos em Inbound Address
+* Crie um novo **Inbound Address** e preencha os campos:
+  * Name;
+  * Gateway Type;
+  * Protocol Type;
+  * Host /Inbound Address;
+* Clique em **Save**.
+
+![Add environment](../images/add_inbound-address.jpg)
 
 * Para ativar um ambiente híbrido, acesse o **API-Manager** e clique no menu **Environments**.
 * Crie um novo **Environment** e preencha os campos:
@@ -522,18 +531,18 @@ A instalação do ambiente é baseado em Gateway Pools. Esses pools representam 
   * Gateway Pool (neste campo você deve indicar o Gateway Pool que foi informado pela equipe da Sensedia via ticket).
 * Clique em **Add Map**.
 
-![Add environment](../images/add_environment.png)
+![Add environment](../images/add_environment_new.jpg)
 
 * Crie um Map para definir a variável de **Destination do Authorization**, o valor será o endpoint do **Authorization** criado durante a instalação dos módulos híbridos do API-Platform.
 
-![Add map](../images/add_map.png)
+![Add map](../images/add_map_new.jpg)
 
 * Acesse o menu **APIs**.
 * Selecione/Crie a API que deseja que seja utilizada por esse Gateway Pool.
 * Adicione o **Environment Federado** na API selecionada/criada.
 * Efetue o deploy do **Environment Federado**.
 
-![Add API](../images/add_API.png)
+![Add API](../images/add_api_new.jpg)
 
 * Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido.
 
