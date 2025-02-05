@@ -12,6 +12,7 @@
     - [Despliegue de Servicios](#despliegue-de-servicios)
   - [Cambio de Versión de los Módulos, Puerto de Red y Otros Parámetros](#cambio-de-versión-de-los-módulos-puerto-de-red-y-otros-parámetros)
     - [Creación de Token](#creación-de-token)
+- [Activación del Entorno Híbrido](#activación-del-entorno-híbrido)
 <!-- TOC END -->
 
 
@@ -292,3 +293,41 @@ Editar los archivos ``modules/logstash-federated/logstash.env``, ``modules/agent
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
+
+# Activación del Entorno Híbrido
+
+La instalación del entorno se basa en grupos de puertas de enlace (gateway pools). Estos pools representan un grupo de puertas de enlace que pueden utilizar uno o más entornos virtuales.
+
+> NOTA: Solo la creación del grupo de puertas de enlace es realizada por el equipo de **Soporte y Operaciones** de Sensedia a través de la apertura de un llamado.
+* Crear un Inbound Address acesse o **API-Manager**y hacer clic en el menú **VirtualHosts** y en Inbound Address
+* Crear un nuevo **Inbound Address** y rellenar los campos::
+  * Name;
+  * Gateway Type;
+  * Protocol Type;
+  * Host /Inbound Address;
+* Hacer clic en **Save**.
+
+![Add environment](../images/add_inbound-address.jpg)
+
+* Para activar un entorno híbrido, acceder al **API Manager** y hacer clic en el menú **Environments**.
+* Crear un nuevo **Environment** y rellenar los campos:
+  * Name;
+  * Inbound URL;
+  * Description;
+  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de suporte).
+* Hacer clic en **Add Map**.
+
+![Add environment](../images/add_environment_new.jpg)
+
+  * Crear un Map para establecer la variable **Destination de Authorization**, el valor será el endpoint de la **Authorization** creada durante la instalación de módulos híbridos de la API-Platform.  
+
+![Add map](../images/add_map_new.jpg)
+
+* Acceder al menú **APIs**.
+* Seleccionar/Crear la API que desea ser utilizada por este grupo de puertas de enlace;
+* Agregar el **Entorno Federado a** la API seleccionada/creada;
+* Desplegar el **Entorno Federado**.
+
+![Add API](../images/add_api_new.jpg)
+
+* Para validar su API, realizar una petición a la puerta de enlace híbrida.
