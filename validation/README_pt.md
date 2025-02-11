@@ -79,29 +79,24 @@ Para isso é necessário ter concluído todo provisionamento e configuração do
     ]
 }
 ```
-![Create Api6](../images/create_api6.jpg)
 
 * Acesse a aba de interceptos de **Tracing**
    * Adicione dois interceptors de Log sendo um antes e um depois do Mock
    * Clique em **SAVE AND NEXT**
-
-![Create Api7](../images/create_api7.jpg)
+     
+![Create Api6](../images/create_api6.jpg)
 
 
 * Realize o Deploy da API
-
-
-
-
-![Create Api8](../images/create_api8.jpg)
+  
+![Create Api7](../images/create_api7.jpg)
 
 * Acesse API Design > API Catalog
    * Abra a api criada
    * Em Environments clique no Icone conforme a seta e copie o valor
    * Verifique o valor do Path
-
-
-![Create Api9](../images/create_api9.jpg)
+     
+![Create Api8](../images/create_api8.jpg)
 
 * Para realizar a validação, acesse um terminal ou ferramenta de requisição 
 e execute um curl conforme exemplo 
@@ -110,4 +105,5 @@ e execute um curl conforme exemplo
 curl -X GET https://api-support-aws.sensedia.com/mock-hybrid/mock
 ```
 
+![Create Api9](../images/create_api9.jpg)
 
