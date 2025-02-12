@@ -3,7 +3,7 @@
 
 # Validação do fluxo federado
 
-Para realizar a validação do fluxo utilizamos uma api simples com um interceptor de mock e logs para caso necessário realizarmos uma análise.
+Para realizar a validação do fluxo utilizamos uma API simples com um interceptor de mock e logs para caso necessário realizarmos uma análise.
 
 Para isso é necessário ter concluído todo provisionamento e configuração do enviroment federado
 
@@ -14,7 +14,7 @@ Para isso é necessário ter concluído todo provisionamento e configuração do
 
 *  Preencha os campos conforme exemplo:
    * API Name
-   * Api version 
+   * API version 
    * Base path
    * Selecione o Enviroment federado 
    * Clique em **SAVE AND NEXT**
@@ -45,7 +45,7 @@ Para isso é necessário ter concluído todo provisionamento e configuração do
 
 *  Preencha os campos conforme exemplo:
    * Selecione o Resource criado e a opreção GET
-   * Adicione um Interceptor de moc 
+   * Adicione um Interceptor de Mock 
 
 
 ![Create Api5](../images/create_api5.jpg)
@@ -92,7 +92,7 @@ Para isso é necessário ter concluído todo provisionamento e configuração do
 ![Create Api7](../images/create_api7.jpg)
 
 * Acesse API Design > API Catalog
-   * Abra a api criada
+   * Abra a API criada
    * Em Environments clique no Icone conforme a seta e copie o valor
    * Verifique o valor do Path
      
