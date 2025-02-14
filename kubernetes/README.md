@@ -544,7 +544,5 @@ A instalação do ambiente é baseado em Gateway Pools. Esses pools representam 
 
 ![Add API](../images/add_api_new.jpg)
 
-* Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido.
-
-
+* Efetue o teste de validação de sua API fazendo uma requisição no Gateway Híbrido; Acesse este link para documentação de [Validação](../validation/README_pt.md).
 
