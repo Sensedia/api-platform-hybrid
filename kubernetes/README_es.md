@@ -544,4 +544,4 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 
 ![Add API](../images/add_api_new.jpg)
 
-* Para validar su API, realizar una petición a la puerta de enlace híbrida.
+* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_pt.md).
