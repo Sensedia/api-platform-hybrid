@@ -547,4 +547,4 @@ Environment installation is based on gateway pools. These pools represent a grou
 
 ![Add API](../images/add_api_new.jpg)
 
-* Validate your API by making a request to the hybrid gateway.
+* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_pt.md).
