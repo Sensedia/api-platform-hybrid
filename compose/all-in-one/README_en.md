@@ -87,3 +87,4 @@ If you want to stop the service and remove all data, volume, images and containe
 cd compose/all-in-one/
 sudo docker-compose -f sensedia-all-in-one.yaml down
 ```
+* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_pt.md).

@@ -144,3 +144,5 @@ Se quiere parar el servicio y quitar todos los dados, volúmenes, imágenes, red
 cd NOME_DIR
 sudo docker-compose -f SERVICE_NAME.yaml down
 ```
+
+* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_pt.md).
