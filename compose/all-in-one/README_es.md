@@ -85,3 +85,5 @@ Se quiere parar el servicio y quitar todos los dados, volúmenes, imágenes, red
 cd compose/all-in-one/
 sudo docker-compose -f sensedia-all-in-one.yaml down
 ```
+
+* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_pt.md).
