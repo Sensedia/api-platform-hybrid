@@ -15,7 +15,7 @@ properties:
     address: "CHANGE_HERE" #Example: x.x.x.x:6379
     connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
     compressData: "true"
-    password: "CHANGE_HERE"
+    password: "CHANGE_HERE" #Encode password in base64
   #--- IF client in AWS
   websocketUri: wss://integration-aws.sensedia.com/websocket
   #--- If client in GCP
