@@ -74,7 +74,7 @@ Tabela 3: Opções de provisionamento por módulo.
 | Gateway | Sim | Sim | Sim (sobre docker-compose) | n/a |
 | Authorization | Sim | Sim | Sim (sobre docker-compose) | n/a |
 | Logstash-federated | Sim | Sim | Sim (sobre docker-compose) | n/a |
-| Redis (>= 4.0.11) | Livre escolha ||| - ElastiCache (AWS) <br> - Memorystore (GCP) |
+| Redis (> 4.0.11, <8.0.0 ) | Livre escolha ||| - ElastiCache (AWS) <br> - Memorystore (GCP) |
 | Ingress | Sim (service/ingress) | Sim (load balancer do Cliente) | Sim (load balancer do Cliente) | - ELB / ALB (AWS) <br> - Compute Load Balancer (GCP) |
 
 # Topologia Macro
