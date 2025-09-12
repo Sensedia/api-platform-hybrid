@@ -76,7 +76,7 @@ Table 3. Provisioning options by module.
 | Gateway | Yes | Yes | Yes (on docker-compose) | n/a |
 | Authorization | Yes | Yes | Yes (on docker-compose) | n/a |
 | Logstash-federated | Yes | Yes | Yes (on docker-compose) | n/a |
-| Redis (>= 4.0.11) | Free choice ||| - ElastiCache (AWS) <br> - Memorystore (GCP) |
+| Redis (>4.0.11, <8.0.0) | Free choice ||| - ElastiCache (AWS) <br> - Memorystore (GCP) |
 | Ingress | Yes (service/ingress) | Yes (Client's load balancer) | Yes (Client's load balancer) | - ELB / ALB (AWS) <br> - Compute Load Balancer (GCP) |
 
 # Macro Topology

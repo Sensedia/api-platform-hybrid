@@ -74,7 +74,7 @@ Cuadro 3: Opciones de aprovisionamiento por módulo.
 | Gateway | Sí | Sí | Sí (sobre docker-compose) | n/a |
 | Authorization | Sí | Si | Sí (sobre docker-compose) | n/a |
 | Logstash-federated | Sí | Sí | Sí (sobre docker-compose) | n/a |
-| Redis (>= 4.0.11) | Libre elección ||| - ElastiCache (AWS) <br> \- Memorystore (GCP) |
+| Redis (>4.0.11, <8.0.0) | Libre elección ||| - ElastiCache (AWS) <br> \- Memorystore (GCP) |
 | Ingress | Sí (service/ingress) | Sí (balanceador de carga del Cliente) | Sí (balanceador de carga del Cliente) | - ELB/ALB (AWS) <br> \- Compute Load Balancer (GCP) |
 
 # Topología Macro
