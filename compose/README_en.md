@@ -117,9 +117,9 @@ There are many options to run Redis.
 |-|-|-|
 |**Managed service**|GCP|Memory store, managed Redis offer|
 |**Manager service**|AWS|ElastiCache, managed Redis offer|
-|**Self-managed service**|On Premises|Redis cluster installed locally. [Consult specific documentation](redis-cluster/README_en.md)|
+|**Self-managed service**|On Premises|Redis cluster installed locally|
 
-For the **Self-managed service** method, the Redis backup is saved in the ``/data`` directory of each host.
+In the context of **Self-managed service**, the configuration of persistence mechanisms, such as PersistentVolumes and StorageClasses, is mandatory for the deployment of stateful applications in Kubernetes. The BGsafe solution is an example of an applicable implementation for this purpose.
 
 ## Deployment Methods
 
