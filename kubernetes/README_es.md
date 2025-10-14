@@ -11,7 +11,6 @@
   - [Redis](#redis)
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
-    - [Instalación de Redis con Docker Compose](#instalación-de-redis-con-docker-compose)
   - [Instalación de Kubectl](#instalación-de-kubectl)
   - [Instalación del Helm](#instalación-del-helm)
     - [Descarga de Helm](#descarga-de-helm)
@@ -145,7 +144,7 @@ La configuración del entorno híbrido es un requisito previo para usar un token
 
 ## Redis
 
-Módulo responsable de almacenar los tokens de acceso y escenarios de API. La implementación de Redis Cluster se puede realizar a través de servicios gestionados, como AWS ElastiCache y GCP Memorystore. También se puede instalar Redis usando Docker Compose, según se muestra en esta [documentación](../compose/redis-cluster/README_es.md).
+Módulo responsable del almacenamiento de Access Tokens y escenarios de APIs. El deploy de Redis puede efectuarse a través de Servicios Gestionados, tales como: AWS ElastiCache y GCP Memorystore o Self-managed con persistencia de datos.
 
 ### AWS ElastiCache
 
