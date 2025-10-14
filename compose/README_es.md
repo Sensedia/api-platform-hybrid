@@ -117,9 +117,9 @@ Hay varias opciones para ejecutar Redis.
 |-|-|-|
 |**Servicio administrado**|GCP|Memory store, oferta de Redis gestionado|
 |**Servicio administrado**|AWS|ElastiCache, oferta de Redis gestionado|
-|**Servicio autogestionado**|En las instalaciones|Cluster Redis instalado localmente. [Consulte la documentación específica](redis-cluster/README_es.md)|
+|**Servicio autogestionado**|En las instalaciones|Cluster Redis instalado localmente|
 
-En el método **Servicio autogestionado**, la copia de seguridad de Redis se guarda en el directorio ``/data`` de cada host.
+En el contexto de servicios autogestionados **Servicio autogestionado**, la configuración de mecanismos de persistencia, como PersistentVolumes y StorageClasses, es mandatoria para el despliegue de aplicaciones con estado en Kubernetes. La solución BGsafe es un ejemplo de implementación aplicable para este fin.
 
 ## Métodos de Despliegue
 
