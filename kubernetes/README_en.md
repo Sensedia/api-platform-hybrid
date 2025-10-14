@@ -11,7 +11,6 @@
   - [Redis](#redis)
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
-    - [Installing Redis with Docker Compose](#installing-redis-with-docker-compose)
   - [Installing Kubectl](#installing-kubectl)
   - [Installing Helm](#installing-helm)
     - [Downloading Helm](#downloading-helm)
@@ -147,7 +146,7 @@ Using a Platform token is a requirement for configuring the hybrid environment. 
 
 ## Redis
 
-Module responsible for storing access tokens and API scenarios. You can deploy the Redis Cluster through managed services, such as WS ElastiCache and GCP Memorystore. It's also possible to install Redis using Docker Compose, as shown in this [document](../compose/redis-cluster/README_en.md).
+Module responsible for storing access tokens and API scenarios. You can deploy the Redis Cluster through managed services, such as AWS ElastiCache and GCP Memorystore, or Self-managed with data persistence.
 
 ### AWS ElastiCache
 

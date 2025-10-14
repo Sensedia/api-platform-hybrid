@@ -11,7 +11,6 @@
   - [Redis](#redis)
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
-    - [Instalação do Redis com Docker Compose](#instalação-do-redis-com-docker-compose)
   - [Instalação do Kubectl](#instalação-do-kubectl)
   - [Instalação do Helm](#instalação-do-helm)
     - [Download do Helm](#download-do-helm)
@@ -145,7 +144,7 @@ A configuração do ambiente híbrido tem como pré-requisito a utilização de 
 
 ## Redis
 
-Módulo responsável pelo armazenamento de access token e cenários de APIs. O deploy do Cluster Redis pode ser efetuado através de Serviços Gerenciados, tais como: AWS ElastiCache e GCP Memorystore. Há também a opção de instalar o Redis usando o Docker Compose mostrado nesta [documentação](../compose/redis-cluster/README.md).
+Módulo responsável pelo armazenamento de access token e cenários de APIs. O deploy do Redis pode ser efetuado através de Serviços Gerenciados, tais como: AWS ElastiCache e GCP Memorystore ou Self-managed com persistencia de dados.
 
 ### AWS ElastiCache
 
@@ -167,10 +166,6 @@ O API-Platform é compatível com o Memorystore (serviço gerenciado do Redis na
 * O número de nodes varia conforme o workload esperado para o ambiente.
 * As opções padrão são suficientes para o uso do API-Platform.
 * Recomendamos, salvo haja expectativa de alto workload já no primeiro momento, iniciar com redundância, monitorá-lo e escalá-lo conforme a demanda.
-
-### Instalação do Redis com Docker Compose
-
-Como objetivo de facilitar a instalação, a Sensedia provê uma documentação sobre a instalação do Redis em ambientes on-premises usando o Docker Compose. É recomendado, porém, que o responsável pela instalação tenha entendimento da tecnologia e observe cada passo. Acesse a documentação [aqui](../compose/redis-cluster/README.md).
 
 ## Instalação do Kubectl
 
