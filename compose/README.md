@@ -117,9 +117,9 @@ Há várias opções para executar o Redis.
 |-|-|-|
 |**Managed service**|GCP|Memory store, oferta de Redis gerenciado|
 |**Manager service**|AWS|ElastiCache, oferta de Redis gerenciado|
-|**Self-managed service**|On Premises|Redis cluster instalado localmente. [Consulte a documentação específica](redis-cluster/README.md)|
+|**Self-managed service**|On Premises|Redis cluster instalado localmente.|
 
-No método **Self-managed service**, o backup do Redis é salvo no diretório ``/data`` de cada host.
+No contexto de serviços auto-gerenciados **Self-managed service** , a configuração de mecanismos de persistência, como PersistentVolumes e StorageClasses, é mandatória para a implantação de aplicações com estado no Kubernetes. A solução BGsafe é um exemplo de implementação aplicável para esse fim.
 
 ## Métodos de Deploy
 
@@ -141,7 +141,7 @@ A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer 
 |Gateway|Responsável por processar as mensagens.|Não|
 |Authorization|Responsável pela geração de tokens.|Não|
 |Logstash-federated|Transferência de dados analíticos e auditoria de tokens para Cloud Sensedia.|Opcional|Não|
-|Redis|Grid de memória para compartilhamento de informações entre os módulos|Sim (normalmente dos arquivos *.rdb). O backup do Redis é salvo no diretório ``/data`` de cada host.|
+|Redis|Grid de memória para compartilhamento de informações entre os módulos|Sim (normalmente dos arquivos *.rdb).
 
 ### Recursos Recomendados
 
