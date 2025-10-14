@@ -44,7 +44,6 @@ Nesse caso, existe a possibilidade de que alguns componentes da topologia do API
       - [Docker](compose/README.md#docker)
       - [Docker-Compose](compose/README.md#docker-compose)
       - [Selinux no CentOS/Red Hat](compose/README.md#selinux-no-centosred-hat)
-          - [Backup](compose/redis-cluster/README.md#backup)
     - [Métodos de Deploy](compose/README.md#métodos-de-deploy)
       - [Módulos](compose/README.md#módulos)
       - [Recursos Recomendados](compose/README.md#recursos-recomendados)
