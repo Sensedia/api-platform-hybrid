@@ -36,7 +36,8 @@ Access the section ``Requirements`` of [this page](../README_en.md) to install t
 
 2 - Create an access token for the hybrid environment on the API-Manager following the instructions on [this page]((../README_en.md) (section: **Token Generation**).
 
-3 - Edit the file ``sensedia-all-in-one.yaml`` and modify the versions of the modules, according to the instructions on [this page]((../README_en.md) (section: **Changing Modules Version, Port and Other Parameters**).
+3 - Edit the ``sensedia-all-in-one.yaml`` file and change the versions of the modules that have the values ​​set to **CHANGE_HERE**, according to the instructions [on this page](../README.md), in the section **Changing Module Versions, Port and Other Parameters**.
+
 
 4 - Use the following commands to execute ``docker-compose`` referencing the file ``sensedia-all-in-one.yaml``.
 
