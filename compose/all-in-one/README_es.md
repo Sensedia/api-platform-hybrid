@@ -27,6 +27,7 @@ Acceder a [esta página](../README_es.md), en la sección **Requisitos**, para o
 # Despliegue
 
 ## Instalación
+> ¡¡¡ATENCIÓN!!! Antes de iniciar la instalación, solicite las versiones y los datos necesarios para la instalación a través de un Ticket.
 
 1 - Editar el archivo ``hybrid.env``, ubicado en este directorio, y cambiar los valores que contienen **CHANGE_HERE** a valores consistentes con su entorno.
 
