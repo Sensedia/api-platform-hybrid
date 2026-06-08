@@ -33,7 +33,7 @@ Acceder a [esta página](../README_es.md), en la sección **Requisitos**, para o
 
 2 - Generar um token de acesso del entorno híbrido en lo API-Manager siguiendo las instrucciones de [esta página](../README_es.md) (sección: **Creación de Token**).
 
-3 - Editar el archivo ``sensedia-all-in-one.yaml`` y cambiar las versiones de los módulos según las instrucciones de [esta página](../README_es.md) (sección: **Cambio de Versión de los Módulos, Puerto de Red y Otros Parámetros**).
+3 - Edite el archivo ``sensedia-all-in-one.yaml`` y cambie las versiones de los módulos que tienen los valores establecidos en **CHANGE_HERE**, de acuerdo con las instrucciones [en esta página](../README.md), en la sección **Cambio de versiones de módulos, puerto y otros parámetros**.
 
 4 - Usar los siguientes comandos para ejecutar ``docker-compose`` referenciando el archivo ``sensedia-all-in-one.yaml``.
 
