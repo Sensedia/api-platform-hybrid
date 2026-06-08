@@ -1,88 +1,157 @@
-#All in one
+# =============================================================================
+# SENSEDIA FEDERATED GATEWAY - DOCKER COMPOSE
+# =============================================================================
+# Requires: Docker Compose v2.4+
+# Usage:    docker compose --env-file hybrid.env up -d
+# NOTE:     Replace all CHANGE_HERE values with actual image tags before deploy.
+# =============================================================================
+
 version: '2.4'
+
+x-common: &common
+  env_file: hybrid.env
+  networks:
+    - api-platform
+  restart: always
+
 services:
+
+  # ---------------------------------------------------------------------------
+  # REDIS - In-memory data store
+  # ---------------------------------------------------------------------------
   redis:
-    env_file: hybrid.env
-    networks:
-      - api-platform
+    <<: *common
     image: redis:5.0.9-alpine
     container_name: redis
-    command: redis-server --notify-keyspace-events KEA --save 900 1 --save 300 10
+    command: >
+      redis-server
+        --requirepass ${REDIS_PASSWORD}
+        --notify-keyspace-events KEA
+        --save 900 1
+        --save 300 10
     mem_limit: 512m
+    mem_reservation: 128m
     volumes:
-       - /data/redis-standalone:/data
+      - /data/redis-standalone:/data
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
+  # ---------------------------------------------------------------------------
+  # LOGSTASH - Log forwarding to Sensedia platform
+  # ---------------------------------------------------------------------------
   logstash-federated:
-    env_file: hybrid.env
-    networks:
-      - api-platform
+    <<: *common
     image: gcr.io/production-main-268117/logstash-federated:CHANGE_HERE
     container_name: logstash-federated
     cpu_count: 1
-    mem_limit: 1024M
+    mem_limit: 1024m
     mem_reservation: 512m
-    restart: always
     ports:
-      - '9600:9600'
-      - '8090:8080'
+      - "127.0.0.1:9600:9600"   # Logstash monitoring API (internal only)
+      - "8090:8080"              # Log ingestion
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9600"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
+  # ---------------------------------------------------------------------------
+  # AGENT AUTHORIZATION - WebSocket agent for authorization sync
+  # ---------------------------------------------------------------------------
   agent-authorization:
-    env_file: hybrid.env
-    networks:
-      - api-platform
-    depends_on:
-      - redis
+    <<: *common
     image: gcr.io/production-main-268117/agent-authorization:CHANGE_HERE
     container_name: agent-authorization
     mem_limit: 512m
-    restart: always
-    ports:
-      - '8092:8092'
-
-  agent-gateway:
-    env_file: hybrid.env
-    networks:
-      - api-platform
+    mem_reservation: 256m
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8092:8092"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8092/actuator/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # ---------------------------------------------------------------------------
+  # AGENT GATEWAY - WebSocket agent for gateway sync
+  # ---------------------------------------------------------------------------
+  agent-gateway:
+    <<: *common
     image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE
     container_name: agent-gateway
     mem_limit: 512m
-    restart: always
-    ports:
-      - '8091:8091'
-
-  api-authorization:
-    env_file: hybrid.env
-    networks:
-      - api-platform
+    mem_reservation: 256m
     depends_on:
-      - agent-authorization
-      - redis
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8091:8091"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8091/actuator/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # ---------------------------------------------------------------------------
+  # API AUTHORIZATION - Authorization runtime engine
+  # ---------------------------------------------------------------------------
+  api-authorization:
+    <<: *common
     image: gcr.io/production-main-268117/api-authorization:CHANGE_HERE
     container_name: api-authorization
     mem_limit: 2048m
-    restart: always
-    ports:
-      - '8084:8084'
-
-  api-gateway:
-    env_file: hybrid.env
-    networks:
-      - api-platform
+    mem_reservation: 1024m
     depends_on:
-      - redis
-      - agent-gateway
-      - logstash-federated
+      redis:
+        condition: service_healthy
+      agent-authorization:
+        condition: service_healthy
+    ports:
+      - "8084:8084"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8084/actuator/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  # ---------------------------------------------------------------------------
+  # API GATEWAY - Main API gateway runtime
+  # ---------------------------------------------------------------------------
+  api-gateway:
+    <<: *common
     image: gcr.io/production-main-268117/api-gateway:CHANGE_HERE
     container_name: api-gateway
     cpu_count: 1
     mem_limit: 2048m
-    restart: always
+    mem_reservation: 1024m
+    depends_on:
+      redis:
+        condition: service_healthy
+      agent-gateway:
+        condition: service_healthy
+      logstash-federated:
+        condition: service_healthy
     ports:
-      - '8080:8080'
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/actuator/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
 
 networks:
   api-platform:
