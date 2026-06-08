@@ -30,6 +30,8 @@ Access the section ``Requirements`` of [this page](../README_en.md) to install t
 
 ## Installation
 
+>ATTENTION!!! Before starting the installation, please request the required versions and installation data via Ticket.
+
 1 - Edit the file ``hybrid.env``, which is inside this directory, and replace the values defined as **CHANGE_HERE** with values consistent with your hybrid environment.
 
 2 - Create an access token for the hybrid environment on the API-Manager following the instructions on [this page]((../README_en.md) (section: **Token Generation**).
