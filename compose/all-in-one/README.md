@@ -28,7 +28,7 @@ Acesse [essa página](../README.md), na seção ``Requisitos``, para obter infor
 
 ## Instalação
 
-> ATENÇÃO!!! Antes de iniciar a instalação solicite as versões e dados necessarios para instação via Ticket.
+> ATENÇÃO!!! Antes de iniciar a instalação solicite as versões e dados necessários para instalação via Ticket.
 
 1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
 
