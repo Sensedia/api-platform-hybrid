@@ -28,11 +28,13 @@ Acesse [essa página](../README.md), na seção ``Requisitos``, para obter infor
 
 ## Instalação
 
+> ATENÇÃO!!! Antes de iniciar a instalação solicite as versões e dados necessários para instalação via Ticket.
+
 1 - Edite o arquivo ``hybrid.env``, contido neste diretório, e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
 
 2 - Crie um token de acesso do ambiente híbrido no API-Manager seguindo as instruções [dessa página](../README.md), na seção **Criação de Token**.
 
-3 - Edite o arquivo ``sensedia-all-in-one.yaml`` e altere as versões dos módulos, conforme as instruções [dessa página](../README.md), na seção **Alterando a Versão dos Módulos, Porta e Outros Parâmetros**.
+3 - Edite o arquivo ``sensedia-all-in-one.yaml`` e altere as versões dos módulos que estão com os valores definidos como **CHANGE_HERE**, conforme as instruções [dessa página](../README.md), na seção **Alterando a Versão dos Módulos, Porta e Outros Parâmetros**.
 
 4 - Use os comandos a seguir para executar o ``docker-compose`` referenciando o arquivo ``sensedia-all-in-one.yaml``.
 
