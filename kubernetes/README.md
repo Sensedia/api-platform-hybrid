@@ -5,12 +5,15 @@
 - [Modelos de Deployment Suportados](#modelos-de-deployment-suportados)
 - [Topologia Macro](#topologia-macro)
 - [Recursos Recomendados](#recursos-recomendados)
+- [Capacidade e Dimensionamento (RPS)](#capacidade-e-dimensionamento-rps)
 - [Requisitos de Instalação](#requisitos-de-instalação)
   - [Criação do Customer ID](#criação-do-customer-id)
   - [Criação de Token](#criação-de-token)
   - [Redis](#redis)
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
+    - [Escalabilidade e Elasticidade do Cluster Redis](#escalabilidade-e-elasticidade-do-cluster-redis)
+    - [Leitura a partir de Réplicas (Read Scaling)](#leitura-a-partir-de-réplicas-read-scaling)
   - [Instalação do Kubectl](#instalação-do-kubectl)
   - [Instalação do Helm](#instalação-do-helm)
     - [Download do Helm](#download-do-helm)
@@ -99,6 +102,21 @@ Cada aplicação deve ser provisionada considerando os recursos de hardware dos 
 |Logstash Federated|1|1 GB|100 GB|
 |Redis Data Node|2|4 GB|60 GB|
 
+# Capacidade e Dimensionamento (RPS)
+
+A tabela de **Recursos Recomendados** acima representa o piso mínimo de hardware por réplica de cada módulo — não uma capacidade máxima de throughput. A quantidade de requisições por segundo (RPS) que uma instância do Gateway suporta varia conforme:
+
+* Tamanho médio do payload das requisições/respostas;
+* Políticas aplicadas na API (transformação, validação, autenticação/autorização, rate limit, etc.);
+* Latência de rede até o backend de destino;
+* Recursos de CPU/memória alocados ao pod.
+
+Por essa razão, não existe um número único de RPS que represente todos os cenários de uso. Recomendamos que cada cliente estabeleça sua própria referência de capacidade através de um teste de carga controlado (ex.: k6, JMeter, Gatling) contra uma API representativa do seu tráfego real, monitorando CPU, memória e RPS por pod durante o teste — os endpoints de métricas já documentados na tabela de [Monitoramento](../README_pt.md#monitoramento-health-check-e-balanceamento) podem ser usados para essa coleta.
+
+A partir dessa referência, utilize o bloco `autoscaling` do `values.yaml` de cada módulo (ver seção [Alterando a Versão dos Módulos e Outros Parâmetros](#alterando-a-versão-dos-módulos-e-outros-parâmetros)) para definir `minReplicas`, `maxReplicas` e `averageUtilization` de forma que o ambiente escale horizontalmente antes de saturar a capacidade medida por pod.
+
+> A Sensedia está consolidando uma referência de capacidade média (RPS por réplica) validada internamente para o Gateway híbrido. Até a publicação desse valor, utilize a metodologia de teste de carga acima como base para o dimensionamento do seu ambiente.
+
 # Requisitos de Instalação
 
 Nas seções seguintes são apresentados os requisitos de instalação do API-Platform no ambiente híbrido.
@@ -166,6 +184,35 @@ O API-Platform é compatível com o Memorystore (serviço gerenciado do Redis na
 * O número de nodes varia conforme o workload esperado para o ambiente.
 * As opções padrão são suficientes para o uso do API-Platform.
 * Recomendamos, salvo haja expectativa de alto workload já no primeiro momento, iniciar com redundância, monitorá-lo e escalá-lo conforme a demanda.
+
+### Escalabilidade e Elasticidade do Cluster Redis
+
+O modelo homologado para produção é um cluster Redis com, no mínimo, 3 nós, cada um com ao menos uma réplica (master + slave por nó), conforme já mencionado nesta seção. Essa é uma recomendação da Sensedia — a arquitetura do Redis (cluster, standalone ou serviço gerenciado) fica a critério do cliente.
+
+Quando a capacidade inicial deixa de ser suficiente, o cluster Redis pode ser expandido **sem a necessidade de recriá-lo e sem indisponibilidade** para as aplicações que o consomem: o processo de resharding migra os hash slots nó a nó, com o cluster em produção, e o tráfego dos slots ainda não migrados continua sendo servido normalmente durante toda a operação.
+
+* **Escalar horizontalmente (recomendado)**: adicionar novos nós/shards ao cluster e redistribuir os hash slots entre eles (*resharding*). É a estratégia recomendada, pois distribui a carga de forma mais previsível, aumenta a capacidade de throughput e reduz o impacto da perda de um único nó.
+* **Escalar verticalmente**: aumentar CPU/memória dos nós existentes. É uma alternativa válida para ganhos pontuais de capacidade, mas tem um teto (o tamanho máximo da instância/nó disponível) e, dependendo do provedor, pode exigir failover do nó durante o resize — nesse caso a indisponibilidade fica restrita ao nó em resize (segundos), e não ao cluster como um todo, desde que a topologia com réplicas por nó (recomendada nesta seção) esteja em uso.
+
+Em todos os casos — cluster self-managed, ElastiCache ou Memorystore — a operação de adicionar/remover nós é feita via **resharding** (remapeamento de hash slots), suportado nativamente pelo protocolo do Redis Cluster, e não exige downtime do cluster nem a recriação do ambiente:
+
+* **Self-managed**: utilize `redis-cli --cluster add-node` / `reshard` / `rebalance` para adicionar nós e redistribuir os slots. Veja a documentação oficial do Redis sobre [scaling do Redis Cluster](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/).
+* **AWS ElastiCache**: suporta a adição/remoção online de shards e réplicas em clusters no modo *cluster enabled*, sem downtime. Consulte a [documentação oficial de scaling do ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/redis-cluster-resharding-online.html).
+* **GCP Memorystore for Redis Cluster**: também suporta o redimensionamento do número de shards do cluster de forma online. Consulte a [documentação oficial do Memorystore](https://cloud.google.com/memorystore/docs/cluster/redis-cluster-overview).
+
+> Recomendação: planeje a topologia inicial (mínimo 3 nós) com margem para o crescimento esperado nos próximos ciclos, e trate o resharding como a via padrão de expansão — evitando assim a necessidade de recriar o cluster à medida que a demanda cresce.
+
+### Leitura a partir de Réplicas (Read Scaling)
+
+Além de expandir a capacidade de escrita/armazenamento via resharding, também é possível redirecionar a carga de leitura para as réplicas do cluster, reduzindo a pressão sobre os nós master. Essa configuração já está disponível nos módulos do ambiente híbrido, através do `values.yaml` de cada Helm chart, mas varia por módulo:
+
+| Módulo | Parâmetro | Observação |
+| --- | --- | --- |
+| **API Gateway** (chart ≥ 2.x) | `properties.redis_token_readfrom_type`, `redis_scenario_readfrom_type`, `redis_cache_readfrom_type`, `redis_interceptor_readfrom_type` | Aceita `master`, `masterPreferred`, `slave`, `replica`, `replicaPreferred`, `nearest`, `any`, `anyReplica`, entre outros. O padrão do chart já é `replicaPreferred` (lê da réplica, com fallback para o master). Aplica-se tanto a `CLUSTER` quanto a `MASTER_SLAVE`. |
+| **Agent Authorization** / **Agent Gateway** | `properties.redis.masterSlaveReadFrom` | Só é utilizado quando `properties.redis.connectionType` está definido como `MASTER_SLAVE`; o padrão é `SLAVE`. Não se aplica quando `connectionType` é `CLUSTER`. |
+| **API Authorization** | — | Nas versões atuais do chart este módulo não expõe um parâmetro de preferência de leitura; a conexão sempre é feita conforme `connectionType` (`CLUSTER`/`MASTER_SLAVE`/`STANDALONE`), sem direcionamento específico para réplicas. |
+
+> Consulte sempre o `values.yaml` da versão do chart em uso (`helm show values sensedia-helm-s3/<módulo> --version <versão>`) para confirmar os parâmetros disponíveis, pois eles evoluem entre versões.
 
 ## Instalação do Kubectl
 
