@@ -20,14 +20,29 @@ service:
 properties:
   java_opts: "-Djava.security.egd=file:/dev/./urandom -Dlog4j2.formatMsgNoLookups=True -Dfile.encoding=UTF8 -Xms1536m -Xmx1536m -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -Dtomcat.relaxedQueryChars='[]|{}^&#x5c;&#x60;&quot;&lt;&gt;' -Dtomcat.maxThreads=400"
   redis_token_connectiontype: "CHANGE_HERE"  #Example MASTER_SLAVE or CLUSTER (#depends on your redis setup)
-  redis_token_address: "redis://CHANGE_HERE" #Example: "redis://x.x.x.x:6379". Note that port is required 
+  redis_token_address: "redis://CHANGE_HERE" #Example: "redis://x.x.x.x:6379". Note that port is required
   redis_token_password: "CHANGE_HERE"
+  #--- Values below are only used when redis_token_connectiontype is "MASTER_SLAVE"
+  redis_token_sentinel_hosts: "" #Example: sentinel1:26379,sentinel2:26379
+  redis_token_sentinel_masterid: ""
+  redis_token_sentinel_default_port: ""
+  redis_token_readfrom_type: "replicaPreferred" #Valid values: master, masterPreferred, upstream, upstreamPreferred, slave, replica, replicaPreferred, nearest, any, anyReplica
   redis_scenario_connectiontype: "CHANGE_HERE"  #Example MASTER_SLAVE or CLUSTER (#depends on your redis setup)
   redis_scenario_address: "redis://CHANGE_HERE" #Example: "redis://x.x.x.x:6379". Note that port is required
   redis_scenario_password: "CHANGE_HERE"
+  #--- Values below are only used when redis_scenario_connectiontype is "MASTER_SLAVE"
+  redis_scenario_sentinel_hosts: "" #Example: sentinel1:26379,sentinel2:26379
+  redis_scenario_sentinel_masterid: ""
+  redis_scenario_sentinel_default_port: ""
+  redis_scenario_readfrom_type: "replicaPreferred" #Valid values: master, masterPreferred, upstream, upstreamPreferred, slave, replica, replicaPreferred, nearest, any, anyReplica
   redis_cache_connectiontype: "CHANGE_HERE"  #Example MASTER_SLAVE or CLUSTER (#depends on your redis setup)
   redis_cache_address: "redis://CHANGE_HERE" #Example: "redis://x.x.x.x:6379". Note that port is required
-  redis_cache_password: "CHANGE_HERE" 
+  redis_cache_password: "CHANGE_HERE"
+  #--- Values below are only used when redis_cache_connectiontype is "MASTER_SLAVE"
+  redis_cache_sentinel_hosts: "" #Example: sentinel1:26379,sentinel2:26379
+  redis_cache_sentinel_masterid: ""
+  redis_cache_sentinel_default_port: ""
+  redis_cache_readfrom_type: "replicaPreferred" #Valid values: master, masterPreferred, upstream, upstreamPreferred, slave, replica, replicaPreferred, nearest, any, anyReplica
   customer_id: "CHANGE_HERE"
   logstash_url: "http://CHANGE_HERE/" #Example "http://x.x.x.x:80/". Note that the last slash is required
   metric_target: "HTTP"
