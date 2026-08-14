@@ -197,21 +197,20 @@ Example 1: Content of file ``agent-gateway.yaml``.
 1   version: '2.4'
 2   services:
 3
-4     api-gateway:
-5       env_file: api-gateway.env  # you must alter the content of this file according to the documentation
+4     agent-gateway:
+5       env_file: agent-gateway.env  # you must alter the content of this file according to the documentation
 6       networks:
 7         - api-platform
-8       image: gcr.io/production-main-268117/api-gateway:4.3.0.2 # you can alter
-9       container_name: api-gateway
-10      cpu_count: 1      # you can alter
-11      mem_limit: 1024m  # you can alter
-12      restart: always
-13      ports:
-14        - '8080:8080'   #you can alter
-15
-16  networks:
-17    api-platform:
-18      name: api-platform
+8       image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # you must alter
+9       container_name: agent-gateway
+10      mem_limit: 512m  # you can alter
+11      restart: always
+12      ports:
+13        - '8091:8091'   #you can alter
+14
+15  networks:
+16    api-platform:
+17      name: api-platform
 ```
 
 Explanation of the content of the file ``agent-gateway.yaml``.
@@ -224,29 +223,27 @@ Explanation of the content of the file ``agent-gateway.yaml``.
 
 * **Line 5** contain the location of the environment variables file. The name, location and content of this file change according to the module. **You must also edit this file and alter the values defined as **CHANGE_HERE** to values consistent with your hybrid environment.**
 
-* **Lines 6 and 7** contain a reference to **lines 16 to 18**, which define the Docker network to be used by the container that will execute this Platform module. You don't have to change the content of this section.
+* **Lines 6 and 7** contain a reference to **lines 15 to 17**, which define the Docker network to be used by the container that will execute this Platform module. You don't have to change the content of this section.
 
-* **Line 8** contains the Docker Registry (``gcr.io/production-main-268117``), Docker image of the Platform module (``api-gateway``) and module version (``4.3.0.2``). **You must get in touch with the Sensedia team to know which Docker Registry URL, module Docker image name and version you must use and modify in the ``*.yaml`` file before deployment.**
+* **Line 8** contains the Docker Registry (``gcr.io/production-main-268117``), the Docker image of the Platform module (``agent-gateway``), and the module version, indicated by the term ``CHANGE_HERE``. **You must get in touch with the Sensedia team to know which Docker Registry URL, module Docker image name and version you must use and modify in the ``*.yaml`` file before deployment.**
 
 * **Line 9** contains the name of the container which will execute the Platform module. You don't need to change it.
 
-* On **line 10**, you can define how many CPUs the service running on the container can use. Not all modules have this definition as a default.
+* On **line 10**, you can define the RAM memory limit that the service running on the container can use. Some modules (e.g. ``api-gateway.yaml``, ``api-authorization.yaml``) also define a CPU limit via the ``cpu_count`` parameter, absent from this example since it isn't set by default for the Agent Gateway.
 
-* On **line 11**, you can define the RAM memory limit that the service running on the container can use. Not all modules have this definition as a default.
+* **Line 11** defines the container restart policy. **We recommend setting the value to ``always``** so that the container restarts automatically in case of problems, thus avoiding the need for manual intervention.
 
-* **Line 12** defines the container restart policy. **We recommend setting the value to ``always``** so that the container restarts automatically in case of problems, thus avoiding the need for manual intervention.
+* **Line 12** contains a reserved word of native Docker Compose syntax, which indicates the beginning of a section to define the ports (TCP - Transmission Control Protocol - by default) that will be used by the container.
 
-* **Line 13** contains a reserved word of native Docker Compose syntax, which indicates the beginning of a section to define the ports (TCP - Transmission Control Protocol - by default) that will be used by the container.
-
-* **Line 14** contains the port to be used by the host and by the container to allow external access to the Platform module. The ports are defined following this pattern:
+* **Line 13** contains the port to be used by the host and by the container to allow external access to the Platform module. The ports are defined following this pattern:
 
 PORT_HOST:PORT_container
 
-Example 2: ``- '8080:8080'`` - the host port is 8080/TCP, which will listen to requests and forward them to the container port, which is 8080/TCP.
+Example 2: ``- '8091:8091'`` - the host port is 8091/TCP, which will listen to requests and forward them to the container port, which is 8091/TCP.
 
 **The host port can be changed** as required by your environment, but the container port **should not be changed**.
 
-Example 3 ``- '80:8080'``. In this case, the host port is 80/TCP and the container port is 8080/TCP.
+Example 3 ``- '80:8091'``. In this case, the host port is 80/TCP and the container port is 8091/TCP.
 
 	ATTENTION!!! The container port is inaccessible from outside the host. It's only accessible from inside the host.
 
@@ -289,7 +286,7 @@ Edit the file ``all-in-one/hybrid.env``, find the following parameters and repla
 
 When the installation method is **Modules**:
 
-Edit the files ``modules/logstash-federated/logstash.env``, ``modules/agent-gateway/agent-gateway.env`` and ``modules/agent-authorization/agent-authorization.env``, find the following parameters and replace the term ``CHANGE_HERE`` with the token generated previously.
+Edit the files ``modules/logstash-federated/logstash-federated.env``, ``modules/agent-gateway/agent-gateway.env`` and ``modules/agent-authorization/agent-authorization.env``, find the following parameters and replace the term ``CHANGE_HERE`` with the token generated previously.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE

@@ -5,7 +5,7 @@ services:
     env_file: api-gateway.env
     networks:
       - api-platform
-    image: gcr.io/production-main-268117/api-gateway:#CHANGE_HERE
+    image: gcr.io/production-main-268117/api-gateway:CHANGE_HERE
     container_name: api-gateway
     cpu_count: 1
     mem_limit: 2048m

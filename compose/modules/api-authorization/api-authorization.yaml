@@ -5,7 +5,7 @@ services:
     env_file: api-authorization.env
     networks:
       - api-platform
-    image: gcr.io/production-main-268117/api-authorization:#CHANGE_HERE
+    image: gcr.io/production-main-268117/api-authorization:CHANGE_HERE
     container_name: api-authorization
     mem_limit: 2048m
     restart: always

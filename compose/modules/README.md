@@ -28,7 +28,7 @@ Acesse [essa página](../README.md), na seção **Requisitos**, para obter infor
 
 ### Logstash
 
-* Edite o arquivo ``logstash-federated/logstash.env`` e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
+* Edite o arquivo ``logstash-federated/logstash-federated.env`` e altere os valores definidos como **CHANGE_HERE** para os valores condizentes com seu ambiente.
 
 * Edite o arquivo ``logstash-federated/logstash-federated.yaml`` e altere a versão do módulo, conforme as instruções [dessa página](../README.md), na seção **Alterando a Versão dos Módulos, Porta e Outros Parâmetros**.
 

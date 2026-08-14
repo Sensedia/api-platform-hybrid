@@ -197,21 +197,20 @@ Ejemplo 1: Contenido del archivo ``agent-gateway.yaml``.
 1   version: '2.4'
 2   services:
 3
-4     api-gateway:
-5       env_file: api-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
+4     agent-gateway:
+5       env_file: agent-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
 6       networks:
 7         - api-platform
-8       image: gcr.io/production-main-268117/api-gateway:4.3.0.2 # puede cambiar
-9       container_name: api-gateway
-10      cpu_count: 1      # puede cambiar
-11      mem_limit: 1024m  # puede cambiar
-12      restart: always
-13      ports:
-14        - '8080:8080'   #puede cambiar
-15
-16  networks:
-17    api-platform:
-18      name: api-platform
+8       image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # deve cambiar
+9       container_name: agent-gateway
+10      mem_limit: 512m  # puede cambiar
+11      restart: always
+12      ports:
+13        - '8091:8091'   #puede cambiar
+14
+15  networks:
+16    api-platform:
+17      name: api-platform
 ```
 
 Explicación del contenido del archivo ``agent-gateway.yaml``.
@@ -224,29 +223,27 @@ Explicación del contenido del archivo ``agent-gateway.yaml``.
 
 * La **línea 5** contiene la ubicación del archivo de variables de entorno. El nombre, la ubicación y el contenido de este archivo cambian según el módulo. **También debe editar este archivo y cambiar los valores que contienen **CHANGE_HERE** a valores consistentes con su entorno híbrido.**
 
-* Las **líneas 6 y 7** contienen una referencia a las **líneas 16 a 18**, que definen una red Docker para ser utilizada por el contenedor que ejecutará este módulo de la Plataforma. No tiene que cambiar el contenido de esta sección.
+* Las **líneas 6 y 7** contienen una referencia a las **líneas 15 a 17**, que definen una red Docker para ser utilizada por el contenedor que ejecutará este módulo de la Plataforma. No tiene que cambiar el contenido de esta sección.
 
-* La **línea 8** contiene la dirección del Docker Registry (``gcr.io/production-main-268117``), imagen Docker del módulo de la Plataforma (``api-gateway``) y la versão del módulo (``4.3.0.2``). **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
+* La **línea 8** contiene la dirección del Docker Registry (``gcr.io/production-main-268117``), la imagen Docker del módulo de la Plataforma (``agent-gateway``) y la versión del módulo, indicada por el término ``CHANGE_HERE``. **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
 
 * La **línea 9** contiene el nombre del contenedor que ejecutará el módulo de la Plataforma. No tiene que cambiarla.
 
-* En la **línea 10** se puede definir cuántas CPUs puede usar el servicio que funciona en el contenedor. No todos los módulos contienen este ajuste por defecto.
+* En la **línea 10** se puede definir el límite de memoria RAM que puede usar el servicio que funciona en el contenedor. Algunos módulos (ej.: ``api-gateway.yaml``, ``api-authorization.yaml``) también definen un límite de CPU mediante el parámetro ``cpu_count``, ausente en este ejemplo porque no se define por defecto para el Agent Gateway.
 
-* En la **línea 11** se puede definir el límite de memoria RAM que puede usar el servicio que funciona en el contenedor. No todos los módulos contienen este ajuste por defecto.
+* En la **línea 11** se define la política de reinicio del contenedor. **Se recomienda mantener el valor ``always``** para que el contenedor se reinicie automáticamente en caso de problemas, evitando la necesidad de intervención manual.
 
-* En la **línea 12** se define la política de reinicio del contenedor. **Se recomienda mantener el valor ``always``** para que el contenedor se reinicie automáticamente en caso de problemas, evitando la necesidad de intervención manual.
-
-* La **línea 13** contiene una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de una sección para definir los puertos (por defecto, TCP - Transmission Control Protocol) que serán utilizados por el contenedor.
+* La **línea 12** contiene una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de una sección para definir los puertos (por defecto, TCP - Transmission Control Protocol) que serán utilizados por el contenedor.
 
 La **línea 13** contiene el puerto que utilizará el host y el contenedor para permitir acceso externo ao módulo de la Plataforma. Los puertos están definidos por la siguiente norma:
 
 PUERTO_HOST:PUERTO_contenedor
 
-Ejemplo 2: ``- '8080:8080'`` - el puerto de host es el 8080/TCP, que escuchará las peticiones y las reenviará al puerto del contenedor, que es el 8080/TCP.
+Ejemplo 2: ``- '8091:8091'`` - el puerto de host es el 8091/TCP, que escuchará las peticiones y las reenviará al puerto del contenedor, que es el 8091/TCP.
 
 **El puerto de host puede cambiarse** según lo requiera su entorno, pero el puerto del contenedor **no debe cambiarse**.
 
-Ejemplo 3: ``- '80:8080'``. En este caso, el puerto de host es el 80/TCP y el puerto del contenedor es el 8080/TCP.
+Ejemplo 3: ``- '80:8091'``. En este caso, el puerto de host es el 80/TCP y el puerto del contenedor es el 8091/TCP.
 
   ¡¡ATENCIÓN!! El puerto del contenedor no es accesible fuera del hist. Sólo se puede acceder a él dentro del host.
 
@@ -289,7 +286,7 @@ Editar el archivo ``all-in-one/hybrid.env``, ubicar los siguientes parámetros e
 
 Cuando el método de instalación sea **Modules**:
 
-Editar los archivos ``modules/logstash-federated/logstash.env``, ``modules/agent-gateway/agent-gateway.env`` y ``modules/agent-authorization/agent-authorization.env``, ubicar los siguientes parámetros e sustituir el término ``CHANGE_HERE`` por el token generado anteriormente.
+Editar los archivos ``modules/logstash-federated/logstash-federated.env``, ``modules/agent-gateway/agent-gateway.env`` y ``modules/agent-authorization/agent-authorization.env``, ubicar los siguientes parámetros e sustituir el término ``CHANGE_HERE`` por el token generado anteriormente.
 
 * WEBSOCKET_SENSEDIAAUTH=CHANGE_HERE
 * SENSEDIA_APIPLATFORM_FEDERATED_ACCESSTOKEN=CHANGE_HERE
