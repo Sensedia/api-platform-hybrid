@@ -44,6 +44,7 @@ Nesse caso, existe a possibilidade de que alguns componentes da topologia do API
       - [Docker](compose/README.md#docker)
       - [Docker-Compose](compose/README.md#docker-compose)
       - [Selinux no CentOS/Red Hat](compose/README.md#selinux-no-centosred-hat)
+      - [Redis](compose/README.md#redis)
     - [Métodos de Deploy](compose/README.md#métodos-de-deploy)
       - [Módulos](compose/README.md#módulos)
       - [Recursos Recomendados](compose/README.md#recursos-recomendados)
@@ -129,7 +130,7 @@ In this case, there is a possibility that some components of the API-Platform to
           - [Installation](compose/all-in-one/README_en.md#installation)
           - [Validation](compose/all-in-one/README_en.md#validation)
           - [Troubleshooting](compose/all-in-one/README_en.md#troubleshooting)
-        - [Segmented modules method](compose/modules/README_en.md#api-platform-híbrido---docker-compose-modules)
+        - [Segmented modules method](compose/modules/README_en.md#hybrid-api-platform---docker-compose-modules)
           - [Installation](compose/modules/README_en.md#installation)
             - [Logstash](compose/modules/README_en.md#logstash)
             - [Agent-Authorization](compose/modules/README_en.md#agent-authorization)
@@ -168,7 +169,7 @@ In this case, there is a possibility that some components of the API-Platform to
       - [Installing API-Authorization](kubernetes/README_en.md#installing-api-authorization)
       - [Installing API-Gateway](kubernetes/README_en.md#installing-api-gateway)
     - [Hybrid Environment Activation](kubernetes/README_en.md#hybrid-environment-activation)
-- [Monitoring](README_en.md#monitoring)
+- [Monitoring, health check and load balancing](README_en.md#monitoring-health-check-and-load-balancing)
 
 
 # Español
