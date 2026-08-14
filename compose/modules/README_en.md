@@ -15,6 +15,7 @@
 <!-- TOC -->
 
 # Hybrid API-Platform - Docker Compose Modules
+> Last reviewed: 2026-08-14
 
 In this method, each module can be instanced separately.
 

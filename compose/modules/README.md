@@ -15,6 +15,7 @@
 <!-- TOC -->
 
 # API-Platform Híbrido - Docker Compose Modules
+> Última revisão: 2026-08-14
 
 Neste método, cada módulo pode ser instanciado separadamente.
 

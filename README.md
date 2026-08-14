@@ -20,6 +20,7 @@
  </p>
 
 # Português
+> Última revisão: 2026-08-14
 
 **API-Platform**: plataforma de gerenciamento de APIs. Acelere suas estratégias digitais com integrações e gerenciamento de APIs. Saiba em: https://sensedia.com.
 
@@ -98,6 +99,7 @@ Nesse caso, existe a possibilidade de que alguns componentes da topologia do API
 <!-- TOC -->
 
 # English
+> Last reviewed: 2026-08-14
 
 **API-Platform**: API management platform. Accelerate your digital strategies with integrations and API Management. Learn more at: https://sensedia.com
 
@@ -173,6 +175,7 @@ In this case, there is a possibility that some components of the API-Platform to
 
 
 # Español
+> Última revisión: 2026-08-14
 
 **API-Platform**: plataforma de administración de APIs. Acelere sus estrategias digitales con integraciones y API Management. Obtenga más informaciónes en: https://sensedia.com.
 

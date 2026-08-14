@@ -2,6 +2,7 @@
 <!-- TOC -->
 
 # Validation of the federated flow
+> Last reviewed: 2026-08-14
 
 To perform the flow validation, we use a simple API with a mock interceptor and logs for analysis if necessary.
 For this, it is necessary to have completed all provisioning and configuration of the federated environment.

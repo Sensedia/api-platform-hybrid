@@ -11,6 +11,7 @@
 <!-- TOC END -->
 
 # All-in-one deployment method
+> Last reviewed: 2026-08-14
 
 This deployment method starts all Platform's stateless modules on the same host.
 

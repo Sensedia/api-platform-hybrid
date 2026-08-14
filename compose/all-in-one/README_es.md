@@ -11,6 +11,7 @@
 <!-- TOC END -->
 
 # Método de despliegue All-in-one
+> Última revisión: 2026-08-14
 
 Este método de despliegue inicia todos los módulos *stateless* de la Plataforma en el mismo host.
 

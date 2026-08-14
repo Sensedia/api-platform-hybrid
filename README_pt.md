@@ -8,6 +8,7 @@
 <!-- TOC -->
 
 # Português
+> Última revisão: 2026-08-14
 
 ## Composição
 
