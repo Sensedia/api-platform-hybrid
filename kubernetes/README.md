@@ -13,6 +13,7 @@
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
     - [Escalabilidade e Elasticidade do Cluster Redis](#escalabilidade-e-elasticidade-do-cluster-redis)
+    - [Leitura a partir de Réplicas (Read Scaling)](#leitura-a-partir-de-réplicas-read-scaling)
   - [Instalação do Kubectl](#instalação-do-kubectl)
   - [Instalação do Helm](#instalação-do-helm)
     - [Download do Helm](#download-do-helm)
@@ -200,6 +201,18 @@ Em todos os casos — cluster self-managed, ElastiCache ou Memorystore — a ope
 * **GCP Memorystore for Redis Cluster**: também suporta o redimensionamento do número de shards do cluster de forma online. Consulte a [documentação oficial do Memorystore](https://cloud.google.com/memorystore/docs/cluster/redis-cluster-overview).
 
 > Recomendação: planeje a topologia inicial (mínimo 3 nós) com margem para o crescimento esperado nos próximos ciclos, e trate o resharding como a via padrão de expansão — evitando assim a necessidade de recriar o cluster à medida que a demanda cresce.
+
+### Leitura a partir de Réplicas (Read Scaling)
+
+Além de expandir a capacidade de escrita/armazenamento via resharding, também é possível redirecionar a carga de leitura para as réplicas do cluster, reduzindo a pressão sobre os nós master. Essa configuração já está disponível nos módulos do ambiente híbrido, através do `values.yaml` de cada Helm chart, mas varia por módulo:
+
+| Módulo | Parâmetro | Observação |
+| --- | --- | --- |
+| **API Gateway** (chart ≥ 2.x) | `properties.redis_token_readfrom_type`, `redis_scenario_readfrom_type`, `redis_cache_readfrom_type`, `redis_interceptor_readfrom_type` | Aceita `master`, `masterPreferred`, `slave`, `replica`, `replicaPreferred`, `nearest`, `any`, `anyReplica`, entre outros. O padrão do chart já é `replicaPreferred` (lê da réplica, com fallback para o master). Aplica-se tanto a `CLUSTER` quanto a `MASTER_SLAVE`. |
+| **Agent Authorization** / **Agent Gateway** | `properties.redis.masterSlaveReadFrom` | Só é utilizado quando `properties.redis.connectionType` está definido como `MASTER_SLAVE`; o padrão é `SLAVE`. Não se aplica quando `connectionType` é `CLUSTER`. |
+| **API Authorization** | — | Nas versões atuais do chart este módulo não expõe um parâmetro de preferência de leitura; a conexão sempre é feita conforme `connectionType` (`CLUSTER`/`MASTER_SLAVE`/`STANDALONE`), sem direcionamento específico para réplicas. |
+
+> Consulte sempre o `values.yaml` da versão do chart em uso (`helm show values sensedia-helm-s3/<módulo> --version <versão>`) para confirmar os parâmetros disponíveis, pois eles evoluem entre versões.
 
 ## Instalação do Kubectl
 

@@ -13,6 +13,7 @@
     - [AWS ElastiCache](#aws-elasticache)
     - [GCP Memorystore](#gcp-memorystore)
     - [Redis Cluster Scaling and Elasticity](#redis-cluster-scaling-and-elasticity)
+    - [Reading from Replicas (Read Scaling)](#reading-from-replicas-read-scaling)
   - [Installing Kubectl](#installing-kubectl)
   - [Installing Helm](#installing-helm)
     - [Downloading Helm](#downloading-helm)
@@ -202,6 +203,18 @@ In every case — self-managed cluster, ElastiCache, or Memorystore — adding/r
 * **GCP Memorystore for Redis Cluster**: also supports online resizing of the number of cluster shards. See the [official Memorystore documentation](https://cloud.google.com/memorystore/docs/cluster/redis-cluster-overview).
 
 > Recommendation: plan the initial topology (minimum of 3 nodes) with headroom for the growth expected in the next cycles, and treat resharding as the standard expansion path — avoiding the need to recreate the cluster as demand grows.
+
+### Reading from Replicas (Read Scaling)
+
+In addition to expanding write/storage capacity through resharding, read traffic can also be redirected to the cluster's replicas, reducing pressure on the master nodes. This configuration is already available on the hybrid environment modules, through each Helm chart's `values.yaml`, but it varies per module:
+
+| Module | Parameter | Note |
+| --- | --- | --- |
+| **API Gateway** (chart ≥ 2.x) | `properties.redis_token_readfrom_type`, `redis_scenario_readfrom_type`, `redis_cache_readfrom_type`, `redis_interceptor_readfrom_type` | Accepts `master`, `masterPreferred`, `slave`, `replica`, `replicaPreferred`, `nearest`, `any`, `anyReplica`, among others. The chart default is already `replicaPreferred` (reads from the replica, falling back to the master). Applies to both `CLUSTER` and `MASTER_SLAVE`. |
+| **Agent Authorization** / **Agent Gateway** | `properties.redis.masterSlaveReadFrom` | Only used when `properties.redis.connectionType` is set to `MASTER_SLAVE`; the default is `SLAVE`. Does not apply when `connectionType` is `CLUSTER`. |
+| **API Authorization** | — | In the current chart versions, this module does not expose a read-preference parameter; the connection always follows `connectionType` (`CLUSTER`/`MASTER_SLAVE`/`STANDALONE`), with no specific routing to replicas. |
+
+> Always check the `values.yaml` of the chart version in use (`helm show values sensedia-helm-s3/<module> --version <version>`) to confirm the available parameters, since they evolve across versions.
 
 ## Installing Kubectl
 
