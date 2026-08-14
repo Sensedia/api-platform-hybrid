@@ -32,6 +32,7 @@
 <!-- TOC -->
 
 # API-Platform Híbrido - Kubernetes
+> Última revisión: 2026-08-14
 
 Se recomienda el modelo de implementación híbrida para los clientes preocupados por la latencia. Esta documentación describe cómo implementar los módulos/servicios utilizados en el entorno híbrido usando [Kubernetes](https://kubernetes.io) y [Helm](https://helm.sh) .
 
@@ -399,13 +400,12 @@ Cambiar los valores que contienen``CHANGE_HERE`` a valores consistentes con su e
 
 Explicación del contenido del archivo ``values.yaml`` del módulo **Agent Authorization** .
 
-* La **línea 4** define el número de réplicas del pod, que ejecuta el módulo y se puede ejecutar en el clúster de Kubernetes. Cambiar el valor según la demanda y disponibilidad de recursos de CPU, memoria y direcciones IP.
-* La **línea 6** contiene la dirección del Docker Registry y el nombre de la imagen Docker del módulo respectivo (``gcr.io/production-main-268117/agent-authorization`` ). Debe ponerse en contacto con el equipo de Sensedia para averiguar la URL del Docker Registry, el nombre de la imagen docker del módulo que debe usar y cambiar en el ``archivo.yaml`` antes del despliegue.
-* La **línea 7** contiene la tag/versión de la imagen Docker del módulo. Debe ponerse en contacto con el equipo de Sensedia para averiguar qué versión usar y cambiar en el archivo ``.yaml`` antes del despliegue.
-* Desde **líneas 14 a 24**, encontramos información referente a redis. En esta sesión de yaml, debe cambiar la información de la dirección de redis (``address``) y, si es necesario, aplicar una contraseña (``password``, codificada en base64). Los parámetros ``sslEnabled`` y ``sslVerifyPeer`` habilitan la conexión TLS con Redis. Los parámetros ``masterSlaveReadFrom``, ``lettuceSentinelHosts``, ``lettuceSentinelMasterId`` y ``lettuceSentinelDefaultPort`` solo se aplican cuando ``connectionType`` es ``MASTER_SLAVE`` y Redis está configurado con Sentinel.
-* Las **líneas 33 a 37** contienen la definición de autoscaling para el pod. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster y las direcciones IP.
-* Las **líneas 38 a 44** contienen la definición de ingress y TLS para el módulo. Cambiar según la necesidad del entorno.
-* Las **líneas 45 a 51** contienen la definición de los límites de uso de los recursos de CPU y memoria que utilizará cada pod del módulo. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster.
+* El campo ``replicaCount`` define el número de réplicas del pod que ejecuta el módulo y se puede ejecutar en el clúster de Kubernetes. Cambiar el valor según la demanda y disponibilidad de recursos de CPU, memoria y direcciones IP.
+* Los campos ``image.repository`` e ``image.tag`` contienen, respectivamente, la dirección del Docker Registry y el nombre de la imagen Docker del módulo respectivo (``gcr.io/production-main-268117/agent-authorization``), y la tag/versión de la imagen. Debe ponerse en contacto con el equipo de Sensedia para averiguar la URL del Docker Registry, el nombre de la imagen docker del módulo y la versión que debe usar, y cambiar en el archivo ``.yaml`` antes del despliegue.
+* El bloque ``properties.redis`` contiene la información referente a redis. Debe cambiar la información de la dirección de redis (``address``) y, si es necesario, aplicar una contraseña (``password``, codificada en base64). Los parámetros ``sslEnabled`` y ``sslVerifyPeer`` habilitan la conexión TLS con Redis. Los parámetros ``masterSlaveReadFrom``, ``lettuceSentinelHosts``, ``lettuceSentinelMasterId`` y ``lettuceSentinelDefaultPort`` solo se aplican cuando ``connectionType`` es ``MASTER_SLAVE`` y Redis está configurado con Sentinel.
+* El bloque ``autoscaling`` contiene la definición de autoscaling para el pod. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster y las direcciones IP.
+* El bloque ``ingress`` contiene la definición de ingress y TLS para el módulo. Cambiar según la necesidad del entorno.
+* El bloque ``resources`` contiene la definición de los límites de uso de los recursos de CPU y memoria que utilizará cada pod del módulo. Cambiar según la demanda y disponibilidad de los recursos de hardware en el clúster.
 
 ## Instalación de Logstash-Federated
 

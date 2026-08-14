@@ -19,6 +19,7 @@
 
 
 # API-Platform Híbrido - Docker Compose
+> Última revisión: 2026-08-14
 
 El modelo de implantación **Híbrido** se recomienda para los clientes que tienen problemas de latencia.
 
@@ -193,49 +194,49 @@ Este es un ejemplo de un archivo ``.yaml`` para desplegar un módulo, seguido de
 
 Ejemplo 1: Contenido del archivo ``agent-gateway.yaml``.
 
-```bash
-1   version: '2.4'
-2   services:
-3
-4     agent-gateway:
-5       env_file: agent-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
-6       networks:
-7         - api-platform
-8       image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # deve cambiar
-9       container_name: agent-gateway
-10      mem_limit: 512m  # puede cambiar
-11      restart: always
-12      ports:
-13        - '8091:8091'   #puede cambiar
-14
-15  networks:
-16    api-platform:
-17      name: api-platform
+```yaml
+version: '2.4'
+services:
+
+  agent-gateway:
+    env_file: agent-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
+    networks:
+      - api-platform
+    image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # deve cambiar
+    container_name: agent-gateway
+    mem_limit: 512m  # puede cambiar
+    restart: always
+    ports:
+      - '8091:8091'   #puede cambiar
+
+networks:
+  api-platform:
+    name: api-platform
 ```
 
 Explicación del contenido del archivo ``agent-gateway.yaml``.
 
-* Na **línea 1** se define la versión del archivo Docker Compose. Este valor sólo deve ser cambiado por el equipo de Sensedia cuando sea realmente necesario, pues que afecta a la sintaxis de algunos parámetros y palavras reservadas del archivo, tal y como establece la documentación oficial de Docker Compose: https://docs.docker.com/compose/compose-file/.
+* El campo ``version`` define la versión del archivo Docker Compose. Este valor sólo deve ser cambiado por el equipo de Sensedia cuando sea realmente necesario, pues que afecta a la sintaxis de algunos parámetros y palavras reservadas del archivo, tal y como establece la documentación oficial de Docker Compose: https://docs.docker.com/compose/compose-file/.
 
-* La **línea 2** contiene una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de un conjunto de instrucciones para desplegar uno o más módulos de la Plataforma.
+* ``services`` es una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de un conjunto de instrucciones para desplegar uno o más módulos de la Plataforma.
 
-* La **línea 4** indica el nombre de servicio correspondiente a uno de los módulos de la Plataforma.
+* El nombre de servicio declarado justo debajo de ``services`` (``agent-gateway``) corresponde a uno de los módulos de la Plataforma.
 
-* La **línea 5** contiene la ubicación del archivo de variables de entorno. El nombre, la ubicación y el contenido de este archivo cambian según el módulo. **También debe editar este archivo y cambiar los valores que contienen **CHANGE_HERE** a valores consistentes con su entorno híbrido.**
+* El campo ``env_file`` contiene la ubicación del archivo de variables de entorno. El nombre, la ubicación y el contenido de este archivo cambian según el módulo. **También debe editar este archivo y cambiar los valores que contienen **CHANGE_HERE** a valores consistentes con su entorno híbrido.**
 
-* Las **líneas 6 y 7** contienen una referencia a las **líneas 15 a 17**, que definen una red Docker para ser utilizada por el contenedor que ejecutará este módulo de la Plataforma. No tiene que cambiar el contenido de esta sección.
+* El campo ``networks`` hace referencia al bloque ``networks`` al final del archivo, que define una red Docker para ser utilizada por el contenedor que ejecutará este módulo de la Plataforma. No tiene que cambiar el contenido de esta sección.
 
-* La **línea 8** contiene la dirección del Docker Registry (``gcr.io/production-main-268117``), la imagen Docker del módulo de la Plataforma (``agent-gateway``) y la versión del módulo, indicada por el término ``CHANGE_HERE``. **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
+* El campo ``image`` contiene la dirección del Docker Registry (``gcr.io/production-main-268117``), la imagen Docker del módulo de la Plataforma (``agent-gateway``) y la versión del módulo, indicada por el término ``CHANGE_HERE``. **Debe contactar con el equipo de Sensedia para averiguar qué URL de Docker Registry, nombre de imagen Docker del módulo y la versión que se debe utilizar y cambiar en el archivo ``*.yaml`` antes del despliegue.**
 
-* La **línea 9** contiene el nombre del contenedor que ejecutará el módulo de la Plataforma. No tiene que cambiarla.
+* El campo ``container_name`` contiene el nombre del contenedor que ejecutará el módulo de la Plataforma. No tiene que cambiarla.
 
-* En la **línea 10** se puede definir el límite de memoria RAM que puede usar el servicio que funciona en el contenedor. Algunos módulos (ej.: ``api-gateway.yaml``, ``api-authorization.yaml``) también definen un límite de CPU mediante el parámetro ``cpu_count``, ausente en este ejemplo porque no se define por defecto para el Agent Gateway.
+* El campo ``mem_limit`` define el límite de memoria RAM que puede usar el servicio que funciona en el contenedor. Algunos módulos (ej.: ``api-gateway.yaml``, ``api-authorization.yaml``) también definen un límite de CPU mediante el parámetro ``cpu_count``, ausente en este ejemplo porque no se define por defecto para el Agent Gateway.
 
-* En la **línea 11** se define la política de reinicio del contenedor. **Se recomienda mantener el valor ``always``** para que el contenedor se reinicie automáticamente en caso de problemas, evitando la necesidad de intervención manual.
+* El campo ``restart`` define la política de reinicio del contenedor. **Se recomienda mantener el valor ``always``** para que el contenedor se reinicie automáticamente en caso de problemas, evitando la necesidad de intervención manual.
 
-* La **línea 12** contiene una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de una sección para definir los puertos (por defecto, TCP - Transmission Control Protocol) que serán utilizados por el contenedor.
+* ``ports`` es una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de una sección para definir los puertos (por defecto, TCP - Transmission Control Protocol) que serán utilizados por el contenedor.
 
-La **línea 13** contiene el puerto que utilizará el host y el contenedor para permitir acceso externo ao módulo de la Plataforma. Los puertos están definidos por la siguiente norma:
+* El valor listado bajo ``ports`` contiene el puerto que utilizará el host y el contenedor para permitir acceso externo al módulo de la Plataforma. Los puertos están definidos por la siguiente norma:
 
 PUERTO_HOST:PUERTO_contenedor
 
