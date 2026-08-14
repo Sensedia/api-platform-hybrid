@@ -285,11 +285,11 @@ helm search repo sensedia-helm-s3 -l
 
 Initially, the chart versions used in this document are mentioned below. However, as the product evolves with time, new chart versions will be made available and we recommend using the latest versions. In case of doubts, get in touch with Sensedia's Support team.
 
-* agent-authorization - 1.0.1 or higher
-* agent-gateway - 1.0.1 or higher
-* logstash-federated - 1.0.2 or higher
-* api-authorization - 1.0.0 or higher
-* api-gateway - 1.0.3 or higher
+* agent-authorization - 1.13.0 or higher
+* agent-gateway - 1.14.0 or higher
+* logstash-federated - 1.5.0 or higher
+* api-authorization - 2.4.0 or higher
+* api-gateway - 2.6.0 or higher
 
 ## Creation of Namespace on the Kubernetes Cluster
 
@@ -361,6 +361,13 @@ properties:
     connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
     address: "CHANGE_HERE" #Example: x.x.x.x:6379
     password: "CHANGE_HERE" #Password base64
+    sslEnabled: "false" #Set to "true" if the Redis endpoint requires TLS
+    sslVerifyPeer: "false" #Set to "true" to validate the Redis TLS certificate
+    #--- Values below are only used when connectionType is "MASTER_SLAVE"
+    masterSlaveReadFrom: "SLAVE"
+    lettuceSentinelHosts: "" #Example: sentinel1:26379,sentinel2:26379
+    lettuceSentinelMasterId: ""
+    lettuceSentinelDefaultPort: ""
   logLevel: INFO
   trackExpires: 7
   #--- IF client in AWS
@@ -394,13 +401,13 @@ Replace the values defined as ``CHANGE_HERE`` with values consistent with your h
 
 Explanation on the content of the ``values.yaml`` file of the **Agent Authorization** module.
 
-* **Line 1** defines the quantity of pod replicas, which execute the module and may be executed on the Kubernetes cluster. Change the value according to the demand and availability of CPU and memory resources and of IP addresses.
-* **Line 4** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-268117/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL, module docker image name that you must use and alter in the ``.yaml`` file before deployment.
-* **Line 5** contains the module version (``1909.1.1.2``). You should get in touch with the Sensedia team to know which version to use and alter in the ``.yaml`` file before deployment.
-* **lines 14 to 17**, we find information referring to redis. In this yaml session, you need to change the redis address information and, if necessary, apply a password. Such password must be base64 encoded.
-* **Lines 23 to 27** contain the autoscaling definition for the pod. Alter it according to the demand and availability of hardware resources on the cluster and of IP addresses.
-* **Lines 29 to 35** contain the ingress and TLS definition for the module. Alter it according to the needs of the environment.
-* **Lines 37 to 43** contain the definition of CPU and memory resources usage limit for each pod of the module. Alter it according to the demand and availability of hardware resources on the cluster.
+* **Line 4** defines the quantity of pod replicas, which execute the module and may be executed on the Kubernetes cluster. Change the value according to the demand and availability of CPU and memory resources and of IP addresses.
+* **Line 6** contains the Docker Registry address and the name of the Docker image of the respective module (``gcr.io/production-main-268117/agent-authorization``). You should get in touch with the Sensedia team to know the Docker Registry URL, module docker image name that you must use and alter in the ``.yaml`` file before deployment.
+* **Line 7** contains the tag/version of the module's Docker image. You should get in touch with the Sensedia team to know which version to use and alter in the ``.yaml`` file before deployment.
+* **Lines 14 to 24**, we find information referring to redis. In this yaml session, you need to change the redis address information (``address``) and, if necessary, apply a password (``password``, base64 encoded). The ``sslEnabled`` and ``sslVerifyPeer`` parameters enable a TLS connection to Redis. The ``masterSlaveReadFrom``, ``lettuceSentinelHosts``, ``lettuceSentinelMasterId``, and ``lettuceSentinelDefaultPort`` parameters only apply when ``connectionType`` is ``MASTER_SLAVE`` and Redis is configured with Sentinel.
+* **Lines 33 to 37** contain the autoscaling definition for the pod. Alter it according to the demand and availability of hardware resources on the cluster and of IP addresses.
+* **Lines 38 to 44** contain the ingress and TLS definition for the module. Alter it according to the needs of the environment.
+* **Lines 45 to 51** contain the definition of CPU and memory resources usage limit for each pod of the module. Alter it according to the demand and availability of hardware resources on the cluster.
 
 ## Installing Logstash-Federated
 
