@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [All-in-one deployment method](#all-in-one-deployment-method)
+- [Método de deploy All-in-one](#método-de-deploy-all-in-one)
   - [Módulos](#módulos)
   - [Requisitos](#requisitos)
 - [Deploy](#deploy)
@@ -10,12 +10,14 @@
 
 <!-- TOC -->
 
-# All-in-one deployment method
+# Método de deploy All-in-one
 > Última revisão: 2026-08-14
 
 Este método de deployment inicia todos os módulos *stateless* da plataforma no mesmo host.
 
 > ATENÇÃO!!! Esse método não deve ser utilizado no ambiente de produção. Este método é recomendado apenas para demontrações, testes ou PoC (*Proof of concept*).
+
+Se você utiliza um Redis totalmente gerenciado ou já possui uma instalação de Redis, esse pode ser o modelo ideal.
 
 ## Módulos
 

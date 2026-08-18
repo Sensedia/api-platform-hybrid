@@ -35,9 +35,9 @@ Access the section ``Requirements`` of [this page](../README_en.md) to install t
 
 1 - Edit the file ``hybrid.env``, which is inside this directory, and replace the values defined as **CHANGE_HERE** with values consistent with your hybrid environment.
 
-2 - Create an access token for the hybrid environment on the API-Manager following the instructions on [this page]((../README_en.md) (section: **Token Generation**).
+2 - Create an access token for the hybrid environment on the API-Manager following the instructions on [this page](../README_en.md) (section: **Token Generation**).
 
-3 - Edit the ``sensedia-all-in-one.yaml`` file and change the versions of the modules that have the values ​​set to **CHANGE_HERE**, according to the instructions [on this page](../README.md), in the section **Changing Module Versions, Port and Other Parameters**.
+3 - Edit the ``sensedia-all-in-one.yaml`` file and change the versions of the modules that have the values ​​set to **CHANGE_HERE**, according to the instructions [on this page](../README_en.md), in the section **Changing Modules Version, Port and Other Parameters**.
 
 
 4 - Use the following commands to execute ``docker-compose`` referencing the file ``sensedia-all-in-one.yaml``.
@@ -91,4 +91,4 @@ If you want to stop the service and remove all data, volume, images and containe
 cd compose/all-in-one/
 sudo docker-compose -f sensedia-all-in-one.yaml down
 ```
-* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_pt.md).
+* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_en.md).

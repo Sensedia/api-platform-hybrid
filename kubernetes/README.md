@@ -51,7 +51,7 @@ Tabela 1: Serviços executados/mantidos pelo cliente no ambiente híbrido.
 | --- | --- | --- |
 | Ingress/Load Balancer | HTTP/HTTPS load balancer (_exemplo: ALB / F5 / NGINX / Traefik etc_). | Os certificados devem ser aplicados na camada de balanceamento. |
 | Backup | Qualquer solução que efetue cópia do arquivo de retenção de dados do Redis (_\*.rdb_) para armazenamento (_seguro_) externo. | Este arquivo precisa ser protegido por conter informações sensíveis (_exemplo: access token_). |
-| Monitoramento | Qualquer solução de monitoramento que suporte health check HTTP. | Todos os módulos híbridos expõem métricas através do endpoint ``metrics``. A única exceção é o Gateway, que expõe métricas pelo endpoint ``/gateway-admin/metrics``. |
+| Monitoramento | Qualquer solução de monitoramento que suporte health check HTTP. | Todos os módulos híbridos expõem métricas através do endpoint ``/metrics``. A única exceção é o Gateway, que expõe métricas pelo endpoint ``/gateway-admin/metrics``. |
 
 # Módulos para Ambiente Híbrido
 
@@ -139,7 +139,7 @@ customerId: "CHANGE_HERE"
 A configuração do ambiente híbrido tem como pré-requisito a utilização de um token da plataforma. O token deve ser criado utilizando o seguinte procedimento:
 
 * Acesse o API-Manager.
-* Clique no menu da página de **Access Token**.
+* Clique no menu da página de **Consumers** --> **Access Tokens**.
 * Clique no botão **Create Access token**.
 * O campo **Owner** deve conter o email de um usuário responsável pelo ambiente.
 * Defina o valor **API Platform Integration** no campo **App**.
@@ -562,7 +562,7 @@ kubectl get pods -n MY_HYBRID_ENV
 A instalação do ambiente é baseado em Gateway Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
 
 > Observação: Apenas a criação do Gateway Pool é efetuada pela equipe de **Suporte e Operações** da Sensedia através da abertura de chamado ou ticket.
-* Adicione um Inbound Address acesse o **API-Manager** e clique no menu **VirtualHosts** e apos em Inbound Address
+* Adicione um **Inbound Address** acessando o **API-Manager**, clicando no menu **VirtualHosts** e, em seguida, em **Inbound Address**.
 * Crie um novo **Inbound Address** e preencha os campos:
   * Name;
   * Gateway Type;
