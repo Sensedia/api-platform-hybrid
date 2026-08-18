@@ -19,6 +19,13 @@ properties:
     connectionType: "CHANGE_HERE" #Up to you. Are you using CLUSTER or MASTER_SLAVE?
     address: "CHANGE_HERE" #Example: x.x.x.x:6379
     password: "CHANGE_HERE" #Encode password in base64
+    sslEnabled: "false" #Set to "true" if the Redis endpoint requires TLS
+    sslVerifyPeer: "false" #Set to "true" to validate the Redis TLS certificate
+    #--- Values below are only used when connectionType is "MASTER_SLAVE"
+    masterSlaveReadFrom: "SLAVE"
+    lettuceSentinelHosts: "" #Example: sentinel1:26379,sentinel2:26379
+    lettuceSentinelMasterId: ""
+    lettuceSentinelDefaultPort: ""
   logLevel: INFO
   trackExpires: 7
   #--- IF client in AWS

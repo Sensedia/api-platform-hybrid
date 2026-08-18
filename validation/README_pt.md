@@ -2,6 +2,7 @@
 <!-- TOC -->
 
 # Validação do fluxo federado
+> Última revisão: 2026-08-14
 
 Para realizar a validação do fluxo utilizamos uma API simples com um interceptor de mock e logs para caso necessário realizarmos uma análise.
 

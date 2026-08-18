@@ -2,6 +2,8 @@
 <!-- TOC -->
 
 # Validación del flujo federado
+> Última revisión: 2026-08-14
+
 Para realizar la validación del flujo utilizamos una API simple con un interceptor de mock y logs para, en caso necesario, realizar un análisis.
 Para ello, es necesario haber concluido todo el aprovisionamiento y configuración del Enviroment federado.
 

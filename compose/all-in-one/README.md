@@ -11,6 +11,7 @@
 <!-- TOC -->
 
 # All-in-one deployment method
+> Última revisão: 2026-08-14
 
 Este método de deployment inicia todos os módulos *stateless* da plataforma no mesmo host.
 

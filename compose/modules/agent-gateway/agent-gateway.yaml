@@ -5,7 +5,7 @@ services:
     env_file: agent-gateway.env
     networks:
       - api-platform
-    image: gcr.io/production-main-268117/agent-gateway:#CHANGE_HERE
+    image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE
     container_name: agent-gateway
     mem_limit: 512m
     restart: always
