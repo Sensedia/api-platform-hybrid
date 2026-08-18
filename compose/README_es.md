@@ -1,7 +1,7 @@
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [API-Platform Híbrido - Docker Compose](#api-platform-híbrido---docker-compose)
   - [Requerimientos](#requerimientos)
-  - [Docker](#docker)
+    - [Docker](#docker)
     - [Docker-Compose](#docker-compose)
     - [Selinux en CentOS/Red Hat](#selinux-en-centosred-hat)
     - [Redis](#redis)
@@ -34,7 +34,7 @@ Esta documentación explica cómo implantar los módulos/servicios utilizados en
 * Redis 4.0.11 o superior
 * Host sin restricciones de acceso a Internet (no se admite proxy)
 
-## Docker
+### Docker
 
 Instalar Docker CE (Community Edition) siguiendo las instrucciones de las páginas abajo de acuerdo con las distribuciones GNU/Linux
 
@@ -128,8 +128,8 @@ En el caso del modelo híbrido, el despliegue puede realizarse de dos maneras, q
 
 |Método|Descripción|Escenario Recomendado|Disponibilidad|Carga esperada|
 |-|-|-|-|-|
-|[**All-In-One**](all-in-one/README_es.md)|Ejecutar todos los módulos en un solo host|Debe ser usado sólo en escenarios POC, nunca en ambientes productivos. No tiene una alta disponibilidad, ni soporta una alta carga. |Baja |Baja
-|[**Módulos**](modules/README_es.md)|Contiene todos los módulos segregados. Cada módulo puede funcionar en un host dedicado. |Recomendado para entornos productivos. El dimensionamiento dependerá de la carga esperada.|Alta |Alta
+|[**All-In-One**](all-in-one/README_es.md)|Ejecutar todos los módulos en un solo host|Debe ser usado sólo en escenarios POC, nunca en ambientes productivos. No tiene una alta disponibilidad, ni soporta una alta carga. |Baja |Baja|
+|[**Modules**](modules/README_es.md)|Contiene todos los módulos segregados. Cada módulo puede funcionar en un host dedicado. |Recomendado para entornos productivos. El dimensionamiento dependerá de la carga esperada.|Alta |Alta|
 
 ### Módulos
 
@@ -139,10 +139,10 @@ El cuadro siguiente muestra una descripción de los módulos y si se debe o no h
 |-|-|-|
 |Agent-authorization|Transferencia de escenario entre Cloud Sensedia y Authorization Híbrido. |No|
 |Agent-gateway|Transferencia de escenario entre Cloud Sensedia y Gateway Híbrido.|No|
-Gateway|Responsable de procesar los mensajes.|No|
-Authorization|Responsable de generar tokens.|No|
+|Gateway|Responsable de procesar los mensajes.|No|
+|Authorization|Responsable de generar tokens.|No|
 |Logstash-federated|Transferencia de datos y auditoría de tokens a Cloud Sensedia.|Opcional|
-|Redis|Red de memoria para compartir información entre módulos|Sí (usualmente, archivos *.rdb). La copia de seguridad de Redis se guarda en el directorio ``data`` de cada host.
+|Redis|Red de memoria para compartir información entre módulos|Sí (usualmente, archivos *.rdb). La copia de seguridad de Redis se guarda en el directorio ``/data`` de cada host.
 
 ### Recursos Recomendados
 
@@ -171,7 +171,7 @@ Cada servidor debe ser aprovisionado considerando el consumo de la distribución
 * **Modules** con 6 instancias para módulos de la Plataforma + 6 instancias para redis-cluster (sugerido para entornos con throughput alto).
 
 		2 instancias dedicadas a Gateway.
-		2 instâncias dedicadas a Authorization.
+		2 instancias dedicadas a Authorization.
 		1 instancia para Agent-gateway y Agent-authorization.
 		1 instancia para Logstash-federated.
 		6 instancias para Redis cluster.
@@ -199,10 +199,10 @@ version: '2.4'
 services:
 
   agent-gateway:
-    env_file: agent-gateway.env  # deve cambiar el contenido de este archivo de acuerdo con la documentación
+    env_file: agent-gateway.env  # debe cambiar el contenido de este archivo de acuerdo con la documentación
     networks:
       - api-platform
-    image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # deve cambiar
+    image: gcr.io/production-main-268117/agent-gateway:CHANGE_HERE # debe cambiar
     container_name: agent-gateway
     mem_limit: 512m  # puede cambiar
     restart: always
@@ -216,7 +216,7 @@ networks:
 
 Explicación del contenido del archivo ``agent-gateway.yaml``.
 
-* El campo ``version`` define la versión del archivo Docker Compose. Este valor sólo deve ser cambiado por el equipo de Sensedia cuando sea realmente necesario, pues que afecta a la sintaxis de algunos parámetros y palavras reservadas del archivo, tal y como establece la documentación oficial de Docker Compose: https://docs.docker.com/compose/compose-file/.
+* El campo ``version`` define la versión del archivo Docker Compose. Este valor sólo debe ser cambiado por el equipo de Sensedia cuando sea realmente necesario, ya que afecta a la sintaxis de algunos parámetros y palabras reservadas del archivo, tal y como establece la documentación oficial de Docker Compose: https://docs.docker.com/compose/compose-file/.
 
 * ``services`` es una palabra reservada de la sintaxis nativa de Docker Compose, que indica el comienzo de un conjunto de instrucciones para desplegar uno o más módulos de la Plataforma.
 
@@ -246,11 +246,11 @@ Ejemplo 2: ``- '8091:8091'`` - el puerto de host es el 8091/TCP, que escuchará 
 
 Ejemplo 3: ``- '80:8091'``. En este caso, el puerto de host es el 80/TCP y el puerto del contenedor es el 8091/TCP.
 
-  ¡¡ATENCIÓN!! El puerto del contenedor no es accesible fuera del hist. Sólo se puede acceder a él dentro del host.
+  ¡¡ATENCIÓN!! El puerto del contenedor no es accesible fuera del host. Sólo se puede acceder a él dentro del host.
 
-  Todas las peticiones se escuchan en el puerto de host y se transmitem ao puerto de contenedor, de manera transparente para el usuario.
+  Todas las peticiones se escuchan en el puerto de host y se transmiten al puerto de contenedor, de manera transparente para el usuario.
 
-  Cuando configurar las reglas de cortafuegos, considerar sólo los puertos de host.
+  Al configurar las reglas de cortafuegos, considere sólo los puertos de host.
 
   El puerto de host está siempre a la izquierda del ``:``.
 
@@ -258,9 +258,9 @@ Ejemplo 3: ``- '80:8091'``. En este caso, el puerto de host es el 80/TCP y el pu
 
   Por defecto, todos los puertos son TCP.
 
-  El puerto de host puede cambiarse, pero debe ser un puerto diferente cada contenedor que se inicie.
+  El puerto de host puede cambiarse, pero debe ser un puerto diferente para cada contenedor que se inicie.
 
-  El puerto del contenedor no puede cambiarse y es definida por el equipo de Sensedia en el momento en que se construye la imagen del Docker.
+  El puerto del contenedor no puede cambiarse y es definido por el equipo de Sensedia en el momento en que se construye la imagen del Docker.
 
   Puede haber uno o más puertos de host y de contenedores para cada módulo.
 
@@ -269,7 +269,7 @@ Ejemplo 3: ``- '80:8091'``. En este caso, el puerto de host es el 80/TCP y el pu
 La configuración del entorno híbrido tiene como requisito previo el uso de un token de la Plataforma. El token debe ser generado mediante el siguiente procedimiento:
 
 1. Acceder al API Manager;
-2. Hacer clic en la opción **Access Token** en el menu principal;
+2. Hacer clic en la opción **Consumers** --> **Access Tokens** en el menú principal;
 3. Hacer clic en el botón **Create Access token**;
 4. El campo **Owner** debe contener el correo electrónico de un usuario responsable del entorno;
 5. Establecer el valor **API-Platform Integration** en el campo **APP Field**;
@@ -297,8 +297,8 @@ Editar los archivos ``modules/logstash-federated/logstash-federated.env``, ``mod
 La instalación del entorno se basa en grupos de puertas de enlace (gateway pools). Estos pools representan un grupo de puertas de enlace que pueden utilizar uno o más entornos virtuales.
 
 > NOTA: Solo la creación del grupo de puertas de enlace es realizada por el equipo de **Soporte y Operaciones** de Sensedia a través de la apertura de un llamado.
-* Crear un Inbound Address acesse o **API-Manager**y hacer clic en el menú **VirtualHosts** y en Inbound Address
-* Crear un nuevo **Inbound Address** y rellenar los campos::
+* Agregar un **Inbound Address** accediendo al **API-Manager**, haciendo clic en el menú **VirtualHosts** y luego en **Inbound Address**.
+* Crear un nuevo **Inbound Address** y rellenar los campos:
   * Name;
   * Gateway Type;
   * Protocol Type;
@@ -312,7 +312,7 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
   * Name;
   * Inbound URL;
   * Description;
-  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de suporte).
+  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de soporte).
 * Hacer clic en **Add Map**.
 
 ![Add environment](../images/add_environment_new.jpg)

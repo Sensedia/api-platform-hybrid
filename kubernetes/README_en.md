@@ -2,7 +2,7 @@
 
 - [Hybrid API-Platform - Kubernetes](#hybrid-api-platform---kubernetes)
 - [Hybrid Environment Modules](#hybrid-environment-modules)
-- [Supported Deployment Modelos](#supported-deployment-modelos)
+- [Supported Deployment Models](#supported-deployment-models)
 - [Macro Topology](#macro-topology)
 - [Recommended Resources](#recommended-resources)
 - [Capacity and Sizing (RPS)](#capacity-and-sizing-rps)
@@ -45,7 +45,7 @@ Infrastructure components, as well as their operation and support, are the clien
 * Ingress/egress
 * Load balancing
 * Backup
-* Monitoramento
+* Monitoring
 
 Table 1. Services executed/maintained by the Client on the Hybrid Environment
 
@@ -68,7 +68,7 @@ Table 2: Description of Ingress, LB and Backup requirements by module.
 | Logstash-federated | Transfer of analytical data and token audit for Cloud Sensedia. | Optional | No |
 | Redis | Memory grid to share information across modules. | No | Yes (usually \*.rdb) |
 
-# Supported Deployment Modelos
+# Supported Deployment Models
 
 Table 3. Provisioning options by module.
 
@@ -114,7 +114,7 @@ The **Recommended Resources** table above represents the minimum hardware floor 
 * Network latency to the target backend;
 * CPU/memory resources allocated to the pod.
 
-For this reason, there isn't a single RPS number that represents every usage scenario. We recommend that each client establish its own capacity reference through a controlled load test (e.g. k6, JMeter, Gatling) against an API representative of its real traffic, monitoring CPU, memory, and RPS per pod during the test — the metrics endpoints already documented in the Monitoring table can be used for this collection.
+For this reason, there isn't a single RPS number that represents every usage scenario. We recommend that each client establish its own capacity reference through a controlled load test (e.g. k6, JMeter, Gatling) against an API representative of its real traffic, monitoring CPU, memory, and RPS per pod during the test — the metrics endpoints already documented in the [Monitoring](../README_en.md#monitoring-health-check-and-load-balancing) table can be used for this collection.
 
 Based on that reference, use the `autoscaling` block of each module's `values.yaml` (see the [Changing Modules Versions and Other Parameters](#changing-modules-versions-and-other-parameters) section) to set `minReplicas`, `maxReplicas`, and `averageUtilization` so the environment scales horizontally before saturating the capacity measured per pod.
 
@@ -141,7 +141,7 @@ customerId: "CHANGE_HERE"
 Using a Platform token is a requirement for configuring the hybrid environment. The token must be created following this procedure:
 
 * Access the API Manager.
-* Click the **Access Token** option on the main menu.
+* Click the **Consumers** --> **Access Tokens** option on the main menu.
 * Click the **Create access token** button.
 * The field **Owner** must contain the email address of a user responsible for the environment.
 * Define the **API Platform Integration** value on the field **App**.
@@ -154,7 +154,7 @@ Using a Platform token is a requirement for configuring the hybrid environment. 
 
 * Select the plan **Federated Plan**.
 
-![Select Plan](../images/create_token2_new.jpg)
+![Select Plan](../images/create_token3_new.jpg)
 
 * Click the **Save Plan** button.
 * On the next page, publish the token by clicking the button **Publish your access token**.
@@ -240,7 +240,7 @@ See more information regarding kubectl on this page: https://kubernetes.io/docs/
 
 The API-Platform installation is performed using Helm packages, also known as **Helm charts** or simply **charts**.
 
-Helms is a package manager for Kubernetes. Just as a package manager for an operational system facilitates the installation of applications and tools, Helm helps to install applications and resources on Kubernetes clusters.
+Helm is a package manager for Kubernetes. Just as a package manager for an operational system facilitates the installation of applications and tools, Helm helps to install applications and resources on Kubernetes clusters.
 
 ### Downloading Helm
 
@@ -421,7 +421,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values
 
 Alter the parameter values of the file ``api-platform-hybrid/logstash-federated.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-Run the following command to Helm chart version **Logstash-Federated**.
+Run the following command to get the Helm chart version of **Logstash-Federated**.
 
 ```bash
 helm search repo sensedia-helm-s3/logstash-federated -l
@@ -455,7 +455,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-authorization/value
 
 Alter the parameter values of the file ``api-platform-hybrid/agent-authorization.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-Run the following command to Helm chart version **Agent Authorization**.
+Run the following command to get the Helm chart version of **Agent Authorization**.
 
 ```bash
 helm search repo sensedia-helm-s3/agent-authorization -l
@@ -481,9 +481,9 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-gateway/values.yaml
 
 Alter the parameter values of the file ``api-platform-hybrid/agent-gateway.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-As mentioned earlier in Agent-Authorization session, you can configure a base64 redis password if necessary.
+As mentioned earlier in Agent-Authorization section, you can configure a base64 redis password if necessary.
 
-Run the following command to Helm chart version **Agent Gateway**.
+Run the following command to get the Helm chart version of **Agent Gateway**.
 
 ```bash
 helm search repo sensedia-helm-s3/agent-gateway -l
@@ -509,7 +509,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 
 Alter the parameter values of the file ``api-platform-hybrid/api-authorization.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-Run the following command to Helm chart version **API Authorization**.
+Run the following command to get the Helm chart version of **API Authorization**.
 
 ```bash
 helm search repo sensedia-helm-s3/api-authorization -l
@@ -535,9 +535,9 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-gateway/values.yaml ~
 
 Alter the parameter values of the file ``api-platform-hybrid/api-gateway.yaml`` according to the instructions of the section **Changing Modules Versions and Other Parameters**.
 
-> NOTE: The property ``apigateway_label`` must be filled in with the desired name for the Gateway Pool and informed later through the opening of a ticket so that the ** Support and Operations ** team can conclude the creation.
+> NOTE: The property ``apigateway_label`` must be filled in with the desired name for the Gateway Pool and informed later through the opening of a ticket so that the **Support and Operations** team can conclude the creation.
 
-Run the following command to Helm chart version **API Gateway**.
+Run the following command to get the Helm chart version of **API Gateway**.
 
 ```bash
 helm search repo sensedia-helm-s3/api-gateway -l

@@ -51,7 +51,7 @@ Cuadro 1: Servicios ejecutados/mantenidos por el Cliente en Entorno Híbrido.
 | --- | --- | --- |
 | Ingress/Balance de Carga | Balance de carga HTTP/HTTPS (_ejemplo: ALB/F5/Nginx/Traefik, etc._). | Los certificados deben aplicarse a la capa de balanceo. |
 | Copia de Seguridad | Cualquier solución que copia el archivo de retención de datos de Redis (_\*.rdb_) en un almacenamiento externo (_seguro_). | Este archivo debe protegerse mediante el contenido de información confidencial (_ejemplo: token de acceso_). |
-| Monitoreo | Cualquier solución de monitoreo que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``gateway-admin/metrics``. |
+| Monitoreo | Cualquier solución de monitoreo que admita la comprobación de estado HTTP. | Todos los módulos híbridos exponen métricas a través del endpoint ``/metrics``. La única excepción es la puerta de enlace (gateway), que expone métricas a través del endpoint ``/gateway-admin/metrics``. |
 
 # Módulos para Entorno Híbrido
 
@@ -75,7 +75,7 @@ Cuadro 3: Opciones de aprovisionamiento por módulo.
 | Agent-authorization | Sí | Sí | Sí (sobre docker-compose) | n/a |
 | Agent-gateway | Sí | Sí | Sí (sobre docker-compose) | n/a |
 | Gateway | Sí | Sí | Sí (sobre docker-compose) | n/a |
-| Authorization | Sí | Si | Sí (sobre docker-compose) | n/a |
+| Authorization | Sí | Sí | Sí (sobre docker-compose) | n/a |
 | Logstash-federated | Sí | Sí | Sí (sobre docker-compose) | n/a |
 | Redis (>4.0.11, <8.0.0) | Libre elección ||| - ElastiCache (AWS) <br> \- Memorystore (GCP) |
 | Ingress | Sí (service/ingress) | Sí (balanceador de carga del Cliente) | Sí (balanceador de carga del Cliente) | - ELB/ALB (AWS) <br> \- Compute Load Balancer (GCP) |
@@ -112,7 +112,7 @@ El cuadro de **Recursos Recomendados** anterior representa el piso mínimo de ha
 * La latencia de red hacia el backend de destino;
 * Los recursos de CPU/memoria asignados al pod.
 
-Por esta razón, no existe un número único de RPS que represente todos los escenarios de uso. Recomendamos que cada cliente establezca su propia referencia de capacidad mediante una prueba de carga controlada (ej.: k6, JMeter, Gatling) contra una API representativa de su tráfico real, monitoreando CPU, memoria y RPS por pod durante la prueba — los endpoints de métricas ya documentados en el cuadro de Monitoreo pueden usarse para esta recolección.
+Por esta razón, no existe un número único de RPS que represente todos los escenarios de uso. Recomendamos que cada cliente establezca su propia referencia de capacidad mediante una prueba de carga controlada (ej.: k6, JMeter, Gatling) contra una API representativa de su tráfico real, monitoreando CPU, memoria y RPS por pod durante la prueba — los endpoints de métricas ya documentados en el cuadro de [Monitoreo](../README_es.md#monitoreo-health-check-y-balanceo) pueden usarse para esta recolección.
 
 A partir de esa referencia, utilizar el bloque `autoscaling` del `values.yaml` de cada módulo (ver la sección [Cambio de la Versión de los Módulos y Otros Parámetros](#cambio-de-la-versión-de-los-módulos-y-otros-parámetros)) para definir `minReplicas`, `maxReplicas` y `averageUtilization`, de modo que el entorno escale horizontalmente antes de saturar la capacidad medida por pod.
 
@@ -131,7 +131,7 @@ Obtenga su ``customerID`` con el equipo de soporte. Esto será necesario para re
 Ejemplo de utilización de ``customerid`` en un archivo de configuración:
 
 ```
-customerID: "CHANGE_HERE"
+customerId: "CHANGE_HERE"
 ```
 
 ## Creación de Tokens
@@ -139,7 +139,7 @@ customerID: "CHANGE_HERE"
 La configuración del entorno híbrido es un requisito previo para usar un token de la Plataforma. El token debe crearse mediante el siguiente procedimiento:
 
 * Acceder al API Manager.
-* Acceder a la página **consumers**-->  **Access Token** en el menú principal.
+* Acceder a la página **Consumers** --> **Access Tokens** en el menú principal.
 * Hacer clic en el botón **Create access token**.
 * El campo **Owner** debe contener la dirección de correo electrónico de un usuario responsable del entorno.
 * Establecer el valor de **API Platform Integration** en el campo **App** .
@@ -264,7 +264,7 @@ helm ls
 
 ### Repositorio de Helm Charts de Sensedia
 
-Adicionar el repositorio de Helm charts estables de Sensedia disponible en AWS-S3.
+Agregar el repositorio de Helm charts estables de Sensedia disponible en AWS-S3.
 
 ```bash
 helm repo add sensedia-helm-s3 http://sensedia-helm-charts-s3.s3.amazonaws.com
@@ -419,7 +419,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/logstash-federated/values
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/logstash-federated.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
-Utilizar el siguiente comando para listar la version del Helm charts de **Logstash-Federated**.
+Utilizar el siguiente comando para obtener la versión del Helm chart de **Logstash-Federated**.
 
 ```bash
 helm search repo sensedia-helm-s3/logstash-federated -l
@@ -453,7 +453,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-authorization/value
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/agent-authorization.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
-Utilizar el siguiente comando para listar la version del Helm charts de **Agent Authorization**.
+Utilizar el siguiente comando para obtener la versión del Helm chart de **Agent Authorization**.
 
 ```bash
 helm search repo sensedia-helm-s3/agent-authorization -l
@@ -479,9 +479,9 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/agent-gateway/values.yaml
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/agent-gateway.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
-Como se mencionó anteriormente en Autorización del agente, puede configurar una contraseña redis base64 si es necesario.
+Como se mencionó anteriormente en Agent-Authorization, puede configurar una contraseña redis base64 si es necesario.
 
-Utilizar el siguiente comando para listar la version del Helm charts de **Agent Gateway**.
+Utilizar el siguiente comando para obtener la versión del Helm chart de **Agent Gateway**.
 
 ```bash
 helm search repo sensedia-helm-s3/agent-gateway -l
@@ -507,7 +507,7 @@ cp api-platform-hybrid/kubernetes/helm/values_examples/api-authorization/values.
 
 Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/api-authorization.yaml`` según las instrucciones de la sección **Cambio de la Versión de los Módulos y Otros Parámetros**.
 
-Utilizar el siguiente comando para listar la version del Helm charts de **API Authorization**.
+Utilizar el siguiente comando para obtener la versión del Helm chart de **API Authorization**.
 
 ```bash
 helm search repo sensedia-helm-s3/api-authorization -l
@@ -535,7 +535,7 @@ Cambiar los valores de los parámetros del archivo ``api-platform-hybrid/api-gat
 
 > Nota: La propiedad ``apigateway_label`` debe ser completada con el nombre deseado para el Gateway Pool e informada posteriormente mediante la apertura de un llamado para que el equipo de **Soporte y Operaciones** pueda completar la creación.
 
-Utilizar el siguiente comando para listar la version del Helm charts de **API Gateway**.
+Utilizar el siguiente comando para obtener la versión del Helm chart de **API Gateway**.
 
 ```bash
 helm search repo sensedia-helm-s3/api-gateway -l
@@ -562,8 +562,8 @@ kubectl get pods -n MY_HYBRID_ENV
 La instalación del entorno se basa en grupos de puertas de enlace (gateway pools). Estos pools representan un grupo de puertas de enlace que pueden utilizar uno o más entornos virtuales.
 
 > NOTA: Solo la creación del grupo de puertas de enlace es realizada por el equipo de **Soporte y Operaciones** de Sensedia a través de la apertura de un llamado.
-* Crear un Inbound Address acesse o **API-Manager**y hacer clic en el menú **VirtualHosts** y en Inbound Address
-* Crear un nuevo **Inbound Address** y rellenar los campos::
+* Agregar un **Inbound Address** accediendo al **API-Manager**, haciendo clic en el menú **VirtualHosts** y luego en **Inbound Address**.
+* Crear un nuevo **Inbound Address** y rellenar los campos:
   * Name;
   * Gateway Type;
   * Protocol Type;
@@ -577,7 +577,7 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
   * Name;
   * Inbound URL;
   * Description;
-  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de suporte).
+  * Gateway Pool (en este campo, incluir el gateway pool informado por el equipo de Sensedia a través de su llamado de soporte).
 * Hacer clic en **Add Map**.
 
 ![Add environment](../images/add_environment_new.jpg)
@@ -593,4 +593,4 @@ La instalación del entorno se basa en grupos de puertas de enlace (gateway pool
 
 ![Add API](../images/add_api_new.jpg)
 
-* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_es.md).
+* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [Validación](../validation/README_es.md).

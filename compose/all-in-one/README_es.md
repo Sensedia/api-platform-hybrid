@@ -17,6 +17,8 @@ Este método de despliegue inicia todos los módulos *stateless* de la Plataform
 
 > ¡¡¡ATENCIÓN!!! Este método no debe utilizarse en el entorno de producción. Este método se recomienda solo para demostraciones, pruebas o PoC (*Proof of concept*).
 
+Si utiliza un Redis totalmente gestionado o ya cuenta con una instalación de Redis, este puede ser el modelo ideal.
+
 ## Módulos
 
 En este método, instalar los módulos citados en [esta página](../README_es.md), en la sección **Módulos**.
@@ -32,9 +34,9 @@ Acceder a [esta página](../README_es.md), en la sección **Requisitos**, para o
 
 1 - Editar el archivo ``hybrid.env``, ubicado en este directorio, y cambiar los valores que contienen **CHANGE_HERE** a valores consistentes con su entorno.
 
-2 - Generar um token de acesso del entorno híbrido en lo API-Manager siguiendo las instrucciones de [esta página](../README_es.md) (sección: **Creación de Token**).
+2 - Generar un token de acceso del entorno híbrido en el API-Manager siguiendo las instrucciones de [esta página](../README_es.md) (sección: **Creación de Token**).
 
-3 - Edite el archivo ``sensedia-all-in-one.yaml`` y cambie las versiones de los módulos que tienen los valores establecidos en **CHANGE_HERE**, de acuerdo con las instrucciones [en esta página](../README.md), en la sección **Cambio de versiones de módulos, puerto y otros parámetros**.
+3 - Edite el archivo ``sensedia-all-in-one.yaml`` y cambie las versiones de los módulos que tienen los valores establecidos en **CHANGE_HERE**, de acuerdo con las instrucciones [en esta página](../README_es.md), en la sección **Cambio de Versión de los Módulos, Puerto de Red y Otros Parámetros**.
 
 4 - Usar los siguientes comandos para ejecutar ``docker-compose`` referenciando el archivo ``sensedia-all-in-one.yaml``.
 
@@ -81,11 +83,11 @@ Iniciar el servicio una vez más con el siguiente comando.
 sudo docker-compose start SERVICE_NAME
 ```
 
-Se quiere parar el servicio y quitar todos los dados, volúmenes, imágenes, red de contenedores, usar el siguiente comando (usar sólo si realmente necesario).
+Si desea detener el servicio y eliminar todos los datos, volúmenes, imágenes y redes de los contenedores, use el siguiente comando (utilícelo sólo si realmente es necesario).
 
 ```bash
 cd compose/all-in-one/
 sudo docker-compose -f sensedia-all-in-one.yaml down
 ```
 
-* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_pt.md).
+* Para validar su API, realizar una petición a la puerta de enlace híbrida; Accede a este enlace para la documentación de [validación](../validation/README_es.md).

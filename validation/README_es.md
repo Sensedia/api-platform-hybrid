@@ -26,7 +26,7 @@ Para ello, es necesario haber concluido todo el aprovisionamiento y configuraci�
 
 ![Create Api2](../images/create_api2.jpg)
 
-*  Preencha os campos conforme exemplo:
+*  Complete los campos según el ejemplo:
    * Resource name
    * Hacer clic en **SAVE** 
 
@@ -52,7 +52,7 @@ Para ello, es necesario haber concluido todo el aprovisionamiento y configuraci�
 ![Create Api5](../images/create_api5.jpg)
 
 *  Complete los campos según el ejemplo:
-   * Agregar en body osegún el ejemplo
+   * Agregar en el body el ejemplo de abajo
    * Establecer el estado **200** 
 
 ```bash
@@ -94,13 +94,13 @@ Para ello, es necesario haber concluido todo el aprovisionamiento y configuraci�
 
 * Acceder al menú API Design > API Catalog
    * Abrir la API creada
-   * En Environments Hacer clic en Icone según la flecha y copie el valor
+   * En Environments, haga clic en el ícono según la flecha y copie el valor
    * Verifique el valor del Path
      
 ![Create Api8](../images/create_api8.jpg)
 
-* Para realizar la validación, acceda a una terminal o solicite una herramienta 
-y ejecutar un **curl** como en el ejemplo
+* Para realizar la validación, acceda a una terminal o a una herramienta de peticiones
+y ejecute un **curl** como en el ejemplo
 
 
 ```bash

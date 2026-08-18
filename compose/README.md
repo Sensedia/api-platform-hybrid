@@ -142,7 +142,7 @@ A tabela a seguir mostra uma descrição dos módulos e da necessidade de fazer 
 |Gateway|Responsável por processar as mensagens.|Não|
 |Authorization|Responsável pela geração de tokens.|Não|
 |Logstash-federated|Transferência de dados analíticos e auditoria de tokens para Cloud Sensedia.|Opcional|Não|
-|Redis|Grid de memória para compartilhamento de informações entre os módulos|Sim (normalmente dos arquivos *.rdb).
+|Redis|Grid de memória para compartilhamento de informações entre os módulos|Sim (normalmente dos arquivos *.rdb). O backup do Redis é salvo no diretório ``/data`` de cada host.|
 
 ### Recursos Recomendados
 
@@ -297,7 +297,7 @@ Edite os arquivos ``modules/logstash-federated/logstash-federated.env``, ``modul
 A instalação do ambiente é baseado em Gateway Pools. Esses pools representam um grupo de gateways que pode ser usado por um ou mais environments virtuais.
 
 > Observação: Apenas a criação do Gateway Pool é efetuada pela equipe de **Suporte e Operações** da Sensedia através da abertura de chamado ou ticket.
-* Adicione um Inbound Address acesse o **API-Manager** e clique no menu **VirtualHosts** e apos em Inbound Address
+* Adicione um **Inbound Address** acessando o **API-Manager**, clicando no menu **VirtualHosts** e, em seguida, em **Inbound Address**.
 * Crie um novo **Inbound Address** e preencha os campos:
   * Name;
   * Gateway Type;

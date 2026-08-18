@@ -145,4 +145,4 @@ If you want to stop the service and remove all data, volume, images and containe
 cd DIR_NAME
 sudo docker-compose -f SERVICE_NAME.yaml down
 ```
-* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_pt.md).
+* Validate your API by making a request to the hybrid gateway; Access this link for documentation on [Validation](../validation/README_en.md).
